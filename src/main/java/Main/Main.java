@@ -13,6 +13,7 @@ public class Main {
         // TODO code application logic here
         MenúPrincipal prueba = new MenúPrincipal();
         prueba.setVisible(true);
+        // hola
     }
     
 }
