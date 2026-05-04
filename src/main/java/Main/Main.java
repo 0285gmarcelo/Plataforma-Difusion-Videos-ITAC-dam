@@ -14,6 +14,7 @@ public class Main {
         MenúPrincipal prueba = new MenúPrincipal();
         prueba.setVisible(true);
         // hola
+        //prueba
     }
     
 }
