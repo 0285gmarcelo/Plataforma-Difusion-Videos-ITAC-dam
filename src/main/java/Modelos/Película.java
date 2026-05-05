@@ -56,6 +56,10 @@ public class Película {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
+
+    public String datosPelicula() {
+        return + codigo + ", titulo=" + titulo + ", director=" + director + ", anyo_entero=" + anyo_entero + ", duracion=" + duracion + '}';
+    }
     
     
 
