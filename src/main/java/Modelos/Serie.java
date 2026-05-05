@@ -7,11 +7,11 @@ package Modelos;
 public class Serie {
 
     private int codigo;
-    protected String titulo;
-    protected String creador;
-    protected String anyos_Emision;
-    protected int temporadas;
-    protected int episodios;
+    private String titulo;
+    private String creador;
+    private String anyos_Emision;
+    private int temporadas;
+    private int episodios;
 
     public Serie(int codigo, String titulo, String creador, String anyos_Emision, int temporadas, int episodios) {
         this.codigo = codigo;
@@ -27,8 +27,46 @@ public class Serie {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public String getTitulo() {
+        return titulo;
     }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getCreador() {
+        return creador;
+    }
+
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
+
+    public String getAnyos_Emision() {
+        return anyos_Emision;
+    }
+
+    public void setAnyos_Emision(String anyos_Emision) {
+        this.anyos_Emision = anyos_Emision;
+    }
+
+    public int getTemporadas() {
+        return temporadas;
+    }
+
+    public void setTemporadas(int temporadas) {
+        this.temporadas = temporadas;
+    }
+
+    public int getEpisodios() {
+        return episodios;
+    }
+
+    public void setEpisodios(int episodios) {
+        this.episodios = episodios;
+    }
+
+    
 
 }

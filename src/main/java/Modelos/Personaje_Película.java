@@ -10,8 +10,8 @@ public class Personaje_Película {
 
     private int codigo_Pelicula;
     private int codigo_Actor;
-    protected String nombre;
-    protected String tipo;
+    private String nombre;
+    private String tipo;
 
     public Personaje_Película(String nombre, String tipo) throws TipoPersonajeException {
         this.nombre = nombre;
@@ -25,16 +25,26 @@ public class Personaje_Película {
         return codigo_Pelicula;
     }
 
-    public void setCodigo_Pelicula(int codigo_Pelicula) {
-        this.codigo_Pelicula = codigo_Pelicula;
-    }
-
     public int getCodigo_Actor() {
         return codigo_Actor;
     }
 
-    public void setCodigo_Actor(int codigo_Actor) {
-        this.codigo_Actor = codigo_Actor;
+    public String getNombre() {
+        return nombre;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
 
 }

@@ -10,10 +10,10 @@ public class Personaje_Serie {
 
     private int codigo_Serie;
     private int codigo_Actor;
-    protected String nombre;
-    protected String tipo;
-    protected int episodios;
-    protected String duracion;
+    private String nombre;
+    private String tipo;
+    private int episodios;
+    private String duracion;
 
     public Personaje_Serie(String nombre, String tipo, int episodios, String duracion) throws TipoPersonajeException {
         this.nombre = nombre;
@@ -30,16 +30,42 @@ public class Personaje_Serie {
         return codigo_Serie;
     }
 
-    public void setCodigo_Serie(int codigo_Serie) {
-        this.codigo_Serie = codigo_Serie;
-    }
-
     public int getCodigo_Actor() {
         return codigo_Actor;
     }
 
-    public void setCodigo_Actor(int codigo_Actor) {
-        this.codigo_Actor = codigo_Actor;
+    public String getNombre() {
+        return nombre;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getEpisodios() {
+        return episodios;
+    }
+
+    public void setEpisodios(int episodios) {
+        this.episodios = episodios;
+    }
+
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
+    
+    
 
 }
