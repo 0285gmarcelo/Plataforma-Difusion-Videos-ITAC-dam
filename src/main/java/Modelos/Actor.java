@@ -1,5 +1,6 @@
 package Modelos;
 
+import Interfaces.InterfazPrueba;
 import java.util.Date;
 
 /**
@@ -62,7 +63,6 @@ public class Actor {
     public String datosActor() {
         return ";" + codigo + ";" + nombre + ";" + fecha_Nacimiento + ";" + lugar_Residencia + ";" + nacionalidad;
     }
-    
     
     
 
