@@ -9,7 +9,5 @@ package Interfaces;
  * @author isard
  */
 public interface InterfazPrueba {
-    public interface insertable {
-        void insertar();
-    }
+    void insertar();
 }
