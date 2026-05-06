@@ -8,6 +8,6 @@ package Interfaces;
  *
  * @author isard
  */
-public interface InterfazPrueba {
-    void insertar();
+public interface InterfazPrueba<T> {
+    void insertar(T obj);
 }
