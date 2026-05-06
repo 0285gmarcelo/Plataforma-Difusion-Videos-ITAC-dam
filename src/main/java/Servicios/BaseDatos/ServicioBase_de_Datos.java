@@ -4,9 +4,9 @@
  */
 package Servicios.BaseDatos;
 
+import Utils.Constantes;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 /**
  *
@@ -17,19 +17,13 @@ public class ServicioBase_de_Datos {
     private static Connection con;
 
     public static void inciarBase_De_Datos() {
-        String url = "jdbc:mysql://localhost:3306/Plataforma_difusion_video";
-        String user = "root";
-        String password = "root";
         try {
-            con = DriverManager.getConnection(url, user, password);
+            con = DriverManager.getConnection(Constantes.URL_BASE_DATOS, Constantes.USER, Constantes.PASSWORD);
         } catch (SQLException ex) {
             System.out.println("Ah ocurrido un error en la conexion");
             Logger.getLogger(ServicioBase_de_Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
     
     public static void cerrarBaseDatos() {
         try {
