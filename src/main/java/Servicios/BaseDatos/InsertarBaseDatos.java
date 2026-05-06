@@ -4,6 +4,7 @@
  */
 package Servicios.BaseDatos;
 
+import Modelos.Actor;
 import java.sql.*;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -17,11 +18,14 @@ public class InsertarBaseDatos {
     
     private static Connection con;
     
-  public static void insertarActorBD (Object objecto, Scanner teclado){
+  public static void insertarActorBD (Object objecto){
       ServicioBase_de_Datos.inciarBase_De_Datos();
-      
         try {
-            PreparedStatement pst = con.prepareStatement("Insert "+objecto+" values (?,?,?,?,?)");
+            if (objecto.getClass()== Actor.class){
+                PreparedStatement pst = con.prepareStatement("Insert "+objecto+" values (?,?,?,?,?)");
+                //(Actor)objecto).getCodigo();
+            }
+           
         } catch (SQLException ex) {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
