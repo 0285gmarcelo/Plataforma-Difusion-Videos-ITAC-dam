@@ -4,11 +4,9 @@
  */
 package Servicios.BaseDatos;
 
-import Modelos.Actor;
+import Modelos.*;
 import java.sql.*;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 /**
  *
@@ -21,9 +19,20 @@ public class InsertarBaseDatos {
   public static void insertarActorBD (Object objecto){
       ServicioBase_de_Datos.inciarBase_De_Datos();
         try {
+            
             if (objecto.getClass()== Actor.class){
-                PreparedStatement pst = con.prepareStatement("Insert "+objecto+" values (?,?,?,?,?)");
-                //(Actor)objecto).getCodigo();
+                
+                Actor actor = (Actor) objecto;
+                PreparedStatement pst = con.prepareStatement("Insert actor values (?,?,?,?,?)");
+               
+                pst.setInt(1, actor.getCodigo());
+                pst.setString(2, actor.getNombre());
+                pst.setDate(3, new java.sql.Date(actor.getFecha_Nacimiento().getTime()));
+                pst.setString(4, actor.getLugar_Residencia());
+                pst.setString(5, actor.getNacionalidad());
+                
+                pst.executeUpdate();
+                
             }
            
         } catch (SQLException ex) {
@@ -32,27 +41,122 @@ public class InsertarBaseDatos {
         }
       ServicioBase_de_Datos.cerrarBaseDatos();
   }
-  public static void insertarPeliculaBD (Object objecto, Scanner teclado){
+  public static void insertarPeliculaBD (Object objecto){
       ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
-            PreparedStatement pst = con.prepareStatement("Insert "+objecto+" values (?,?,?,?,?)");
+            
+            if (objecto.getClass()== Película.class){
+                
+                Película pelicula = (Película) objecto;
+                
+                PreparedStatement pst = con.prepareStatement("Insert Pelicula values (?,?,?,?,?)");
+                
+                pst.setInt(1, pelicula.getCodigo());
+                pst.setString(2, pelicula.getTitulo());
+                pst.setString(3, pelicula.getDirector());
+                pst.setInt(4, pelicula.getAnyo_estreno());
+                pst.setInt(5, pelicula.getDuracion());
+                
+                pst.executeUpdate();
+                
+            }
+            
         } catch (SQLException ex) {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
       ServicioBase_de_Datos.cerrarBaseDatos();
   }
-  public static void insertarSerieBD (Object objecto, Scanner teclado){
+  public static void insertarSerieBD (Object objecto){
       ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
-            PreparedStatement pst = con.prepareStatement("Insert "+objecto+" values (?,?,?,?,?,?)");
+            
+            if(objecto.getClass()== Serie.class){
+                
+                Serie serie = (Serie) objecto;
+                
+                
+                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?,?,?)");
+                
+                pst.setInt(1, serie.getCodigo());
+                pst.setString(2, serie.getTitulo());
+                pst.setString(3, serie.getCreador());
+                pst.setString(4, serie.getAnyos_Emision());
+                pst.setInt(5, serie.getTemporadas());
+                pst.setInt(0, serie.getEpisodios());
+                
+                pst.executeUpdate();
+                
+            }
+            
+            
         } catch (SQLException ex) {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
       ServicioBase_de_Datos.cerrarBaseDatos();
   }
+   public static void insertarPersonajes_SerieBD (Object objecto){
+      ServicioBase_de_Datos.inciarBase_De_Datos();
+      
+        try {
+            
+            if(objecto.getClass()== Personaje_Serie.class){
+                
+                Serie serie = (Serie) objecto;
+                
+                
+                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?,?,?)");
+                
+                pst.setInt(1, serie.getCodigo());
+                pst.setString(2, serie.getTitulo());
+                pst.setString(3, serie.getCreador());
+                pst.setString(4, serie.getAnyos_Emision());
+                pst.setInt(5, serie.getTemporadas());
+                pst.setInt(0, serie.getEpisodios());
+                
+                pst.executeUpdate();
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("Ah ocurrido un error de conexion");
+            Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      ServicioBase_de_Datos.cerrarBaseDatos();
+   }
+   public static void insertarPersonajes_PeliculaBD (Object objecto){
+      ServicioBase_de_Datos.inciarBase_De_Datos();
+      
+        try {
+            
+            if(objecto.getClass()== Serie.class){
+                
+                Serie serie = (Serie) objecto;
+                
+                
+                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?,?,?)");
+                
+                pst.setInt(1, serie.getCodigo());
+                pst.setString(2, serie.getTitulo());
+                pst.setString(3, serie.getCreador());
+                pst.setString(4, serie.getAnyos_Emision());
+                pst.setInt(5, serie.getTemporadas());
+                pst.setInt(0, serie.getEpisodios());
+                
+                pst.executeUpdate();
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("Ah ocurrido un error de conexion");
+            Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      ServicioBase_de_Datos.cerrarBaseDatos();
+   }
     
 }
