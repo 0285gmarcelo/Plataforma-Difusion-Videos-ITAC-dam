@@ -9,14 +9,14 @@ public class Película {
     private int codigo;
     private String titulo;
     private String director;
-    private int anyo_entero;
+    private int anyo_estreno;
     private int duracion;
 
     public Película(int codigo, String titulo, String director, int anyo_entero, int duracion) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.director = director;
-        this.anyo_entero = anyo_entero;
+        this.anyo_estreno = anyo_entero;
         this.duracion = duracion;
 
     }
@@ -41,12 +41,12 @@ public class Película {
         this.director = director;
     }
 
-    public int getAnyo_entero() {
-        return anyo_entero;
+    public int getAnyo_estreno() {
+        return anyo_estreno;
     }
 
-    public void setAnyo_entero(int anyo_entero) {
-        this.anyo_entero = anyo_entero;
+    public void setAnyo_estreno(int anyo_entero) {
+        this.anyo_estreno = anyo_entero;
     }
 
     public int getDuracion() {
@@ -58,7 +58,7 @@ public class Película {
     }
 
     public String datosPelicula() {
-        return + codigo + ", titulo=" + titulo + ", director=" + director + ", anyo_entero=" + anyo_entero + ", duracion=" + duracion + '}';
+        return + codigo + ", titulo=" + titulo + ", director=" + director + ", anyo_entero=" + anyo_estreno + ", duracion=" + duracion + '}';
     }
     
     
