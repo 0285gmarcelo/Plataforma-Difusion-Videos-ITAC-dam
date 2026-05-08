@@ -15,7 +15,9 @@ public class Personaje_Serie {
     private int episodios;
     private String duracion;
 
-    public Personaje_Serie(String nombre, String tipo, int episodios, String duracion) throws TipoPersonajeException {
+    public Personaje_Serie(int codigo_Actor,int codigo_Serie,String nombre, String tipo, int episodios, String duracion) throws TipoPersonajeException {
+        this.codigo_Actor = codigo_Actor;
+        this.codigo_Serie = codigo_Serie;
         this.nombre = nombre;
         this.tipo = tipo;
         this.episodios = episodios;

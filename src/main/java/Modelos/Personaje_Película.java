@@ -13,7 +13,9 @@ public class Personaje_Película {
     private String nombre;
     private String tipo;
 
-    public Personaje_Película(String nombre, String tipo) throws TipoPersonajeException {
+    public Personaje_Película(int codigo_Pelicula,int codigo_Actor,String nombre, String tipo) throws TipoPersonajeException {
+        this.codigo_Pelicula = codigo_Pelicula;
+        this.codigo_Actor = codigo_Actor;
         this.nombre = nombre;
         this.tipo = tipo;
         if (!this.tipo.equalsIgnoreCase("Principal") || !this.tipo.equalsIgnoreCase("Secundario") || !this.tipo.equalsIgnoreCase("Cameo")) {

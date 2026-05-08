@@ -13,6 +13,9 @@ public class Serie {
     private int temporadas;
     private int episodios;
 
+    public Serie() {
+    }
+    
     public Serie(int codigo, String titulo, String creador, String anyos_Emision, int temporadas, int episodios) {
         this.codigo = codigo;
         this.titulo = titulo;

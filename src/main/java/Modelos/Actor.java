@@ -14,7 +14,11 @@ public class Actor {
     private Date fecha_Nacimiento;
     private String lugar_Residencia;
     private String nacionalidad;
-
+    
+    public Actor(){
+        
+    }
+    
     public Actor(int codigo, String nombre, Date fecha_Nacimiento, String lugar_Residencia, String nacionalidad) {
         this.codigo = codigo;
         this.nombre = nombre;

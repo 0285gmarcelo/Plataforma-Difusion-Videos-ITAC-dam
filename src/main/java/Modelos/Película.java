@@ -12,6 +12,10 @@ public class Película {
     private int anyo_estreno;
     private int duracion;
 
+    public Película(){
+        
+    }
+    
     public Película(int codigo, String titulo, String director, int anyo_entero, int duracion) {
         this.codigo = codigo;
         this.titulo = titulo;
