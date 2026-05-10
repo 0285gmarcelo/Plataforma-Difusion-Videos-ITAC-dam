@@ -70,6 +70,11 @@ public class Serie {
         this.episodios = episodios;
     }
 
+    @Override
+    public String toString() {
+        return codigo + ";" + titulo + ";" + creador + ";" + anyos_Emision + ";" + temporadas + ";" + episodios;
+    }
+
     
 
 }

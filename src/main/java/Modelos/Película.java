@@ -62,7 +62,7 @@ public class Película {
     }
 
     public String datosPelicula() {
-        return + codigo + ", titulo=" + titulo + ", director=" + director + ", anyo_entero=" + anyo_estreno + ", duracion=" + duracion + '}';
+        return  codigo + ";" + titulo + ";" + director + ";"+ anyo_estreno + ";"+ duracion;
     }
     
     

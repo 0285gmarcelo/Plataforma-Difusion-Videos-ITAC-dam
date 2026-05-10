@@ -67,6 +67,14 @@ public class Personaje_Serie {
     public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
+
+    @Override
+    public String toString() {
+        return  codigo_Serie + ";" + codigo_Actor + ";" + nombre + ";" + tipo + ";" + episodios + ";" + duracion;
+    }
+    
+    
+    
     
     
 

@@ -65,7 +65,7 @@ public class Actor {
 
    
     public String datosActor() {
-        return ";" + codigo + ";" + nombre + ";" + fecha_Nacimiento + ";" + lugar_Residencia + ";" + nacionalidad;
+        return  codigo + ";" + nombre + ";" + fecha_Nacimiento + ";" + lugar_Residencia + ";" + nacionalidad;
     }
     
     
