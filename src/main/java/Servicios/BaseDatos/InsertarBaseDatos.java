@@ -85,7 +85,7 @@ public class InsertarBaseDatos {
                 pst.setString(3, serie.getCreador());
                 pst.setString(4, serie.getAnyos_Emision());
                 pst.setInt(5, serie.getTemporadas());
-                pst.setInt(0, serie.getEpisodios());
+                pst.setInt(6, serie.getEpisodios());
                 
                 pst.executeUpdate();
                 
@@ -105,17 +105,18 @@ public class InsertarBaseDatos {
             
             if(objecto.getClass()== Personaje_Serie.class){
                 
-                Serie serie = (Serie) objecto;
+                
+                Personaje_Serie ps = (Personaje_Serie) objecto;
                 
                 
                 PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?,?,?)");
                 
-                pst.setInt(1, serie.getCodigo());
-                pst.setString(2, serie.getTitulo());
-                pst.setString(3, serie.getCreador());
-                pst.setString(4, serie.getAnyos_Emision());
-                pst.setInt(5, serie.getTemporadas());
-                pst.setInt(0, serie.getEpisodios());
+                pst.setInt(1, ps.getCodigo_Serie());
+                pst.setInt(2, ps.getCodigo_Actor());
+                pst.setString(3, ps.getNombre());
+                pst.setString(4, ps.getTipo());
+                pst.setInt(5, ps.getEpisodios() );
+                pst.setString(6, ps.getDuracion());
                 
                 pst.executeUpdate();
                 
@@ -133,19 +134,17 @@ public class InsertarBaseDatos {
       
         try {
             
-            if(objecto.getClass()== Serie.class){
+            if(objecto.getClass()== Personaje_Película.class){
                 
-                Serie serie = (Serie) objecto;
+                Personaje_Película pp = (Personaje_Película) objecto;
                 
                 
-                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?,?,?)");
+                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?)");
                 
-                pst.setInt(1, serie.getCodigo());
-                pst.setString(2, serie.getTitulo());
-                pst.setString(3, serie.getCreador());
-                pst.setString(4, serie.getAnyos_Emision());
-                pst.setInt(5, serie.getTemporadas());
-                pst.setInt(0, serie.getEpisodios());
+                pst.setInt(1, pp.getCodigo_Pelicula());
+                pst.setInt(2, pp.getCodigo_Actor());
+                pst.setString(3, pp.getNombre());
+                pst.setString(4, pp.getTipo());
                 
                 pst.executeUpdate();
                 
