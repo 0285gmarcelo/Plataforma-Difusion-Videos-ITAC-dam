@@ -18,7 +18,7 @@ public class Exportar {
     
     public static void exporatTXT(List<String> datos) {
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.FICHERO_TXT));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.FICHERO_TXT, true));
             for (String linea : datos) {
                 bw.write(linea);
                 bw.newLine();
@@ -34,7 +34,7 @@ public class Exportar {
         
         
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.FICHERO_CSV));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.FICHERO_CSV, true));
             for (String linea : datos) {
                 bw.write(linea.replace(";", ":"));
                 bw.newLine();
@@ -48,7 +48,7 @@ public class Exportar {
     
     public static void exportarBINARIO(List<String> datos) throws IOException{
         try { 
-            ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream(Constantes.FICHERO_BIN));
+            ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream(Constantes.FICHERO_BIN, true));
             oos.writeObject(datos);
             oos.close();
         } catch (FileNotFoundException ex) {
