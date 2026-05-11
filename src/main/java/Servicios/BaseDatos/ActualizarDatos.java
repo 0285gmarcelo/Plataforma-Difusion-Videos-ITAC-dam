@@ -6,20 +6,27 @@ package Servicios.BaseDatos;
 
 import Modelos.Película;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author isard
  */
 public class ActualizarDatos {
-    private static Connection con;
-    public static void actualizarPelicula(int codigo, Object objeto, String tabla){
+    public static void actualizar(String tabla,int codigo, Object objeto,String FilaModificar, String nuevo,Connection con){
         ServicioBase_de_Datos.inciarBase_De_Datos();
         if(objeto.getClass() == Película.class){
             
-            Película pelicula = (Película) objeto;
-            
-            PreparedStatement pst = con.prepareStatement("UPDATE pelicula set "+tabla+" = ? ")
+            try {
+                PreparedStatement ps = con.prepareStatement("UPDATE "+tabla+" set "+FilaModificar+" = ? WHERE codigo = ?");
+                ps.setString(1, nuevo);
+                ps.setInt(2, codigo);
+                ps.executeUpdate();
+                System.out.println("Datos actualizados correctamente");
+            } catch (SQLException ex) {
+                Logger.getLogger(ActualizarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
                     
         }
     }
