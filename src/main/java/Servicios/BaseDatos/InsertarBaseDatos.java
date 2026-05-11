@@ -14,10 +14,9 @@ import java.util.logging.*;
  */
 public class InsertarBaseDatos {
     
-    private static Connection con;
     
-  public static void insertarActorBD (Object objecto){
-      ServicioBase_de_Datos.inciarBase_De_Datos();
+  public static void insertarActorBD (Object objecto,Connection con){
+    ServicioBase_de_Datos.inciarBase_De_Datos();
         try {
             
             if (objecto.getClass()== Actor.class){
@@ -39,9 +38,9 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos();
+      ServicioBase_de_Datos.cerrarBaseDatos(con);
   }
-  public static void insertarPeliculaBD (Object objecto){
+  public static void insertarPeliculaBD (Object objecto,Connection con){
       ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
@@ -66,9 +65,9 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos();
+      ServicioBase_de_Datos.cerrarBaseDatos(con);
   }
-  public static void insertarSerieBD (Object objecto){
+  public static void insertarSerieBD (Object objecto, Connection con){
       ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
@@ -96,9 +95,9 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos();
+      ServicioBase_de_Datos.cerrarBaseDatos(con);
   }
-   public static void insertarPersonajes_SerieBD (Object objecto){
+   public static void insertarPersonajes_SerieBD (Object objecto, Connection con){
       ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
@@ -127,9 +126,9 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos();
+      ServicioBase_de_Datos.cerrarBaseDatos(con);
    }
-   public static void insertarPersonajes_PeliculaBD (Object objecto){
+   public static void insertarPersonajes_PeliculaBD (Object objecto, Connection con){
       ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
@@ -155,7 +154,7 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos();
+      ServicioBase_de_Datos.cerrarBaseDatos(con);
    }
     
 }

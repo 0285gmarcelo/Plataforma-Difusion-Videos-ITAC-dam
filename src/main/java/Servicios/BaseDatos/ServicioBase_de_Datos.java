@@ -14,18 +14,19 @@ import java.util.logging.*;
  */
 public class ServicioBase_de_Datos {
 
-    private static Connection con;
 
-    public static void inciarBase_De_Datos() {
+    public static Connection inciarBase_De_Datos() {
+        Connection con = null;
         try {
-            con = DriverManager.getConnection(Constantes.URL_BASE_DATOS, Constantes.USER, Constantes.PASSWORD);
+           con = DriverManager.getConnection(Constantes.URL_BASE_DATOS, Constantes.USER, Constantes.PASSWORD);
         } catch (SQLException ex) {
             System.out.println("Ah ocurrido un error en la conexion");
             Logger.getLogger(ServicioBase_de_Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return con;
     }
     
-    public static void cerrarBaseDatos() {
+    public static void cerrarBaseDatos(Connection con) {
         try {
             con.close();
         } catch (SQLException ex) {
