@@ -14,20 +14,21 @@ import java.util.logging.Logger;
  * @author isard
  */
 public class ActualizarDatos {
-    public static void actualizar(String tabla,int codigo, Object objeto,String FilaModificar, String nuevo,Connection con){
+    public static void actualizar(String tabla,int codigo,String FilaModificar, String nuevoContenido,Connection con){
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        if(objeto.getClass() == Película.class){
+        
             
             try {
                 PreparedStatement ps = con.prepareStatement("UPDATE "+tabla+" set "+FilaModificar+" = ? WHERE codigo = ?");
-                ps.setString(1, nuevo);
+                ps.setString(1, nuevoContenido);
                 ps.setInt(2, codigo);
                 ps.executeUpdate();
+                ps.close();
                 System.out.println("Datos actualizados correctamente");
             } catch (SQLException ex) {
                 Logger.getLogger(ActualizarDatos.class.getName()).log(Level.SEVERE, null, ex);
             }
                     
-        }
+        
     }
 }

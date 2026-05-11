@@ -31,7 +31,7 @@ public class InsertarBaseDatos {
                 pst.setString(5, actor.getNacionalidad());
                 
                 pst.executeUpdate();
-                
+                pst.close();
             }
            
         } catch (SQLException ex) {
@@ -58,7 +58,7 @@ public class InsertarBaseDatos {
                 pst.setInt(5, pelicula.getDuracion());
                 
                 pst.executeUpdate();
-                
+                pst.close();
             }
             
         } catch (SQLException ex) {
@@ -87,7 +87,7 @@ public class InsertarBaseDatos {
                 pst.setInt(6, serie.getEpisodios());
                 
                 pst.executeUpdate();
-                
+                pst.close();
             }
             
             
@@ -118,7 +118,7 @@ public class InsertarBaseDatos {
                 pst.setString(6, ps.getDuracion());
                 
                 pst.executeUpdate();
-                
+                pst.close();
             }
             
             
@@ -146,7 +146,7 @@ public class InsertarBaseDatos {
                 pst.setString(4, pp.getTipo());
                 
                 pst.executeUpdate();
-                
+                pst.close();
             }
             
             
