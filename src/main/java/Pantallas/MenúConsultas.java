@@ -64,8 +64,6 @@ public class MenúConsultas extends javax.swing.JFrame {
             }
         });
 
-        iconoConsultaDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconoDocumento.png"))); // NOI18N
-
         iconoConsultaFila.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Lupa.png"))); // NOI18N
 
         javax.swing.GroupLayout panelMenúConsultasLayout = new javax.swing.GroupLayout(panelMenúConsultas);

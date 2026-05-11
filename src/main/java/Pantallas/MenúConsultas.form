@@ -126,11 +126,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="iconoConsultaDatos">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/IconoDocumento.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="iconoConsultaFila">
           <Properties>
