@@ -9,5 +9,5 @@ package Interfaces;
  * @author isard
  */
 public interface InterfazPrueba<T> {
-    void insertar(T obj);
+    
 }

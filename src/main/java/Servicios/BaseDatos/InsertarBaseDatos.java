@@ -40,8 +40,8 @@ public class InsertarBaseDatos {
         }
       ServicioBase_de_Datos.cerrarBaseDatos(con);
   }
-  public static void insertarPeliculaBD (Object objecto,Connection con){
-      ServicioBase_de_Datos.inciarBase_De_Datos();
+  public static void insertarPeliculaBD (Object objecto){
+      Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
             

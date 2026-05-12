@@ -16,9 +16,10 @@ import java.util.logging.Logger;
  */
 public class Exportar {
     
-    public static void exporatTXT(List<String> datos) {
+    public static void exporatTXT(List<String> datos, Object objeto) {
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.FICHERO_TXT, true));
+            
+            BufferedWriter bw = new BufferedWriter(new FileWriter( "Actor.txt", true));
             for (String linea : datos) {
                 bw.write(linea);
                 bw.newLine();
