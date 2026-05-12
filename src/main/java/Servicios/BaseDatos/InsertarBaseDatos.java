@@ -26,7 +26,7 @@ public class InsertarBaseDatos {
                
                 pst.setInt(1, actor.getCodigo());
                 pst.setString(2, actor.getNombre());
-                pst.setDate(3, new java.sql.Date(actor.getFecha_Nacimiento().getTime()));
+                pst.setDate(3, java.sql.Date.valueOf(actor.getFecha_Nacimiento()));
                 pst.setString(4, actor.getLugar_Residencia());
                 pst.setString(5, actor.getNacionalidad());
                 
