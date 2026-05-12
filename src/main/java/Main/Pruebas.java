@@ -5,8 +5,15 @@
 package Main;
 
 import Modelos.Actor;
+import Servicios.Ficheros.Exportar.Exportar;
 import Servicios.Ficheros.Importar.Importar;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,7 +26,17 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Importar.importarCSV(new Actor(12, "Carlos", LocalDate.now(), "Madird", "España"));
+        Actor actor1 = new Actor(12, "Carlos", LocalDate.now(), "Madird", "España");
+        List<String> datos = new ArrayList<>();
+        datos.add(actor1.datosActor());
+        File fichero = new File("Ficheros\\"+actor1.getNombre()+".csv");
+        try {
+            fichero.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Exportar.exportarCSV(datos, actor1);
+        Importar.importarCSV(actor1);
     }
     
 }
