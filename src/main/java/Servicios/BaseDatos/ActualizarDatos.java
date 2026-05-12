@@ -24,6 +24,7 @@ public class ActualizarDatos {
                 ps.setInt(2, codigo);
                 ps.executeUpdate();
                 ps.close();
+                con.close();
                 System.out.println("Datos actualizados correctamente");
             } catch (SQLException ex) {
                 Logger.getLogger(ActualizarDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -31,4 +32,5 @@ public class ActualizarDatos {
                     
         
     }
+    
 }

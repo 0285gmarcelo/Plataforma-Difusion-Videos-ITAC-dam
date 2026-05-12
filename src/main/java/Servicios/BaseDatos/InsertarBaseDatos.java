@@ -32,16 +32,17 @@ public class InsertarBaseDatos {
                 
                 pst.executeUpdate();
                 pst.close();
+                con.close();
             }
            
         } catch (SQLException ex) {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos(con);
+     
   }
-  public static void insertarPeliculaBD (Object objecto){
-      Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+  public static void insertarPeliculaBD (Object objecto, Connection con){
+     ServicioBase_de_Datos.inciarBase_De_Datos();
       
         try {
             
@@ -59,13 +60,14 @@ public class InsertarBaseDatos {
                 
                 pst.executeUpdate();
                 pst.close();
+                con.close();
             }
             
         } catch (SQLException ex) {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos(con);
+      
   }
   public static void insertarSerieBD (Object objecto, Connection con){
       ServicioBase_de_Datos.inciarBase_De_Datos();
@@ -88,6 +90,7 @@ public class InsertarBaseDatos {
                 
                 pst.executeUpdate();
                 pst.close();
+                con.close();
             }
             
             
@@ -95,7 +98,6 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos(con);
   }
    public static void insertarPersonajes_SerieBD (Object objecto, Connection con){
       ServicioBase_de_Datos.inciarBase_De_Datos();
@@ -119,6 +121,7 @@ public class InsertarBaseDatos {
                 
                 pst.executeUpdate();
                 pst.close();
+                con.close();
             }
             
             
@@ -126,7 +129,7 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos(con);
+     
    }
    public static void insertarPersonajes_PeliculaBD (Object objecto, Connection con){
       ServicioBase_de_Datos.inciarBase_De_Datos();
@@ -147,6 +150,7 @@ public class InsertarBaseDatos {
                 
                 pst.executeUpdate();
                 pst.close();
+                con.close();
             }
             
             
@@ -154,7 +158,6 @@ public class InsertarBaseDatos {
             System.out.println("Ah ocurrido un error de conexion");
             Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      ServicioBase_de_Datos.cerrarBaseDatos(con);
    }
     
 }

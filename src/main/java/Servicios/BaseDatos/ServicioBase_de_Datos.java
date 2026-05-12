@@ -26,11 +26,5 @@ public class ServicioBase_de_Datos {
         return con;
     }
     
-    public static void cerrarBaseDatos(Connection con) {
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(ServicioBase_de_Datos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
 }
