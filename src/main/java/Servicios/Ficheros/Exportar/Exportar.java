@@ -4,7 +4,7 @@
  */
 package Servicios.Ficheros.Exportar;
 
-import Utils.Constantes;
+
 import java.io.*;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,7 +19,7 @@ public class Exportar {
     public static void exporatTXT(List<String> datos, Object objeto) {
         try {
             
-            BufferedWriter bw = new BufferedWriter(new FileWriter( "Actor.txt", true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter( objeto.getClass().getSimpleName()+".txt", true));
             for (String linea : datos) {
                 bw.write(linea);
                 bw.newLine();
@@ -31,11 +31,11 @@ public class Exportar {
         }
     }
     
-    public static void exportarCSV(List<String> datos){
+    public static void exportarCSV(List<String> datos, Object objeto){
         
         
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.FICHERO_CSV, true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(objeto.getClass().getSimpleName()+".csv", true));
             for (String linea : datos) {
                 bw.write(linea.replace(";", ":"));
                 bw.newLine();
@@ -47,9 +47,9 @@ public class Exportar {
         
     }
     
-    public static void exportarBINARIO(List<String> datos) throws IOException{
+    public static void exportarBINARIO(List<String> datos, Object objeto) throws IOException{
         try { 
-            ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream(Constantes.FICHERO_BIN, true));
+            ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream(objeto.getClass().getSimpleName()+".bin", true));
             oos.writeObject(datos);
             oos.close();
         } catch (FileNotFoundException ex) {
