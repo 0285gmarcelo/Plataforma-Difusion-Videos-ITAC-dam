@@ -4,6 +4,12 @@
  */
 package Pantallas.ManipulacionDatosFilas;
 
+import Pantallas.ManipulacionDatosFilas.Actor.PanelInsertarFila_Actor;
+import Pantallas.ManipulacionDatosFilas.Pelicula.PanelInsertarFila_Pelicula;
+import Pantallas.ManipulacionDatosFilas.PersonajePelicula.PanelInsertarFila_PersonajePelicula;
+import Pantallas.ManipulacionDatosFilas.PersonajeSerie.PanelInsertarFila_PersonajeSerie;
+import Pantallas.ManipulacionDatosFilas.Serie.PanelInsertarFila_Serie;
+
 /**
  *
  * @author isard
@@ -15,7 +21,11 @@ public class InsertarFila extends javax.swing.JFrame {
      */
     public InsertarFila() {
         initComponents();
-
+        panelCambiante.removeAll();
+        panelCambiante.setLayout(new java.awt.BorderLayout());
+        panelCambiante.add(new PanelInsertarFila_Pelicula(), java.awt.BorderLayout.CENTER);
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
     }
 
     /**
@@ -63,8 +73,6 @@ public class InsertarFila extends javax.swing.JFrame {
                 selectorTablaActionPerformed(evt);
             }
         });
-
-        panelCambiante.setBackground(new java.awt.Color(153, 0, 0));
 
         javax.swing.GroupLayout panelCambianteLayout = new javax.swing.GroupLayout(panelCambiante);
         panelCambiante.setLayout(panelCambianteLayout);
@@ -138,6 +146,62 @@ public class InsertarFila extends javax.swing.JFrame {
 
     private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
         // TODO add your handling code here:
+        panelCambiante.removeAll();
+
+        panelCambiante.setLayout(new java.awt.BorderLayout());
+
+        String opcion = selectorTabla.getSelectedItem().toString();
+
+        switch (opcion) {
+
+            case "Película":
+
+                panelCambiante.add(
+                        new PanelInsertarFila_Pelicula(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Serie":
+
+                panelCambiante.add(
+                        new PanelInsertarFila_Serie(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Actor":
+
+                panelCambiante.add(
+                        new PanelInsertarFila_Actor(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Personaje_Película":
+
+                panelCambiante.add(
+                        new PanelInsertarFila_PersonajePelicula(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Personaje_Serie":
+
+                panelCambiante.add(
+                        new PanelInsertarFila_PersonajeSerie(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+        }
+
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
     }//GEN-LAST:event_selectorTablaActionPerformed
 
     /**

@@ -7,13 +7,9 @@ package Main;
 import Modelos.Actor;
 import Servicios.Ficheros.Exportar.Exportar;
 import Servicios.Ficheros.Importar.Importar;
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -28,12 +24,6 @@ public class Pruebas {
         // TODO code application logic here
         Actor actor1 = new Actor(12, "Carlos", LocalDate.now(), "Madird", "España");
         List<String> datos = new ArrayList<>();
-        datos.add(actor1.datosActor());
-        try {
-            fichero.createNewFile();
-        } catch (IOException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
-        }
         Exportar.exportarCSV(datos, actor1);
         Importar.importarCSV(actor1);
         
