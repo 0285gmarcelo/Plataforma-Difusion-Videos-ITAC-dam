@@ -69,6 +69,11 @@ public class MenúPrincipal extends javax.swing.JFrame {
         });
 
         botonCrearEliminar.setText("CREAR-ELIMINAR");
+        botonCrearEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearEliminarActionPerformed(evt);
+            }
+        });
 
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +154,8 @@ public class MenúPrincipal extends javax.swing.JFrame {
 
     private void botonManipularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonManipularActionPerformed
         // TODO add your handling code here:
+        new MenúManipulacion().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botonManipularActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
@@ -156,6 +163,12 @@ public class MenúPrincipal extends javax.swing.JFrame {
         new MenúConsultas().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonConsultarActionPerformed
+
+    private void botonCrearEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearEliminarActionPerformed
+        // TODO add your handling code here:
+        new MenúCreacionEliminacion().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonCrearEliminarActionPerformed
 
     /**
      * @param args the command line arguments

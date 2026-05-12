@@ -26,70 +26,71 @@ public class MenúInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        TituloMenuPrincipal = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        panelMenuInicio = new javax.swing.JPanel();
+        botonComenzar = new javax.swing.JButton();
+        tituloMenuPrincipal = new javax.swing.JLabel();
+        iconoPlataformaVideos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("Comenzar");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonComenzar.setText("Comenzar");
+        botonComenzar.setBorderPainted(false);
+        botonComenzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonComenzarActionPerformed(evt);
             }
         });
 
-        TituloMenuPrincipal.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        TituloMenuPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TituloMenuPrincipal.setText("PROGRAMA DE EDICIÓN DE PLATAFORMA DE VÍDEOS");
+        tituloMenuPrincipal.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        tituloMenuPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloMenuPrincipal.setText("PROGRAMA DE EDICIÓN DE PLATAFORMA DE VÍDEOS");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconoCine.png"))); // NOI18N
+        iconoPlataformaVideos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconoCine.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelMenuInicioLayout = new javax.swing.GroupLayout(panelMenuInicio);
+        panelMenuInicio.setLayout(panelMenuInicioLayout);
+        panelMenuInicioLayout.setHorizontalGroup(
+            panelMenuInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenuInicioLayout.createSequentialGroup()
+                .addGroup(panelMenuInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMenuInicioLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(TituloMenuPrincipal))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(tituloMenuPrincipal))
+                    .addGroup(panelMenuInicioLayout.createSequentialGroup()
                         .addGap(211, 211, 211)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(botonComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMenuInicioLayout.createSequentialGroup()
                         .addGap(184, 184, 184)
-                        .addComponent(jLabel1)))
+                        .addComponent(iconoPlataformaVideos)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        panelMenuInicioLayout.setVerticalGroup(
+            panelMenuInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuInicioLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(TituloMenuPrincipal)
+                .addComponent(tituloMenuPrincipal)
                 .addGap(49, 49, 49)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconoPlataformaVideos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
 
-        jLabel1.getAccessibleContext().setAccessibleDescription("");
+        iconoPlataformaVideos.getAccessibleContext().setAccessibleDescription("");
 
-        getContentPane().add(jPanel2, new java.awt.GridBagConstraints());
+        getContentPane().add(panelMenuInicio, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
         // TODO add your handling code here:
         new MenúPrincipal().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_botonComenzarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,14 +126,15 @@ public class MenúInicio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenúInicio().setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel TituloMenuPrincipal;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton botonComenzar;
+    private javax.swing.JLabel iconoPlataformaVideos;
+    private javax.swing.JPanel panelMenuInicio;
+    private javax.swing.JLabel tituloMenuPrincipal;
     // End of variables declaration//GEN-END:variables
 }

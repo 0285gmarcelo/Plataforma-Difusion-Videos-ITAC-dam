@@ -26,21 +26,87 @@ public class DatosInsertados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        panelDatosInsertados = new javax.swing.JPanel();
+        tituloDatosInsertados = new javax.swing.JLabel();
+        jScrollPanelConsultarFilas = new javax.swing.JScrollPane();
+        tablaDatosInsertados = new javax.swing.JTable();
+        textoDatosInsertados = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        tituloDatosInsertados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        tituloDatosInsertados.setText("DATOS INSERTADOS:");
+
+        tablaDatosInsertados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaDatosInsertados.setColumnSelectionAllowed(true);
+        jScrollPanelConsultarFilas.setViewportView(tablaDatosInsertados);
+
+        textoDatosInsertados.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        textoDatosInsertados.setText("Estos son los datos insertados a lo largo de la sesión.");
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelDatosInsertadosLayout = new javax.swing.GroupLayout(panelDatosInsertados);
+        panelDatosInsertados.setLayout(panelDatosInsertadosLayout);
+        panelDatosInsertadosLayout.setHorizontalGroup(
+            panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosInsertadosLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addGroup(panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                        .addComponent(tituloDatosInsertados)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                        .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))))
+            .addGroup(panelDatosInsertadosLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(textoDatosInsertados)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelDatosInsertadosLayout.setVerticalGroup(
+            panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(tituloDatosInsertados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoDatosInsertados)
+                .addGap(18, 18, 18)
+                .addComponent(botonSalir)
+                .addGap(21, 21, 21))
         );
+
+        getContentPane().add(panelDatosInsertados, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +144,11 @@ public class DatosInsertados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JScrollPane jScrollPanelConsultarFilas;
+    private javax.swing.JPanel panelDatosInsertados;
+    private javax.swing.JTable tablaDatosInsertados;
+    private javax.swing.JLabel textoDatosInsertados;
+    private javax.swing.JLabel tituloDatosInsertados;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pantallas;
-
+import Pantallas.ManipulacionDatosFilas.*;
 /**
  *
  * @author isard
@@ -26,21 +26,133 @@ public class MenúManipulacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelMenúConsultas = new javax.swing.JPanel();
+        botonActualizarFila = new javax.swing.JButton();
+        tituloMenúManipulacion = new javax.swing.JLabel();
+        botonInsertarFilas = new javax.swing.JButton();
+        botonAtras = new javax.swing.JButton();
+        iconoInsertarFilas = new javax.swing.JLabel();
+        iconoActualizarFila = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        panelMenúConsultas.setName(""); // NOI18N
+        panelMenúConsultas.setPreferredSize(new java.awt.Dimension(932, 426));
+
+        botonActualizarFila.setText("ACTUALIZAR FILAS");
+        botonActualizarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarFilaActionPerformed(evt);
+            }
+        });
+
+        tituloMenúManipulacion.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        tituloMenúManipulacion.setText("Seleccione la operación de Manipulación que desea realizar");
+
+        botonInsertarFilas.setText("INSERTAR FILAS");
+        botonInsertarFilas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInsertarFilasActionPerformed(evt);
+            }
+        });
+
+        botonAtras.setText("Atrás");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
+
+        iconoInsertarFilas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/insertarFilasIcono.png"))); // NOI18N
+
+        iconoActualizarFila.setIcon(new javax.swing.ImageIcon(getClass().getResource("/actualizarFilasIcono.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelMenúConsultasLayout = new javax.swing.GroupLayout(panelMenúConsultas);
+        panelMenúConsultas.setLayout(panelMenúConsultasLayout);
+        panelMenúConsultasLayout.setHorizontalGroup(
+            panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
+                        .addComponent(botonAtras)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
+                        .addComponent(tituloMenúManipulacion)
+                        .addGap(140, 140, 140))))
+            .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                .addGap(235, 235, 235)
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonActualizarFila)
+                    .addComponent(iconoActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(botonInsertarFilas))
+                    .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(iconoInsertarFilas)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelMenúConsultasLayout.setVerticalGroup(
+            panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(tituloMenúManipulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(iconoActualizarFila, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconoInsertarFilas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonInsertarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addComponent(botonAtras)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 932, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelMenúConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 426, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelMenúConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonActualizarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarFilaActionPerformed
+        // TODO add your handling code here:
+        new ActualizarFila().setVisible(true);
+        
+    }//GEN-LAST:event_botonActualizarFilaActionPerformed
+
+    private void botonInsertarFilasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarFilasActionPerformed
+        // TODO add your handling code here:
+        new InsertarFila().setVisible(true);
+       
+    }//GEN-LAST:event_botonInsertarFilasActionPerformed
+
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        // TODO add your handling code here:
+        new MenúPrincipal().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +190,12 @@ public class MenúManipulacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonActualizarFila;
+    private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonInsertarFilas;
+    private javax.swing.JLabel iconoActualizarFila;
+    private javax.swing.JLabel iconoInsertarFilas;
+    private javax.swing.JPanel panelMenúConsultas;
+    private javax.swing.JLabel tituloMenúManipulacion;
     // End of variables declaration//GEN-END:variables
 }

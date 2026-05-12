@@ -26,21 +26,155 @@ public class ConsultarFila extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        panelActualizarFila = new javax.swing.JPanel();
+        textoConsulta2 = new javax.swing.JLabel();
+        botonConsultarFila = new javax.swing.JButton();
+        jScrollPanelConsultar = new javax.swing.JScrollPane();
+        tablaConsultadorFila = new javax.swing.JTable();
+        tituloConsultarFila = new javax.swing.JLabel();
+        textoSelectorTabla = new javax.swing.JLabel();
+        selectorTabla = new javax.swing.JComboBox<>();
+        botonSalir = new javax.swing.JButton();
+        textoConsulta = new javax.swing.JLabel();
+        textFieldIdentificadorConsulta = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        textoConsulta2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoConsulta2.setText("Para consultar una fila presiona el botón CONSULTAR FILA.");
+
+        botonConsultarFila.setText("CONSULTAR FILA");
+        botonConsultarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarFilaActionPerformed(evt);
+            }
+        });
+
+        tablaConsultadorFila.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaConsultadorFila.setColumnSelectionAllowed(true);
+        jScrollPanelConsultar.setViewportView(tablaConsultadorFila);
+
+        tituloConsultarFila.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        tituloConsultarFila.setText("CONSULTAR FILA:");
+
+        textoSelectorTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoSelectorTabla.setText("Seleccione la tabla a consultar:");
+
+        selectorTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Película", "Serie", "Actor", "Personaje_Película", "Personaje_Serie" }));
+        selectorTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectorTablaActionPerformed(evt);
+            }
+        });
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
+        textoConsulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoConsulta.setText("Introduce el Identificador para consultar:");
+
+        textFieldIdentificadorConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorConsultaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelActualizarFilaLayout = new javax.swing.GroupLayout(panelActualizarFila);
+        panelActualizarFila.setLayout(panelActualizarFilaLayout);
+        panelActualizarFilaLayout.setHorizontalGroup(
+            panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                        .addComponent(jScrollPanelConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))))
+            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(textoSelectorTabla)
+                        .addGap(18, 18, 18)
+                        .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(textoConsulta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldIdentificadorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(tituloConsultarFila))
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(botonConsultarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(textoConsulta2)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelActualizarFilaLayout.setVerticalGroup(
+            panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(tituloConsultarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(99, 99, 99)
+                .addComponent(jScrollPanelConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoConsulta)
+                    .addComponent(textFieldIdentificadorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(botonConsultarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoConsulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(botonSalir)
+                .addContainerGap())
         );
+
+        getContentPane().add(panelActualizarFila, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectorTablaActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void textFieldIdentificadorConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorConsultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorConsultaActionPerformed
+
+    private void botonConsultarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarFilaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonConsultarFilaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +212,16 @@ public class ConsultarFila extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonConsultarFila;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JScrollPane jScrollPanelConsultar;
+    private javax.swing.JPanel panelActualizarFila;
+    private javax.swing.JComboBox<String> selectorTabla;
+    private javax.swing.JTable tablaConsultadorFila;
+    private javax.swing.JTextField textFieldIdentificadorConsulta;
+    private javax.swing.JLabel textoConsulta;
+    private javax.swing.JLabel textoConsulta2;
+    private javax.swing.JLabel textoSelectorTabla;
+    private javax.swing.JLabel tituloConsultarFila;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ public class InsertarFila extends javax.swing.JFrame {
      */
     public InsertarFila() {
         initComponents();
+
     }
 
     /**
@@ -26,21 +27,118 @@ public class InsertarFila extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        panelInsertarFila = new javax.swing.JPanel();
+        tituloInsertarFila = new javax.swing.JLabel();
+        botonInsertarFila = new javax.swing.JButton();
+        textoInsertarFila = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
+        textoSelectorTabla = new javax.swing.JLabel();
+        selectorTabla = new javax.swing.JComboBox<>();
+        panelCambiante = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        tituloInsertarFila.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        tituloInsertarFila.setText("INSERTAR FILA:");
+
+        botonInsertarFila.setText("INSERTAR FILA");
+
+        textoInsertarFila.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoInsertarFila.setText("Para insertar una fila presione el botón llamado INSERTAR FILA.");
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
+        textoSelectorTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoSelectorTabla.setText("Seleccione una tabla:");
+
+        selectorTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Película", "Serie", "Actor", "Personaje_Película", "Personaje_Serie" }));
+        selectorTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectorTablaActionPerformed(evt);
+            }
+        });
+
+        panelCambiante.setBackground(new java.awt.Color(153, 0, 0));
+
+        javax.swing.GroupLayout panelCambianteLayout = new javax.swing.GroupLayout(panelCambiante);
+        panelCambiante.setLayout(panelCambianteLayout);
+        panelCambianteLayout.setHorizontalGroup(
+            panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelCambianteLayout.setVerticalGroup(
+            panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 413, Short.MAX_VALUE)
         );
+
+        javax.swing.GroupLayout panelInsertarFilaLayout = new javax.swing.GroupLayout(panelInsertarFila);
+        panelInsertarFila.setLayout(panelInsertarFilaLayout);
+        panelInsertarFilaLayout.setHorizontalGroup(
+            panelInsertarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsertarFilaLayout.createSequentialGroup()
+                .addContainerGap(164, Short.MAX_VALUE)
+                .addGroup(panelInsertarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsertarFilaLayout.createSequentialGroup()
+                        .addComponent(tituloInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(141, 141, 141))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsertarFilaLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(16, 16, 16))))
+            .addGroup(panelInsertarFilaLayout.createSequentialGroup()
+                .addGroup(panelInsertarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInsertarFilaLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(textoSelectorTabla)
+                        .addGap(18, 18, 18)
+                        .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInsertarFilaLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(textoInsertarFila))
+                    .addGroup(panelInsertarFilaLayout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(botonInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
+            .addComponent(panelCambiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelInsertarFilaLayout.setVerticalGroup(
+            panelInsertarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInsertarFilaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(tituloInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelInsertarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoSelectorTabla))
+                .addGap(18, 18, 18)
+                .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botonInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(botonSalir)
+                .addGap(14, 14, 14))
+        );
+
+        getContentPane().add(panelInsertarFila, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectorTablaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +177,13 @@ public class InsertarFila extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonInsertarFila;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JPanel panelCambiante;
+    private javax.swing.JPanel panelInsertarFila;
+    private javax.swing.JComboBox<String> selectorTabla;
+    private javax.swing.JLabel textoInsertarFila;
+    private javax.swing.JLabel textoSelectorTabla;
+    private javax.swing.JLabel tituloInsertarFila;
     // End of variables declaration//GEN-END:variables
 }

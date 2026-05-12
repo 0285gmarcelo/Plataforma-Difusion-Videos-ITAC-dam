@@ -4,6 +4,8 @@
  */
 package Pantallas.ManipulacionDatosFilas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author isard
@@ -15,6 +17,13 @@ public class ActualizarFila extends javax.swing.JFrame {
      */
     public ActualizarFila() {
         initComponents();
+        String[] columnas = {"A", "B", "C"};
+        String[] datos = {"Pepe", "gomez", "12"};
+        DefaultTableModel dtm = new DefaultTableModel(columnas, 0);
+        tablaActualizador.setModel(dtm);
+        dtm.addRow(datos);
+        tablaActualizador.setModel(dtm);
+        
     }
 
     /**
@@ -26,21 +35,147 @@ public class ActualizarFila extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        botonAtras = new javax.swing.JButton();
+        panelActualizarFila = new javax.swing.JPanel();
+        jscrollPanelActualizar = new javax.swing.JScrollPane();
+        tablaActualizador = new javax.swing.JTable();
+        tituloInsertarFila = new javax.swing.JLabel();
+        textoSelectorTabla = new javax.swing.JLabel();
+        selectorTabla = new javax.swing.JComboBox<>();
+        botonActualizarFila = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
+        textoActualizarFila2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        botonAtras.setText("Salir");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        tablaActualizador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaActualizador.setColumnSelectionAllowed(true);
+        jscrollPanelActualizar.setViewportView(tablaActualizador);
+
+        tituloInsertarFila.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        tituloInsertarFila.setText("ACTUALIZAR FILAS:");
+
+        textoSelectorTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoSelectorTabla.setText("Seleccione la tabla a actualizar:");
+
+        selectorTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Película", "Serie", "Actor", "Personaje_Película", "Personaje_Serie" }));
+        selectorTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectorTablaActionPerformed(evt);
+            }
+        });
+
+        botonActualizarFila.setText("ACTUALIZAR");
+        botonActualizarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarFilaActionPerformed(evt);
+            }
+        });
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
+        textoActualizarFila2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoActualizarFila2.setText("Para actualizar la Fila presione el botón de ACTUALIZAR.");
+
+        javax.swing.GroupLayout panelActualizarFilaLayout = new javax.swing.GroupLayout(panelActualizarFila);
+        panelActualizarFila.setLayout(panelActualizarFilaLayout);
+        panelActualizarFilaLayout.setHorizontalGroup(
+            panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jscrollPanelActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tituloInsertarFila)
+                            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                                .addComponent(textoSelectorTabla)
+                                .addGap(46, 46, 46)
+                                .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(55, 55, 55)))
+                .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                        .addComponent(textoActualizarFila2)
+                        .addGap(91, 91, 91))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                        .addComponent(botonActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(192, 192, 192))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelActualizarFilaLayout.setVerticalGroup(
+            panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(tituloInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoSelectorTabla)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97)
+                .addComponent(jscrollPanelActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(botonActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textoActualizarFila2)
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonSalir)
+                        .addContainerGap())))
         );
+
+        getContentPane().add(panelActualizarFila, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectorTablaActionPerformed
+
+    private void botonActualizarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarFilaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonActualizarFilaActionPerformed
+
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +213,15 @@ public class ActualizarFila extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonActualizarFila;
+    private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JScrollPane jscrollPanelActualizar;
+    private javax.swing.JPanel panelActualizarFila;
+    private javax.swing.JComboBox<String> selectorTabla;
+    private javax.swing.JTable tablaActualizador;
+    private javax.swing.JLabel textoActualizarFila2;
+    private javax.swing.JLabel textoSelectorTabla;
+    private javax.swing.JLabel tituloInsertarFila;
     // End of variables declaration//GEN-END:variables
 }

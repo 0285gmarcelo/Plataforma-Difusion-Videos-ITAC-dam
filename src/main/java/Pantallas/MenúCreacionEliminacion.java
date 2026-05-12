@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pantallas;
-
+import Pantallas.CreacionEliminacionFilas.*;
 /**
  *
  * @author isard
@@ -26,21 +26,162 @@ public class MenúCreacionEliminacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botonAtras = new javax.swing.JButton();
+        panelMenúCreacionEliminacion = new javax.swing.JPanel();
+        botonEliminar = new javax.swing.JButton();
+        tituloMenuCreacionEliminacion = new javax.swing.JLabel();
+        botonImportar = new javax.swing.JButton();
+        botonExportar = new javax.swing.JButton();
+        botonAtrasCreacion = new javax.swing.JButton();
+        iconoExportar = new javax.swing.JLabel();
+        iconoImportar = new javax.swing.JLabel();
+        iconoEliminar = new javax.swing.JLabel();
+
+        botonAtras.setText("Atrás");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        botonEliminar.setText("ELIMINAR");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+
+        tituloMenuCreacionEliminacion.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        tituloMenuCreacionEliminacion.setText("Seleccione la opción de Creación-Eliminación que desea realizar");
+
+        botonImportar.setText("IMPORTAR");
+        botonImportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonImportarActionPerformed(evt);
+            }
+        });
+
+        botonExportar.setText("EXPORTAR");
+        botonExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonExportarActionPerformed(evt);
+            }
+        });
+
+        botonAtrasCreacion.setText("Atrás");
+        botonAtrasCreacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasCreacionActionPerformed(evt);
+            }
+        });
+
+        iconoExportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exportarIcono.png"))); // NOI18N
+
+        iconoImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/importarIcono.png"))); // NOI18N
+
+        iconoEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminarIcono.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelMenúCreacionEliminacionLayout = new javax.swing.GroupLayout(panelMenúCreacionEliminacion);
+        panelMenúCreacionEliminacion.setLayout(panelMenúCreacionEliminacionLayout);
+        panelMenúCreacionEliminacionLayout.setHorizontalGroup(
+            panelMenúCreacionEliminacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúCreacionEliminacionLayout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180)
+                .addComponent(botonExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonImportar)
+                .addGap(122, 122, 122))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúCreacionEliminacionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonAtrasCreacion)
+                .addContainerGap())
+            .addGroup(panelMenúCreacionEliminacionLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(iconoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(iconoExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148)
+                .addComponent(iconoImportar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
+            .addGroup(panelMenúCreacionEliminacionLayout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(tituloMenuCreacionEliminacion)
+                .addContainerGap(115, Short.MAX_VALUE))
+        );
+        panelMenúCreacionEliminacionLayout.setVerticalGroup(
+            panelMenúCreacionEliminacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenúCreacionEliminacionLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(tituloMenuCreacionEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(panelMenúCreacionEliminacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconoEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconoExportar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconoImportar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelMenúCreacionEliminacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonImportar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addComponent(botonAtrasCreacion)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 948, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelMenúCreacionEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 426, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelMenúCreacionEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        // TODO add your handling code here:
+        new EliminarFila().setVisible(true);
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImportarActionPerformed
+        // TODO add your handling code here:
+        new ImportarTabla().setVisible(true);
+    }//GEN-LAST:event_botonImportarActionPerformed
+
+    private void botonAtrasCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasCreacionActionPerformed
+        // TODO add your handling code here:
+        new MenúPrincipal().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonAtrasCreacionActionPerformed
+
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        // TODO add your handling code here:
+        new MenúPrincipal().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExportarActionPerformed
+        // TODO add your handling code here:
+        new ExportarTabla().setVisible(true);
+    }//GEN-LAST:event_botonExportarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +219,15 @@ public class MenúCreacionEliminacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonAtrasCreacion;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonExportar;
+    private javax.swing.JButton botonImportar;
+    private javax.swing.JLabel iconoEliminar;
+    private javax.swing.JLabel iconoExportar;
+    private javax.swing.JLabel iconoImportar;
+    private javax.swing.JPanel panelMenúCreacionEliminacion;
+    private javax.swing.JLabel tituloMenuCreacionEliminacion;
     // End of variables declaration//GEN-END:variables
 }

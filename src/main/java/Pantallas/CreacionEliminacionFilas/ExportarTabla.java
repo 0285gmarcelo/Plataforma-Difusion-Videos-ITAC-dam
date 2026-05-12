@@ -26,21 +26,196 @@ public class ExportarTabla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        panelExportarTabla = new javax.swing.JPanel();
+        botonTXT = new javax.swing.JButton();
+        tituloExportarTabla = new javax.swing.JLabel();
+        botonBinario = new javax.swing.JButton();
+        botonCSV = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
+        iconoCSV = new javax.swing.JLabel();
+        botonJSON = new javax.swing.JButton();
+        iconoBinario = new javax.swing.JLabel();
+        iconoJSON = new javax.swing.JLabel();
+        iconoTXT = new javax.swing.JLabel();
+        textoSelectorTabla = new javax.swing.JLabel();
+        selectorTabla = new javax.swing.JComboBox<>();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        botonTXT.setText("TXT");
+        botonTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTXTActionPerformed(evt);
+            }
+        });
+
+        tituloExportarTabla.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        tituloExportarTabla.setText("Selecciona el formato a exportar la tabla:");
+
+        botonBinario.setText("BINARIO");
+        botonBinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBinarioActionPerformed(evt);
+            }
+        });
+
+        botonCSV.setText("CSV");
+        botonCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCSVActionPerformed(evt);
+            }
+        });
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
+        iconoCSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoCSV.png"))); // NOI18N
+        iconoCSV.setMaximumSize(new java.awt.Dimension(117, 122));
+        iconoCSV.setMinimumSize(new java.awt.Dimension(117, 122));
+
+        botonJSON.setText("JSON");
+        botonJSON.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonJSONActionPerformed(evt);
+            }
+        });
+
+        iconoBinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoBinario.png"))); // NOI18N
+        iconoBinario.setMaximumSize(new java.awt.Dimension(117, 122));
+        iconoBinario.setMinimumSize(new java.awt.Dimension(177, 122));
+        iconoBinario.setName(""); // NOI18N
+
+        iconoJSON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoJSON.png"))); // NOI18N
+        iconoJSON.setMaximumSize(new java.awt.Dimension(117, 122));
+        iconoJSON.setMinimumSize(new java.awt.Dimension(117, 122));
+        iconoJSON.setName(""); // NOI18N
+        iconoJSON.setPreferredSize(new java.awt.Dimension(117, 122));
+
+        iconoTXT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoTXT.png"))); // NOI18N
+        iconoTXT.setMaximumSize(new java.awt.Dimension(117, 122));
+        iconoTXT.setMinimumSize(new java.awt.Dimension(117, 122));
+        iconoTXT.setPreferredSize(new java.awt.Dimension(117, 122));
+
+        textoSelectorTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoSelectorTabla.setText("Seleccione la tabla a exportar:");
+
+        selectorTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Película", "Serie", "Actor", "Personaje_Película", "Personaje_Serie" }));
+        selectorTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectorTablaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelExportarTablaLayout = new javax.swing.GroupLayout(panelExportarTabla);
+        panelExportarTabla.setLayout(panelExportarTablaLayout);
+        panelExportarTablaLayout.setHorizontalGroup(
+            panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(botonTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(iconoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(67, 67, 67)
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconoCSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84)
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonBinario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconoBinario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(iconoJSON, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                    .addComponent(botonJSON, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExportarTablaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonSalir)
+                .addContainerGap())
+            .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloExportarTabla, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExportarTablaLayout.createSequentialGroup()
+                        .addComponent(textoSelectorTabla)
+                        .addGap(18, 18, 18)
+                        .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelExportarTablaLayout.setVerticalGroup(
+            panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloExportarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                        .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iconoJSON, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iconoBinario, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iconoCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(botonCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonBinario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(botonJSON, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(59, 59, 59)
+                        .addComponent(botonSalir))
+                    .addGroup(panelExportarTablaLayout.createSequentialGroup()
+                        .addComponent(iconoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
+
+        getContentPane().add(panelExportarTabla, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTXTActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_botonTXTActionPerformed
+
+    private void botonBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBinarioActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_botonBinarioActionPerformed
+
+    private void botonCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCSVActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_botonCSVActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonJSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJSONActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonJSONActionPerformed
+
+    private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectorTablaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +253,18 @@ public class ExportarTabla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonBinario;
+    private javax.swing.JButton botonCSV;
+    private javax.swing.JButton botonJSON;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JButton botonTXT;
+    private javax.swing.JLabel iconoBinario;
+    private javax.swing.JLabel iconoCSV;
+    private javax.swing.JLabel iconoJSON;
+    private javax.swing.JLabel iconoTXT;
+    private javax.swing.JPanel panelExportarTabla;
+    private javax.swing.JComboBox<String> selectorTabla;
+    private javax.swing.JLabel textoSelectorTabla;
+    private javax.swing.JLabel tituloExportarTabla;
     // End of variables declaration//GEN-END:variables
 }

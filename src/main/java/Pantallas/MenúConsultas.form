@@ -39,8 +39,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="171" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="botonAtras" min="-2" max="-2" attributes="0"/>
@@ -52,21 +52,23 @@
                       </Group>
                   </Group>
               </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="iconoConsultaFila" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                          <Component id="iconoConsultaDatos" min="-2" pref="160" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="botonConsultaFila" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="botonConsultaDatos" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                  <Component id="botonConsultaFila" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="botonConsultaFilas" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                  <Component id="botonConsultaDatos" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                  <Component id="iconoConsultaFila" min="-2" pref="160" max="-2" attributes="0"/>
+                  <EmptySpace pref="132" max="32767" attributes="0"/>
+                  <Component id="iconoConsultarFilas" min="-2" pref="160" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                  <Component id="iconoConsultaDatos" min="-2" pref="160" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -75,15 +77,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="tituloMenúConsultas" min="-2" pref="95" max="-2" attributes="0"/>
-                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="iconoConsultaFila" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="iconoConsultarFilas" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
                       <Component id="iconoConsultaDatos" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="iconoConsultaFila" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="botonConsultaFila" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="botonConsultaDatos" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="botonConsultaFilas" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="botonConsultaFila" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Component id="botonAtras" min="-2" max="-2" attributes="0"/>
@@ -93,12 +97,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="botonConsultaFila">
+        <Component class="javax.swing.JButton" name="botonConsultaFilas">
           <Properties>
             <Property name="text" type="java.lang.String" value="CONSULTAR FILAS"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultaFilaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultaFilasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="tituloMen&#xfa;Consultas">
@@ -126,11 +130,31 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="iconoConsultaDatos">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IconoDocumento.png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="iconoConsultarFilas">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Lupa.png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonConsultaFila">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CONSULTAR FILA"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultaFilaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="iconoConsultaFila">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Lupa.png"/>
+              <Image iconType="3" name="/iconoConsultarFila.png"/>
             </Property>
           </Properties>
         </Component>
