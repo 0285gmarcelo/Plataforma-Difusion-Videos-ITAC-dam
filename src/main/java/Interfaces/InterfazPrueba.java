@@ -10,4 +10,5 @@ package Interfaces;
  */
 public interface InterfazPrueba<T> {
     
+   public abstract String diseñoJSON();
 }
