@@ -29,7 +29,6 @@ public class Pruebas {
         Actor actor1 = new Actor(12, "Carlos", LocalDate.now(), "Madird", "España");
         List<String> datos = new ArrayList<>();
         datos.add(actor1.datosActor());
-        File fichero = new File("Ficheros\\"+actor1.getNombre()+".csv");
         try {
             fichero.createNewFile();
         } catch (IOException ex) {
@@ -37,6 +36,7 @@ public class Pruebas {
         }
         Exportar.exportarCSV(datos, actor1);
         Importar.importarCSV(actor1);
+        
     }
     
 }
