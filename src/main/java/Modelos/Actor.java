@@ -1,7 +1,8 @@
 package Modelos;
 
-import Interfaces.InterfazPrueba;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 
 /**
  *
@@ -11,7 +12,7 @@ public class Actor {
 
     private int codigo;
     private String nombre;
-    private Date fecha_Nacimiento;
+    private LocalDate fecha_Nacimiento;
     private String lugar_Residencia;
     private String nacionalidad;
     
@@ -19,7 +20,7 @@ public class Actor {
         
     }
     
-    public Actor(int codigo, String nombre, Date fecha_Nacimiento, String lugar_Residencia, String nacionalidad) {
+    public Actor(int codigo, String nombre,LocalDate fecha_Nacimiento, String lugar_Residencia, String nacionalidad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.fecha_Nacimiento = fecha_Nacimiento;
@@ -39,11 +40,11 @@ public class Actor {
         this.nombre = nombre;
     }
 
-    public Date getFecha_Nacimiento() {
+    public LocalDate getFecha_Nacimiento() {
         return fecha_Nacimiento;
     }
 
-    public void setFecha_Nacimiento(Date fecha_Nacimiento) {
+    public void setFecha_Nacimiento(LocalDate fecha_Nacimiento) {
         this.fecha_Nacimiento = fecha_Nacimiento;
     }
 
