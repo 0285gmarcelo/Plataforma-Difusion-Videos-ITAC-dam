@@ -18,7 +18,7 @@ public class Importar {
     public static List<String> importarTXT(Object objeto){
         List<String> datos = new ArrayList<>();
         try {
-            BufferedReader br = new BufferedReader(new FileReader(objeto.getClass().getSimpleName()+".txt"));
+            BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".txt"));
             String linea;
             
             while ((linea = br.readLine()) != null){
@@ -39,7 +39,7 @@ public class Importar {
         List<String> datos = new ArrayList<>();
         
         try {
-            BufferedReader br = new BufferedReader(new FileReader(objeto.getClass().getSimpleName()+".csv"));
+            BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".csv"));
             String linea;
             while ((linea = br.readLine())!= null){
                 datos.add(linea.replace(';', ':'));
@@ -56,7 +56,7 @@ public class Importar {
     public static List<String> importarBinario(Object objeto){
         List<String> datos = new ArrayList<>();
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(objeto.getClass().getSimpleName()));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros\\"+objeto.getClass().getSimpleName()));
             datos = (List<String>) ois.readObject();
             ois.close();
         } catch (FileNotFoundException ex) {
