@@ -58,8 +58,34 @@ public class Exportar {
         
     }
     
-    public static void exportarJSON(List<String> datos){
-        
+    public static void exportarJSON(List<String> datos, Object objeto){
+        try {
+            
+            BufferedWriter bw = new BufferedWriter(new FileWriter("Ficheros\\"+objeto.getClass().getSimpleName()+".json", true));
+            
+            bw.write("[");
+            bw.newLine();
+            for (int i = 0 ; 1 < datos.size(); i++) {
+                Object obj = datos.get(i);
+                
+                if(obj instanceof Interfaces.InterfazJSON){
+                    bw.write(((Interfaces.InterfazJSON) obj).diseñoJSON());
+                    
+                    if (i < datos.size() - 1){
+                        bw.write(",");
+                    }
+                    bw.newLine();
+                }
+                
+            }
+            bw.write("[");
+            bw.newLine();
+            bw.close();
+            System.out.println("JSON exportado correctamente");
+        } catch (IOException ex) {
+            Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
     
 }
