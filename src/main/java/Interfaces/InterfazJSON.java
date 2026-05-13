@@ -8,7 +8,7 @@ package Interfaces;
  *
  * @author isard
  */
-public interface InterfazPrueba<T> {
+public interface InterfazJSON<T> {
     
    public String diseñoJSON();
 }
