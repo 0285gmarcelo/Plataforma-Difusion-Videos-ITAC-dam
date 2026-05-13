@@ -66,16 +66,9 @@ public class Exportar {
             bw.write("[");
             bw.newLine();
             for (int i = 0 ; 1 < datos.size(); i++) {
-                Object obj = datos.get(i);
-                
-                if(obj instanceof Interfaces.InterfazJSON){
-                    bw.write(((Interfaces.InterfazJSON) obj).diseñoJSON());
-                    
-                    if (i < datos.size() - 1){
-                        bw.write(",");
-                    }
+                bw.write(datos.get(i));
                     bw.newLine();
-                }
+                
                 
             }
             bw.write("[");
