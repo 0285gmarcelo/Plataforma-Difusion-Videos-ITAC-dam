@@ -8,7 +8,7 @@ import java.time.LocalDate;
  *
  * @author isard
  */
-public class Actor {
+public class Actor implements Interfaces.InterfazJSON{
 
     private int codigo;
     private String nombre;
@@ -67,6 +67,17 @@ public class Actor {
    
     public String datosActor() {
         return  codigo + ";" + nombre + ";" + fecha_Nacimiento + ";" + lugar_Residencia + ";" + nacionalidad;
+    }
+
+    @Override
+    public String diseñoJSON() {
+        return "{" + "\"codigo\":" + getCodigo() + ",\n"
+                + "\"nombre\":" + getNombre() + ",\n"
+                + "\"fecha_nacimiento\":" + getFecha_Nacimiento() + ",\n"
+                + "\"lugar_Residencia\":" + getLugar_Residencia() + ",\n"
+                + "\"nacionalidad\":" + getNacionalidad()
+                + "}"
+                ;
     }
     
     
