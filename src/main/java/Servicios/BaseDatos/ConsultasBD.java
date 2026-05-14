@@ -37,7 +37,7 @@ public class ConsultasBD {
 
     }
 
-    public static void informePeliculasCS2(Connection con) {
+    public static void informeSeriesCS2(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
         String sql = "select s.titulo, s.creador, s.temporadas, a.nombre , ps.nombre\n"
                 + "from serie s\n"
@@ -60,4 +60,26 @@ public class ConsultasBD {
 
     }
 
+    public static void informeSeriesCS3(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , s.titulo , ps.episodios \n"
+                + "from actor a\n"
+                + "left join personaje_serie ps on a.codigo = ps.codigo_actor_S\n"
+                + "left join serie s on ps.codigo_serie = s.codigo\n"
+                + "order by a.nombre asc;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("titulo") + " - " + rs.getString("creador") + " - "
+                        + rs.getInt("s.temporadas") + " - " + rs.getString("a.nombre") + " - " + rs.getString("ps.nombre") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
