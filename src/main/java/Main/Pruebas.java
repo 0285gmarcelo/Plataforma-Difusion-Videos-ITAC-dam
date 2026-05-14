@@ -25,8 +25,14 @@ public class Pruebas {
         Actor actor1 = new Actor(12, "Carlos", LocalDate.now(), "Madird", "España");
         List<String> datos = new ArrayList<>();
         datos.add(actor1.datosActor());
+        List<String> datos1 = new ArrayList<>();
+        datos1.add(actor1.diseñoJSON());
         Exportar.exportarBINARIO(datos, actor1);
+        Exportar.exportarJSON(datos1, actor1);
+        Exportar.exporatTXT(datos, actor1);
+        Exportar.exportarCSV(datos, actor1);
         //Importar.importarCSV(actor1);
+        
         
     }
     
