@@ -4,7 +4,7 @@ package Modelos;
  *
  * @author isard
  */
-public class Serie {
+public class Serie  implements Interfaces.InterfazJSON{
 
     private int codigo;
     private String titulo;
@@ -73,6 +73,18 @@ public class Serie {
     @Override
     public String toString() {
         return codigo + ";" + titulo + ";" + creador + ";" + anyos_Emision + ";" + temporadas + ";" + episodios;
+    }
+
+    @Override
+    public String diseñoJSON() {
+        return "{" + "\"codigo\":" + getCodigo()+ ",\n"
+                    + "\"titulo\":" + getTitulo()+ ",\n"
+                    + "\"creador\":" + getCreador()+ ",\n"
+                    + "\"anyo de emision\":" + getAnyos_Emision()+ ",\n"
+                    + "\"temporada\":" + getTemporadas()+ ",\n"
+                    + "\"episodios\":" + getEpisodios()
+                    + "}"
+                    ;
     }
 
     
