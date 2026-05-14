@@ -24,8 +24,8 @@ public class Pruebas {
         // TODO code application logic here
         Actor actor1 = new Actor(12, "Carlos", LocalDate.now(), "Madird", "España");
         List<String> datos = new ArrayList<>();
-        datos.add(actor1.diseñoJSON());
-        Exportar.exportarJSON(datos, actor1);
+        datos.add(actor1.datosActor());
+        Exportar.exportarBINARIO(datos, actor1);
         //Importar.importarCSV(actor1);
         
     }
