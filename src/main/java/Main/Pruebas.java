@@ -5,8 +5,8 @@
 package Main;
 
 import Modelos.Actor;
-import Servicios.Ficheros.Exportar.Exportar;
-import Servicios.Ficheros.Importar.Importar;
+import Servicios.Ficheros.Exportar.*;
+import Servicios.Ficheros.Importar.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +27,16 @@ public class Pruebas {
         datos.add(actor1.datosActor());
         List<String> datos1 = new ArrayList<>();
         datos1.add(actor1.diseñoJSON());
+        //Exportar
         Exportar.exportarBINARIO(datos, actor1);
         Exportar.exportarJSON(datos1, actor1);
         Exportar.exporatTXT(datos, actor1);
         Exportar.exportarCSV(datos, actor1);
-        //Importar.importarCSV(actor1);
+        //Importar
+        Importar.importarTXT(actor1);
+        Importar.importarJSON(actor1);
+        Importar.importarBinario(actor1);
+        Importar.importarCSV(actor1);
         
         
     }
