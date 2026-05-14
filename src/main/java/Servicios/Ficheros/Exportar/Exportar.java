@@ -47,12 +47,14 @@ public class Exportar {
         
     }
     
-    public static void exportarBINARIO(List<String> datos, Object objeto) throws IOException{
+    public static void exportarBINARIO(List<String> datos, Object objeto){
         try { 
             ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream("Ficheros\\"+objeto.getClass().getSimpleName()+".bin", true));
             oos.writeObject(datos);
             oos.close();
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
         }
         
