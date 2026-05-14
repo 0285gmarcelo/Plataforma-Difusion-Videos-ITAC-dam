@@ -23,17 +23,41 @@ public class ConsultasBD {
                 + "order by p.duracion desc;";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
-            
+
             ResultSet rs = pst.executeQuery();
-            while (rs.next()){
-                System.out.println(rs.getString("titulo") + " - " + rs.getInt("año_estreno") + " - " +
-                rs.getInt("duracion") + " - " + rs.getString("a.nombre") + " - " + rs.getString("pp.nombre") + " - ");
+            while (rs.next()) {
+                System.out.println(rs.getString("titulo") + " - " + rs.getInt("año_estreno") + " - "
+                        + rs.getInt("duracion") + " - " + rs.getString("a.nombre") + " - " + rs.getString("pp.nombre") + " - ");
             }
             pst.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
+
+    public static void informePeliculasCS2(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select s.titulo, s.creador, s.temporadas, a.nombre , ps.nombre\n"
+                + "from serie s\n"
+                + "join personaje_serie ps on s.codigo = ps.codigo_serie\n"
+                + "join actor a on a.codigo = ps.codigo_actor_S\n"
+                + "order by s.temporadas desc;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("titulo") + " - " + rs.getString("creador") + " - "
+                        + rs.getInt("s.temporadas") + " - " + rs.getString("a.nombre") + " - " + rs.getString("ps.nombre") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }
