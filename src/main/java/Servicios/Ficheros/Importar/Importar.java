@@ -67,7 +67,6 @@ public class Importar {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Se ah importado correctamente en BIN");
         System.out.println(datos);
         return datos;
     }
