@@ -67,9 +67,9 @@ public class Exportar {
             
             bw.write("[");
             bw.newLine();
-            for (int i = 0 ; 1 < datos.size(); i++) {
+            for (int i = 0 ; i < datos.size(); i++) {
                 bw.write(datos.get(i));
-                    bw.newLine();
+                bw.newLine();
                 
                 
             }
