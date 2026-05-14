@@ -56,7 +56,7 @@ public class Importar {
     public static List<String> importarBinario(Object objeto){
         List<String> datos = new ArrayList<>();
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros\\"+objeto.getClass().getSimpleName()));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros\\"+objeto.getClass().getSimpleName()+".bin"));
             datos = (List<String>) ois.readObject();
             ois.close();
         } catch (FileNotFoundException ex) {
