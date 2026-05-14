@@ -46,9 +46,9 @@ public class InsertarBaseDatos {
       
         try {
             
-            if (objecto.getClass()== Película.class){
+            if (objecto.getClass()== Pelicula.class){
                 
-                Película pelicula = (Película) objecto;
+                Pelicula pelicula = (Pelicula) objecto;
                 
                 PreparedStatement pst = con.prepareStatement("Insert Pelicula values (?,?,?,?,?)");
                 
