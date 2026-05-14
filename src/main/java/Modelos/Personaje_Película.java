@@ -6,7 +6,7 @@ import Excepciones.TipoPersonajeException;
  *
  * @author isard
  */
-public class Personaje_Película {
+public class Personaje_Película implements Interfaces.InterfazJSON{
 
     private int codigo_Pelicula;
     private int codigo_Actor;
@@ -50,6 +50,16 @@ public class Personaje_Película {
     @Override
     public String toString() {
         return codigo_Pelicula + ";" + codigo_Actor + ";" + nombre + ";" + tipo;
+    }
+
+    @Override
+    public String diseñoJSON() {
+        return "{" + "\"codigo_Pelicula\":" + getCodigo_Pelicula()+ ",\n"
+                + "\"codigo_Serie\":" + getCodigo_Actor()+ ",\n"
+                + "\"nombre\":" + getNombre()+ ",\n"
+                + "\"tipo\":" + getTipo()+ ",\n"
+                + "}"
+                ;
     }
     
     
