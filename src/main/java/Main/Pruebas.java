@@ -7,6 +7,7 @@ package Main;
 import Modelos.Actor;
 import Servicios.Ficheros.Exportar.*;
 import Servicios.Ficheros.Importar.*;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Actor actor1 = new Actor(12, "Carlos", LocalDate.now(), "Madird", "España");
+       /** Actor actor1 = new Actor(12, "Carlos", LocalDate.now(), "Madird", "España");
         List<String> datos = new ArrayList<>();
         datos.add(actor1.datosActor());
         List<String> datos1 = new ArrayList<>();
@@ -37,7 +38,10 @@ public class Pruebas {
         Importar.importarJSON(actor1);
         Importar.importarBinario(actor1);
         Importar.importarCSV(actor1);
-        
+        **/
+      Connection con = Servicios.BaseDatos.ServicioBase_de_Datos.inciarBase_De_Datos();
+      Servicios.BaseDatos.ConsultasBD.informePeliculasCS1(con);
+              
         
     }
     
