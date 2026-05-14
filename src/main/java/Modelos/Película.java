@@ -4,7 +4,7 @@ package Modelos;
  *
  * @author isard
  */
-public class Película {
+public class Película implements Interfaces.InterfazJSON{
 
     private int codigo;
     private String titulo;
@@ -63,6 +63,17 @@ public class Película {
 
     public String datosPelicula() {
         return  codigo + ";" + titulo + ";" + director + ";"+ anyo_estreno + ";"+ duracion;
+    }
+
+    @Override
+    public String diseñoJSON() {
+        return "{" + "\"codigo\":" + getCodigo() + ",\n"
+                + "\"titulo\":" + getTitulo()+ ",\n"
+                + "\"director\":" + getDirector()+ ",\n"
+                + "\"anyo de estreno\":" + getAnyo_estreno()+ ",\n"
+                + "\"duracion\":" + getDuracion()
+                + "}"
+                ;
     }
     
     
