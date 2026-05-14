@@ -24,7 +24,7 @@ public class Importar {
             while ((linea = br.readLine()) != null){
                 datos.add(linea);
             }
-            
+            System.out.println(datos);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -44,7 +44,7 @@ public class Importar {
             while ((linea = br.readLine())!= null){
                 datos.add(linea.replace(';', ':'));
             }
-            
+             System.out.println(datos);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -59,6 +59,7 @@ public class Importar {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros\\"+objeto.getClass().getSimpleName()+".bin"));
             datos = (List<String>) ois.readObject();
             ois.close();
+            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -66,6 +67,8 @@ public class Importar {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("Se ah importado correctamente en BIN");
+        System.out.println(datos);
         return datos;
     }
     
@@ -78,7 +81,7 @@ public class Importar {
             while ((linea = br.readLine()) != null){
                 datos.add(linea);
             }
-            
+             System.out.println(datos);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
