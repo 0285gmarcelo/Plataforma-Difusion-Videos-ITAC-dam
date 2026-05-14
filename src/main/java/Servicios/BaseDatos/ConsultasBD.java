@@ -29,6 +29,8 @@ public class ConsultasBD {
                 System.out.println(rs.getString("titulo") + " - " + rs.getInt("año_estreno") + " - " +
                 rs.getInt("duracion") + " - " + rs.getString("a.nombre") + " - " + rs.getString("pp.nombre") + " - ");
             }
+            pst.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
