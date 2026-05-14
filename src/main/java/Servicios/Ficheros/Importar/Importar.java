@@ -69,6 +69,25 @@ public class Importar {
         return datos;
     }
     
+     public static List<String> importarJSON(Object objeto){
+        List<String> datos = new ArrayList<>();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".json"));
+            String linea;
+            
+            while ((linea = br.readLine()) != null){
+                datos.add(linea);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            return datos;
+    }
+    
    
     
 }
