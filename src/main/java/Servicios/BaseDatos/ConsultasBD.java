@@ -128,4 +128,94 @@ public class ConsultasBD {
         }
 
     }
+
+    public static void informeSeriesCS6(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select s.titulo , count(distinct ps.codigo_actor_S) \n"
+                + "from serie s\n"
+                + "left join personaje_serie ps on s.codigo = ps.codigo_serie\n"
+                + "group by s.titulo;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("titulo") + " - " + rs.getDate("ps.codigo_actor_S") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void informeSeriesCS7(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
+                + "from actor a\n"
+                + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
+                + "left join pelicula p on pp.codigo_pelicula = p.codigo\n"
+                + "order by a.nombre asc;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
+                        + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void informeSeriesCS8(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
+                + "from actor a\n"
+                + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
+                + "left join pelicula p on pp.codigo_pelicula = p.codigo\n"
+                + "order by a.nombre asc;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
+                        + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void informeSeriesCS9(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
+                + "from actor a\n"
+                + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
+                + "left join pelicula p on pp.codigo_pelicula = p.codigo\n"
+                + "order by a.nombre asc;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
+                        + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
