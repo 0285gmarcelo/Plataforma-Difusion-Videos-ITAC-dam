@@ -140,7 +140,7 @@ public class ConsultasBD {
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("titulo") + " - " + rs.getDate("ps.codigo_actor_S") + " - ");
+                System.out.println(rs.getString("s.titulo") + " - " + rs.getDate("ps.codigo_actor_S") + " - ");
             }
             pst.close();
             con.close();
