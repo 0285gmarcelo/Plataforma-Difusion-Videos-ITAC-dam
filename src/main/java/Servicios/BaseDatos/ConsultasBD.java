@@ -152,11 +152,12 @@ public class ConsultasBD {
 
     public static void informeSeriesCS7(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
+        String sql = "select a.nombre \n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
-                + "left join pelicula p on pp.codigo_pelicula = p.codigo\n"
-                + "order by a.nombre asc;";
+                + "left join personaje_serie ps on a.codigo = ps.codigo_actor_S\n"
+                + "group by a.codigo, a.nombre\n"
+                + "having count(pp.codigo_actor_P) + count(ps.codigo_actor_S) > 3;";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
 
@@ -175,11 +176,11 @@ public class ConsultasBD {
 
     public static void informeSeriesCS8(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
+        String sql = "select a.nombre, a.nacionalidad \n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
-                + "left join pelicula p on pp.codigo_pelicula = p.codigo\n"
-                + "order by a.nombre asc;";
+                + "left join personaje_serie ps on a.codigo= ps.codigo_actor_S\n"
+                + "where pp.codigo_actor_P is null and ps.codigo_actor_S is null;";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
 
@@ -198,11 +199,10 @@ public class ConsultasBD {
 
     public static void informeSeriesCS9(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
-                + "from actor a\n"
-                + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
-                + "left join pelicula p on pp.codigo_pelicula = p.codigo\n"
-                + "order by a.nombre asc;";
+        String sql = "select * from pelicula\n"
+                + "where año_estreno between 2010 and 2020\n"
+                + "and titulo like '%Misterio%'\n"
+                + "and duracion > 120;";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
 
