@@ -72,8 +72,54 @@ public class ConsultasBD {
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("titulo") + " - " + rs.getString("creador") + " - "
-                        + rs.getInt("s.temporadas") + " - " + rs.getString("a.nombre") + " - " + rs.getString("ps.nombre") + " - ");
+                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
+                        + rs.getString("lugar_residencia") + " - " + rs.getString("s.titulo") + " - " + rs.getInt("ps.episodios") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void informeSeriesCS4(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
+                + "from actor a\n"
+                + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
+                + "left join pelicula p on pp.codigo_pelicula = p.codigo\n"
+                + "order by a.nombre asc;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
+                        + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void informeSeriesCS5(Connection con) {
+        ServicioBase_de_Datos.inciarBase_De_Datos();
+        String sql = "select a.nombre, a.nacionalidad from actor a\n"
+                + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
+                + "left join pelicula p on p.codigo = pp.codigo_pelicula\n"
+                + "left join personaje_serie ps on ps.codigo_actor_S = a.codigo\n"
+                + "left join serie s on s.codigo = ps.codigo_serie\n"
+                + "order by a.nacionalidad asc;";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad") + " - ");
             }
             pst.close();
             con.close();
