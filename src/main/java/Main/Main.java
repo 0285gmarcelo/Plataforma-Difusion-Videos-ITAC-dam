@@ -13,8 +13,6 @@ public class Main {
         // TODO code application logic here
         MenúInicio prueba = new MenúInicio();
         prueba.setVisible(true);
-        // hola
-        //prueba
     }
     
 }
