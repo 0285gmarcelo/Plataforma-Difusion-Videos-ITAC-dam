@@ -4,6 +4,7 @@
  */
 package Servicios.BaseDatos;
 
+import Servicios.Ficheros.GenerarInformes;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,6 +18,7 @@ public class ConsultasBD {
 
     public static void informePeliculasCS1(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta1";
         String sql = " select p.titulo,p.año_estreno,p.duracion, a.nombre as actor , pp.nombre as personaje from pelicula p\n"
                 + "join personaje_pelicula  pp on pp.codigo_pelicula = p.codigo\n"
                 + "join actor a on pp.codigo_actor_P = a.codigo\n"
@@ -29,6 +31,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("titulo") + " - " + rs.getInt("año_estreno") + " - "
                         + rs.getInt("duracion") + " - " + rs.getString("actor") + " - " + rs.getString("personaje") + " - ");
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -39,6 +42,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS2(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta2";
         String sql = "select s.titulo, s.creador, s.temporadas, a.nombre as actor , ps.nombre as personaje\n"
                 + "from serie s\n"
                 + "join personaje_serie ps on s.codigo = ps.codigo_serie\n"
@@ -52,6 +56,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("titulo") + " - " + rs.getString("creador") + " - "
                         + rs.getInt("s.temporadas") + " - " + rs.getString("actor") + " - " + rs.getString("personaje") + " - ");
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -62,6 +67,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS3(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta3";
         String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , s.titulo as serie , ps.episodios as episodios \n"
                 + "from actor a\n"
                 + "left join personaje_serie ps on a.codigo = ps.codigo_actor_S\n"
@@ -75,6 +81,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
                         + rs.getString("lugar_residencia") + " - " + rs.getString("serie") + " - " + rs.getInt("episodios") + " - ");
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -85,6 +92,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS4(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta4";
         String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
@@ -98,6 +106,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
                         + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -108,6 +117,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS5(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta5";
         String sql = "select a.nombre, a.nacionalidad, p.titulo as Pelicula , s.titulo as Serie from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
                 + "left join pelicula p on p.codigo = pp.codigo_pelicula\n"
@@ -122,6 +132,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad") + " - "
                 + rs.getString("Pelicula") + " - " + rs.getString("Serie"));
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -132,6 +143,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS6(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta6";
         String sql = "select s.titulo , count(distinct ps.codigo_actor_S) as numActores \n"
                 + "from serie s\n"
                 + "left join personaje_serie ps on s.codigo = ps.codigo_serie\n"
@@ -143,6 +155,7 @@ public class ConsultasBD {
             while (rs.next()) {
                 System.out.println(rs.getString("s.titulo") + " - " + rs.getInt("numActores"));
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -153,6 +166,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS7(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta7";
         String sql = "select a.nombre \n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
@@ -166,6 +180,7 @@ public class ConsultasBD {
             while (rs.next()) {
                 System.out.println(rs.getString("nombre"));
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -176,6 +191,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS8(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta8";
         String sql = "select a.nombre, a.nacionalidad \n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
@@ -188,6 +204,7 @@ public class ConsultasBD {
             while (rs.next()) {
                 System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad"));
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -198,6 +215,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS9(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        String nombreArchivo = "Consulta9";
         String sql = "select * from pelicula\n"
                 + "where año_estreno between 2010 and 2020\n"
                 + "and titulo like '%Misterio%'\n"
@@ -210,6 +228,7 @@ public class ConsultasBD {
                 System.out.println(rs.getInt("codigo") + " - " + rs.getString("titulo") + " - "
                         + rs.getString("director") + " - " + rs.getString("año_estreno") + " - " + rs.getInt("duracion"));
             }
+            GenerarInformes.generarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -217,4 +236,5 @@ public class ConsultasBD {
         }
 
     }
+    
 }

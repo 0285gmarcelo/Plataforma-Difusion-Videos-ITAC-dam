@@ -40,7 +40,7 @@ public class Pruebas {
         Importar.importarCSV(actor1);
         **/
       Connection con = Servicios.BaseDatos.ServicioBase_de_Datos.inciarBase_De_Datos();
-      Servicios.BaseDatos.ConsultasBD.informeSeriesCS3(con);
+      Servicios.BaseDatos.ConsultasBD.informeSeriesCS2(con);
       
       
               
