@@ -15,149 +15,120 @@ import java.util.logging.*;
 public class InsertarBaseDatos {
     
     
-  public static void insertarActorBD (Object objecto,Connection con){
-    ServicioBase_de_Datos.inciarBase_De_Datos();
+  
+    public static void insertarActorBD(Object objecto, Connection con) {
         try {
-            
-            if (objecto.getClass()== Actor.class){
-                
-                Actor actor = (Actor) objecto;
-                PreparedStatement pst = con.prepareStatement("Insert actor values (?,?,?,?,?)");
-               
+            if (objecto instanceof Actor actor) {
+
+                PreparedStatement pst = con.prepareStatement(
+                        "INSERT INTO Actor VALUES (?,?,?,?,?)"
+                );
+
                 pst.setInt(1, actor.getCodigo());
                 pst.setString(2, actor.getNombre());
                 pst.setDate(3, java.sql.Date.valueOf(actor.getFecha_Nacimiento()));
                 pst.setString(4, actor.getLugar_Residencia());
                 pst.setString(5, actor.getNacionalidad());
-                
+
                 pst.executeUpdate();
                 pst.close();
-                con.close();
             }
-           
+
         } catch (SQLException ex) {
-            System.out.println("Ah ocurrido un error de conexion");
-            Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
-     
-  }
-  public static void insertarPeliculaBD (Object objecto, Connection con){
-     ServicioBase_de_Datos.inciarBase_De_Datos();
-      
+    }
+
+    public static void insertarPeliculaBD(Object objecto, Connection con) {
         try {
-            
-            if (objecto.getClass()== Pelicula.class){
-                
-                Pelicula pelicula = (Pelicula) objecto;
-                
-                PreparedStatement pst = con.prepareStatement("Insert Pelicula values (?,?,?,?,?)");
-                
+            if (objecto instanceof Película pelicula) {
+
+                PreparedStatement pst = con.prepareStatement(
+                        "INSERT INTO Pelicula VALUES (?,?,?,?,?)"
+                );
+
                 pst.setInt(1, pelicula.getCodigo());
                 pst.setString(2, pelicula.getTitulo());
                 pst.setString(3, pelicula.getDirector());
                 pst.setInt(4, pelicula.getAnyo_estreno());
                 pst.setInt(5, pelicula.getDuracion());
-                
+
                 pst.executeUpdate();
                 pst.close();
-                con.close();
             }
-            
+
         } catch (SQLException ex) {
-            System.out.println("Ah ocurrido un error de conexion");
-            Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
-      
-  }
-  public static void insertarSerieBD (Object objecto, Connection con){
-      ServicioBase_de_Datos.inciarBase_De_Datos();
-      
+    }
+
+    public static void insertarSerieBD(Object objecto, Connection con) {
         try {
-            
-            if(objecto.getClass()== Serie.class){
-                
-                Serie serie = (Serie) objecto;
-                
-                
-                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?,?,?)");
-                
+            if (objecto instanceof Serie serie) {
+
+                PreparedStatement pst = con.prepareStatement(
+                        "INSERT INTO Serie VALUES (?,?,?,?,?,?)"
+                );
+
                 pst.setInt(1, serie.getCodigo());
                 pst.setString(2, serie.getTitulo());
                 pst.setString(3, serie.getCreador());
                 pst.setString(4, serie.getAnyos_Emision());
                 pst.setInt(5, serie.getTemporadas());
                 pst.setInt(6, serie.getEpisodios());
-                
+
                 pst.executeUpdate();
                 pst.close();
-                con.close();
             }
-            
-            
+
         } catch (SQLException ex) {
-            System.out.println("Ah ocurrido un error de conexion");
-            Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
-  }
-   public static void insertarPersonajes_SerieBD (Object objecto, Connection con){
-      ServicioBase_de_Datos.inciarBase_De_Datos();
-      
+    }
+
+    public static void insertarPersonajeSerieBD(Object objecto, Connection con) {
         try {
-            
-            if(objecto.getClass()== Personaje_Serie.class){
-                
-                
-                Personaje_Serie ps = (Personaje_Serie) objecto;
-                
-                
-                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?,?,?)");
-                
+            if (objecto instanceof Personaje_Serie ps) {
+
+                PreparedStatement pst = con.prepareStatement(
+                        "INSERT INTO Personaje_Serie VALUES (?,?,?,?,?,?)"
+                );
+
                 pst.setInt(1, ps.getCodigo_Serie());
                 pst.setInt(2, ps.getCodigo_Actor());
                 pst.setString(3, ps.getNombre());
                 pst.setString(4, ps.getTipo());
-                pst.setInt(5, ps.getEpisodios() );
+                pst.setInt(5, ps.getEpisodios());
                 pst.setString(6, ps.getDuracion());
-                
+
                 pst.executeUpdate();
                 pst.close();
-                con.close();
             }
-            
-            
+
         } catch (SQLException ex) {
-            System.out.println("Ah ocurrido un error de conexion");
-            Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
-     
-   }
-   public static void insertarPersonajes_PeliculaBD (Object objecto, Connection con){
-      ServicioBase_de_Datos.inciarBase_De_Datos();
-      
+    }
+
+    public static void insertarPersonajePeliculaBD(Object objecto, Connection con) {
         try {
-            
-            if(objecto.getClass()== Personaje_Película.class){
-                
-                Personaje_Película pp = (Personaje_Película) objecto;
-                
-                
-                PreparedStatement pst = con.prepareStatement("Insert Serie values (?,?,?,?)");
-                
+            if (objecto instanceof Personaje_Película pp) {
+
+                PreparedStatement pst = con.prepareStatement(
+                        "INSERT INTO Personaje_Pelicula VALUES (?,?,?,?)"
+                );
+
                 pst.setInt(1, pp.getCodigo_Pelicula());
                 pst.setInt(2, pp.getCodigo_Actor());
                 pst.setString(3, pp.getNombre());
                 pst.setString(4, pp.getTipo());
-                
+
                 pst.executeUpdate();
                 pst.close();
-                con.close();
             }
-            
-            
+
         } catch (SQLException ex) {
-            System.out.println("Ah ocurrido un error de conexion");
-            Logger.getLogger(InsertarBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
-   }
-    
+    }
 }
