@@ -33,7 +33,6 @@ public class InsertarBaseDatos {
                 pst.executeUpdate();
                 pst.close();
             }
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
