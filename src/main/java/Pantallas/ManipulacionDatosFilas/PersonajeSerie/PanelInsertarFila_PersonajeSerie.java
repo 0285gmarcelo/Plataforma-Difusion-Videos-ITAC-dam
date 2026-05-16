@@ -4,6 +4,8 @@
  */
 package Pantallas.ManipulacionDatosFilas.PersonajeSerie;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -162,6 +164,30 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
         add(textFieldDuracion, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getTextFieldCodigoSerie() {
+        return textFieldCodigoSerie;
+    }
+
+    public JTextField getTextFieldCódigoActor() {
+        return textFieldCódigoActor;
+    }
+
+    public JTextField getTextFieldDuracion() {
+        return textFieldDuracion;
+    }
+
+    public JTextField getTextFieldEpisodios() {
+        return textFieldEpisodios;
+    }
+
+    public JTextField getTextFieldNombre() {
+        return textFieldNombre;
+    }
+
+    public JTextField getTextFieldTipo() {
+        return textFieldTipo;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog jDialog1;

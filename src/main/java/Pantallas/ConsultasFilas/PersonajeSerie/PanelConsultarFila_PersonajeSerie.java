@@ -4,6 +4,11 @@
  */
 package Pantallas.ConsultasFilas.PersonajeSerie;
 
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import java.sql.Connection;
+import javax.swing.JTable;
+
 /**
  *
  * @author isard
@@ -15,6 +20,8 @@ public class PanelConsultarFila_PersonajeSerie extends javax.swing.JPanel {
      */
     public PanelConsultarFila_PersonajeSerie() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        LeerDatos.consultarTabla("personaje_serie", "codigo_serie", con, tablaConsultarPersonajeSerie);
     }
 
     /**
@@ -26,19 +33,46 @@ public class PanelConsultarFila_PersonajeSerie extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        consultarPersonajeSerie = new javax.swing.JScrollPane();
+        tablaConsultarPersonajeSerie = new javax.swing.JTable();
+
+        tablaConsultarPersonajeSerie.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        consultarPersonajeSerie.setViewportView(tablaConsultarPersonajeSerie);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(consultarPersonajeSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(consultarPersonajeSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getTablaConsultarPersonajeSerie() {
+        return tablaConsultarPersonajeSerie;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane consultarPersonajeSerie;
+    private javax.swing.JTable tablaConsultarPersonajeSerie;
     // End of variables declaration//GEN-END:variables
 }

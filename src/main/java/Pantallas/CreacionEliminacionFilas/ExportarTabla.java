@@ -15,6 +15,7 @@ public class ExportarTabla extends javax.swing.JFrame {
      */
     public ExportarTabla() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -75,8 +76,6 @@ public class ExportarTabla extends javax.swing.JFrame {
         });
 
         iconoCSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoCSV.png"))); // NOI18N
-        iconoCSV.setMaximumSize(new java.awt.Dimension(117, 122));
-        iconoCSV.setMinimumSize(new java.awt.Dimension(117, 122));
 
         botonJSON.setText("JSON");
         botonJSON.addActionListener(new java.awt.event.ActionListener() {
@@ -86,20 +85,13 @@ public class ExportarTabla extends javax.swing.JFrame {
         });
 
         iconoBinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoBinario.png"))); // NOI18N
-        iconoBinario.setMaximumSize(new java.awt.Dimension(117, 122));
         iconoBinario.setMinimumSize(new java.awt.Dimension(177, 122));
         iconoBinario.setName(""); // NOI18N
 
         iconoJSON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoJSON.png"))); // NOI18N
-        iconoJSON.setMaximumSize(new java.awt.Dimension(117, 122));
-        iconoJSON.setMinimumSize(new java.awt.Dimension(117, 122));
         iconoJSON.setName(""); // NOI18N
-        iconoJSON.setPreferredSize(new java.awt.Dimension(117, 122));
 
         iconoTXT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoTXT.png"))); // NOI18N
-        iconoTXT.setMaximumSize(new java.awt.Dimension(117, 122));
-        iconoTXT.setMinimumSize(new java.awt.Dimension(117, 122));
-        iconoTXT.setPreferredSize(new java.awt.Dimension(117, 122));
 
         textoSelectorTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoSelectorTabla.setText("Seleccione la tabla a exportar:");
@@ -136,26 +128,28 @@ public class ExportarTabla extends javax.swing.JFrame {
                     .addComponent(iconoJSON, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                     .addComponent(botonJSON, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(57, 57, 57))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExportarTablaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botonSalir)
-                .addContainerGap())
             .addGroup(panelExportarTablaLayout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloExportarTabla, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExportarTablaLayout.createSequentialGroup()
-                        .addComponent(textoSelectorTabla)
-                        .addGap(18, 18, 18)
-                        .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(294, 294, 294)
+                .addComponent(textoSelectorTabla)
+                .addGap(18, 18, 18)
+                .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExportarTablaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExportarTablaLayout.createSequentialGroup()
+                        .addComponent(tituloExportarTabla)
+                        .addGap(160, 160, 160))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExportarTablaLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(14, 14, 14))))
         );
         panelExportarTablaLayout.setVerticalGroup(
             panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelExportarTablaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(tituloExportarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelExportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,14 +168,14 @@ public class ExportarTabla extends javax.swing.JFrame {
                                     .addComponent(botonBinario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelExportarTablaLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(botonJSON, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(59, 59, 59)
-                        .addComponent(botonSalir))
+                                .addComponent(botonJSON, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelExportarTablaLayout.createSequentialGroup()
                         .addComponent(iconoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(40, 40, 40)
+                .addComponent(botonSalir)
+                .addGap(25, 25, 25))
         );
 
         getContentPane().add(panelExportarTabla, new java.awt.GridBagConstraints());

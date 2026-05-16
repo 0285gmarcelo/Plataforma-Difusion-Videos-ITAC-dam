@@ -9,6 +9,12 @@ import Pantallas.ManipulacionDatosFilas.Pelicula.PanelInsertarFila_Pelicula;
 import Pantallas.ManipulacionDatosFilas.PersonajePelicula.PanelInsertarFila_PersonajePelicula;
 import Pantallas.ManipulacionDatosFilas.PersonajeSerie.PanelInsertarFila_PersonajeSerie;
 import Pantallas.ManipulacionDatosFilas.Serie.PanelInsertarFila_Serie;
+import Servicios.BaseDatos.InsertarBaseDatos;
+import java.sql.Connection;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import Modelos.*;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,13 +25,15 @@ public class InsertarFila extends javax.swing.JFrame {
     /**
      * Creates new form InsertarTabla
      */
+    private JPanel panelActual;
+
     public InsertarFila() {
         initComponents();
-        panelCambiante.removeAll();
         panelCambiante.setLayout(new java.awt.BorderLayout());
         panelCambiante.add(new PanelInsertarFila_Pelicula(), java.awt.BorderLayout.CENTER);
         panelCambiante.revalidate();
         panelCambiante.repaint();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -53,6 +61,11 @@ public class InsertarFila extends javax.swing.JFrame {
         tituloInsertarFila.setText("INSERTAR FILA:");
 
         botonInsertarFila.setText("INSERTAR FILA");
+        botonInsertarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInsertarFilaActionPerformed(evt);
+            }
+        });
 
         textoInsertarFila.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoInsertarFila.setText("Para insertar una fila presione el botón llamado INSERTAR FILA.");
@@ -147,7 +160,6 @@ public class InsertarFila extends javax.swing.JFrame {
     private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
         // TODO add your handling code here:
         panelCambiante.removeAll();
-
         panelCambiante.setLayout(new java.awt.BorderLayout());
 
         String opcion = selectorTabla.getSelectedItem().toString();
@@ -155,54 +167,104 @@ public class InsertarFila extends javax.swing.JFrame {
         switch (opcion) {
 
             case "Película":
-
-                panelCambiante.add(
-                        new PanelInsertarFila_Pelicula(),
-                        java.awt.BorderLayout.CENTER
-                );
-
+                panelActual = new PanelInsertarFila_Pelicula();
                 break;
 
             case "Serie":
-
-                panelCambiante.add(
-                        new PanelInsertarFila_Serie(),
-                        java.awt.BorderLayout.CENTER
-                );
-
+                panelActual = new PanelInsertarFila_Serie();
                 break;
 
             case "Actor":
-
-                panelCambiante.add(
-                        new PanelInsertarFila_Actor(),
-                        java.awt.BorderLayout.CENTER
-                );
-
+                panelActual = new PanelInsertarFila_Actor();
                 break;
 
             case "Personaje_Película":
-
-                panelCambiante.add(
-                        new PanelInsertarFila_PersonajePelicula(),
-                        java.awt.BorderLayout.CENTER
-                );
-
+                panelActual = new PanelInsertarFila_PersonajePelicula();
                 break;
 
             case "Personaje_Serie":
-
-                panelCambiante.add(
-                        new PanelInsertarFila_PersonajeSerie(),
-                        java.awt.BorderLayout.CENTER
-                );
-
+                panelActual = new PanelInsertarFila_PersonajeSerie();
                 break;
         }
+
+        panelCambiante.add(panelActual, java.awt.BorderLayout.CENTER);
 
         panelCambiante.revalidate();
         panelCambiante.repaint();
     }//GEN-LAST:event_selectorTablaActionPerformed
+
+    private void botonInsertarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarFilaActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+
+            java.awt.Component panelActual = panelCambiante.getComponent(0);
+
+            if (panelActual instanceof PanelInsertarFila_Actor p) {
+
+                Actor actor = new Actor(
+                        Integer.parseInt(p.getTextFieldCodigo().getText()),
+                        p.getTextFieldNombre().getText(),
+                        java.time.LocalDate.parse(p.getTextFieldFechaNacimiento().getText()),
+                        p.getTextFieldLugarRsidencia().getText(),
+                        p.getTextFieldNacionalidad().getText()
+                );
+
+                InsertarBaseDatos.insertarActorBD(actor, con);
+            } else if (panelActual instanceof PanelInsertarFila_Pelicula p) {
+
+                Película pelicula = new Película(
+                        Integer.parseInt(p.getTextFieldCodigo().getText()),
+                        p.getTextFieldTítulo().getText(),
+                        p.getTextFieldDirector().getText(),
+                        Integer.parseInt(p.getTextFieldAñoEstreno().getText()),
+                        Integer.parseInt(p.getTextFieldDuracion().getText())
+                );
+
+                InsertarBaseDatos.insertarPeliculaBD(pelicula, con);
+            } else if (panelActual instanceof PanelInsertarFila_Serie p) {
+
+                Serie serie = new Serie(
+                        Integer.parseInt(p.getTextFieldCodigo().getText()),
+                        p.getTextFieldTítulo().getText(),
+                        p.getTextFieldCreador().getText(),
+                        p.getTextFieldAñoEmision().getText(),
+                        Integer.parseInt(p.getTextFieldTemporadas().getText()),
+                        Integer.parseInt(p.getTextFieldDEpisodios().getText())
+                );
+
+                InsertarBaseDatos.insertarSerieBD(serie, con);
+            } else if (panelActual instanceof PanelInsertarFila_PersonajePelicula p) {
+
+                Personaje_Película pp = new Personaje_Película(
+                        Integer.parseInt(p.getTextFieldCodigo().getText()),
+                        Integer.parseInt(p.getTextFieldCódigoActor().getText()),
+                        p.getTextFieldNombre().getText(),
+                        p.getTextFieldTipo().getText()
+                );
+
+                InsertarBaseDatos.insertarPersonajePeliculaBD(pp, con);
+            } else if (panelActual instanceof PanelInsertarFila_PersonajeSerie p) {
+
+                Personaje_Serie ps = new Personaje_Serie(
+                        Integer.parseInt(p.getTextFieldCodigoSerie().getText()),
+                        Integer.parseInt(p.getTextFieldCódigoActor().getText()),
+                        p.getTextFieldNombre().getText(),
+                        p.getTextFieldTipo().getText(),
+                        Integer.parseInt(p.getTextFieldEpisodios().getText()),
+                        p.getTextFieldDuracion().getText()
+                );
+
+                InsertarBaseDatos.insertarPersonajeSerieBD(ps, con);
+            }
+
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_botonInsertarFilaActionPerformed
 
     /**
      * @param args the command line arguments

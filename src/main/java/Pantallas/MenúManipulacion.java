@@ -15,6 +15,7 @@ public class MenúManipulacion extends javax.swing.JFrame {
      */
     public MenúManipulacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

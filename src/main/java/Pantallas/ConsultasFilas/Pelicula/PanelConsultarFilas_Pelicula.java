@@ -4,6 +4,11 @@
  */
 package Pantallas.ConsultasFilas.Pelicula;
 
+import java.util.logging.*;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import java.sql.Connection;
+
 /**
  *
  * @author isard
@@ -15,6 +20,8 @@ public class PanelConsultarFilas_Pelicula extends javax.swing.JPanel {
      */
     public PanelConsultarFilas_Pelicula() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        LeerDatos.consultarTabla("pelicula", "titulo", con, tablaConsultarPeliculas);
     }
 
     /**
@@ -26,19 +33,42 @@ public class PanelConsultarFilas_Pelicula extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        consultarPeliculas = new javax.swing.JScrollPane();
+        tablaConsultarPeliculas = new javax.swing.JTable();
+
+        tablaConsultarPeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        consultarPeliculas.setViewportView(tablaConsultarPeliculas);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(consultarPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(consultarPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane consultarPeliculas;
+    private javax.swing.JTable tablaConsultarPeliculas;
     // End of variables declaration//GEN-END:variables
 }

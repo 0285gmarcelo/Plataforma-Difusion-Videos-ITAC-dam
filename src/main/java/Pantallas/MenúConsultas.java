@@ -15,6 +15,7 @@ public class MenúConsultas extends javax.swing.JFrame {
      */
     public MenúConsultas() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -35,6 +36,8 @@ public class MenúConsultas extends javax.swing.JFrame {
         iconoConsultarFilas = new javax.swing.JLabel();
         botonConsultaFila = new javax.swing.JButton();
         iconoConsultaFila = new javax.swing.JLabel();
+        botonInformesMultitabla = new javax.swing.JButton();
+        iconoInformesMultitabla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -42,7 +45,7 @@ public class MenúConsultas extends javax.swing.JFrame {
         panelMenúConsultas.setName(""); // NOI18N
         panelMenúConsultas.setPreferredSize(new java.awt.Dimension(932, 426));
 
-        botonConsultaFilas.setText("CONSULTAR FILAS");
+        botonConsultaFilas.setText("CONSULTAR TODAS LAS FILAS");
         botonConsultaFilas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultaFilasActionPerformed(evt);
@@ -79,12 +82,21 @@ public class MenúConsultas extends javax.swing.JFrame {
 
         iconoConsultaFila.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconoConsultarFila.png"))); // NOI18N
 
+        botonInformesMultitabla.setText("INFORMES MULTITABLA");
+        botonInformesMultitabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInformesMultitablaActionPerformed(evt);
+            }
+        });
+
+        iconoInformesMultitabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/basedeDatosIcono.png"))); // NOI18N
+
         javax.swing.GroupLayout panelMenúConsultasLayout = new javax.swing.GroupLayout(panelMenúConsultas);
         panelMenúConsultas.setLayout(panelMenúConsultasLayout);
         panelMenúConsultasLayout.setHorizontalGroup(
             panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenúConsultasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(171, Short.MAX_VALUE)
                 .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
                         .addComponent(botonAtras)
@@ -92,22 +104,34 @@ public class MenúConsultas extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
                         .addComponent(tituloMenúConsultas)
                         .addGap(140, 140, 140))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(botonConsultaFila)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonConsultaFilas)
-                .addGap(129, 129, 129)
-                .addComponent(botonConsultaDatos)
-                .addGap(53, 53, 53))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(iconoConsultaFila, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                .addComponent(iconoConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(127, 127, 127)
-                .addComponent(iconoConsultaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+            .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(botonConsultaFila))
+                    .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(iconoConsultaFila, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonConsultaFilas)
+                    .addComponent(iconoConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMenúConsultasLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(botonConsultaDatos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(iconoConsultaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)))
+                .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
+                        .addComponent(botonInformesMultitabla)
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúConsultasLayout.createSequentialGroup()
+                        .addComponent(iconoInformesMultitabla, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))))
         );
         panelMenúConsultasLayout.setVerticalGroup(
             panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,12 +142,14 @@ public class MenúConsultas extends javax.swing.JFrame {
                 .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iconoConsultarFilas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(iconoConsultaDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(iconoConsultaFila, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iconoConsultaFila, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconoInformesMultitabla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelMenúConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonConsultaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonConsultaFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonConsultaFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonConsultaFila, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonInformesMultitabla, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addComponent(botonAtras)
                 .addContainerGap())
@@ -155,6 +181,11 @@ public class MenúConsultas extends javax.swing.JFrame {
         new ConsultarFila().setVisible(true);
        
     }//GEN-LAST:event_botonConsultaFilaActionPerformed
+
+    private void botonInformesMultitablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInformesMultitablaActionPerformed
+        // TODO add your handling code here:
+        new InformeMultitabla().setVisible(true);
+    }//GEN-LAST:event_botonInformesMultitablaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,9 +228,11 @@ public class MenúConsultas extends javax.swing.JFrame {
     private javax.swing.JButton botonConsultaDatos;
     private javax.swing.JButton botonConsultaFila;
     private javax.swing.JButton botonConsultaFilas;
+    private javax.swing.JButton botonInformesMultitabla;
     private javax.swing.JLabel iconoConsultaDatos;
     private javax.swing.JLabel iconoConsultaFila;
     private javax.swing.JLabel iconoConsultarFilas;
+    private javax.swing.JLabel iconoInformesMultitabla;
     private javax.swing.JPanel panelMenúConsultas;
     private javax.swing.JLabel tituloMenúConsultas;
     // End of variables declaration//GEN-END:variables

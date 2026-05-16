@@ -4,6 +4,10 @@
  */
 package Pantallas.ConsultasFilas.PersonajePelicula;
 
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import java.sql.Connection;
+
 /**
  *
  * @author isard
@@ -15,6 +19,8 @@ public class PanelConsultarFilas_PersonajePelicula extends javax.swing.JPanel {
      */
     public PanelConsultarFilas_PersonajePelicula() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        LeerDatos.consultarTabla("personaje_pelicula", "nombre", con, tablaConsultarPersonajesPeliculas);
     }
 
     /**
@@ -26,19 +32,42 @@ public class PanelConsultarFilas_PersonajePelicula extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        consultarPersonajesPeliculas = new javax.swing.JScrollPane();
+        tablaConsultarPersonajesPeliculas = new javax.swing.JTable();
+
+        tablaConsultarPersonajesPeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        consultarPersonajesPeliculas.setViewportView(tablaConsultarPersonajesPeliculas);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(consultarPersonajesPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(consultarPersonajesPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane consultarPersonajesPeliculas;
+    private javax.swing.JTable tablaConsultarPersonajesPeliculas;
     // End of variables declaration//GEN-END:variables
 }

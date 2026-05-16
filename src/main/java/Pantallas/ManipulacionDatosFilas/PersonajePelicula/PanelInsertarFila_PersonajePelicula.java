@@ -4,6 +4,8 @@
  */
 package Pantallas.ManipulacionDatosFilas.PersonajePelicula;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -110,6 +112,24 @@ public class PanelInsertarFila_PersonajePelicula extends javax.swing.JPanel {
         add(textFieldTipo, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getTextFieldCodigo() {
+        return textFieldCodigo;
+    }
+
+    public JTextField getTextFieldNombre() {
+        return textFieldNombre;
+    }
+
+    public JTextField getTextFieldTipo() {
+        return textFieldTipo;
+    }
+
+    public JTextField getTextFieldCódigoActor() {
+        return textFieldCódigoActor;
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField textFieldCodigo;

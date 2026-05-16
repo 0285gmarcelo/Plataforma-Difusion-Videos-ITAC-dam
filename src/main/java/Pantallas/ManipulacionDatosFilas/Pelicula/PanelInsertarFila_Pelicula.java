@@ -4,6 +4,8 @@
  */
 package Pantallas.ManipulacionDatosFilas.Pelicula;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -131,7 +133,27 @@ public class PanelInsertarFila_Pelicula extends javax.swing.JPanel {
         add(textFieldDuracion, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getTextFieldAñoEstreno() {
+        return textFieldAñoEstreno;
+    }
 
+    public JTextField getTextFieldCodigo() {
+        return textFieldCodigo;
+    }
+
+    public JTextField getTextFieldDirector() {
+        return textFieldDirector;
+    }
+
+    public JTextField getTextFieldDuracion() {
+        return textFieldDuracion;
+    }
+
+    public JTextField getTextFieldTítulo() {
+        return textFieldTítulo;
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField textFieldAñoEstreno;
     private javax.swing.JTextField textFieldCodigo;

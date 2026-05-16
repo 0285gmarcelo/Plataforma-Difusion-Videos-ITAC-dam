@@ -4,6 +4,11 @@
  */
 package Pantallas.ConsultasFilas.Actor;
 
+import java.sql.*;
+import java.util.logging.*;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+
 /**
  *
  * @author isard
@@ -15,6 +20,9 @@ public class PanelConsultarFilas_Actor extends javax.swing.JPanel {
      */
     public PanelConsultarFilas_Actor() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+
+        LeerDatos.consultarTabla("actor", "nombre", con, tablaConsultarActores);
     }
 
     /**
@@ -26,19 +34,42 @@ public class PanelConsultarFilas_Actor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        consultarActores = new javax.swing.JScrollPane();
+        tablaConsultarActores = new javax.swing.JTable();
+
+        tablaConsultarActores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        consultarActores.setViewportView(tablaConsultarActores);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(consultarActores, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(consultarActores, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane consultarActores;
+    private javax.swing.JTable tablaConsultarActores;
     // End of variables declaration//GEN-END:variables
 }

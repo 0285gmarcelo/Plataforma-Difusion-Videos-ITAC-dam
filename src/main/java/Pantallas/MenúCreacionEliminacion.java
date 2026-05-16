@@ -15,6 +15,7 @@ public class MenúCreacionEliminacion extends javax.swing.JFrame {
      */
     public MenúCreacionEliminacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

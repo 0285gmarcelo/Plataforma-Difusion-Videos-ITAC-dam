@@ -15,6 +15,7 @@ public class DatosInsertados extends javax.swing.JFrame {
      */
     public DatosInsertados() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -68,29 +69,28 @@ public class DatosInsertados extends javax.swing.JFrame {
         panelDatosInsertadosLayout.setHorizontalGroup(
             panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosInsertadosLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                        .addComponent(tituloDatosInsertados)
-                        .addGap(56, 56, 56))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
                         .addComponent(botonSalir)
                         .addGap(16, 16, 16))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                        .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
-            .addGroup(panelDatosInsertadosLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(textoDatosInsertados)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(textoDatosInsertados)
+                        .addGap(157, 157, 157))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                        .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                        .addComponent(tituloDatosInsertados)
+                        .addGap(138, 138, 138))))
         );
         panelDatosInsertadosLayout.setVerticalGroup(
             panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(tituloDatosInsertados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textoDatosInsertados)
                 .addGap(18, 18, 18)

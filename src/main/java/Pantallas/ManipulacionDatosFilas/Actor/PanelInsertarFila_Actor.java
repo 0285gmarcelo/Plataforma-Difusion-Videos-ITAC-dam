@@ -4,6 +4,9 @@
  */
 package Pantallas.ManipulacionDatosFilas.Actor;
 
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -130,6 +133,29 @@ public class PanelInsertarFila_Actor extends javax.swing.JPanel {
         add(textFieldNacionalidad, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getTextFieldCodigo() {
+        return textFieldCodigo;
+    }
+
+    public JTextField getTextFieldFechaNacimiento() {
+        return textFieldFechaNacimiento;
+    }
+
+    public JTextField getTextFieldLugarRsidencia() {
+        return textFieldLugarRsidencia;
+    }
+
+    public JTextField getTextFieldNacionalidad() {
+        return textFieldNacionalidad;
+    }
+
+    public JTextField getTextFieldNombre() {
+        return textFieldNombre;
+    }
+
+    public JLabel getTextoLugarResidencia() {
+        return textoLugarResidencia;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField textFieldCodigo;

@@ -4,6 +4,8 @@
  */
 package Pantallas.ManipulacionDatosFilas.Serie;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -119,6 +121,31 @@ public class PanelInsertarFila_Serie extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getTextFieldAñoEmision() {
+        return textFieldAñoEmision;
+    }
+
+    public JTextField getTextFieldCodigo() {
+        return textFieldCodigo;
+    }
+
+    public JTextField getTextFieldCreador() {
+        return textFieldCreador;
+    }
+
+    public JTextField getTextFieldDEpisodios() {
+        return textFieldDEpisodios;
+    }
+
+    public JTextField getTextFieldTemporadas() {
+        return textFieldTemporadas;
+    }
+
+    public JTextField getTextFieldTítulo() {
+        return textFieldTítulo;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField textFieldAñoEmision;

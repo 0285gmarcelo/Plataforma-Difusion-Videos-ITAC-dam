@@ -4,7 +4,11 @@
  */
 
 package Pantallas.ConsultasFilas;
-
+import Pantallas.ConsultasFilas.Actor.PanelConsultarFilas_Actor;
+import Pantallas.ConsultasFilas.Pelicula.PanelConsultarFilas_Pelicula;
+import Pantallas.ConsultasFilas.PersonajePelicula.PanelConsultarFilas_PersonajePelicula;
+import Pantallas.ConsultasFilas.PersonajeSerie.PanelConsultarFilas_PersonajeSerie;
+import Pantallas.ConsultasFilas.Serie.PanelConsultarFilas_Serie;
 /**
  *
  * @author isard
@@ -14,6 +18,11 @@ public class ConsultarFilas extends javax.swing.JFrame {
     /** Creates new form ConsultarFilas */
     public ConsultarFilas() {
         initComponents();
+        panelCambiante.setLayout(new java.awt.BorderLayout());
+        panelCambiante.add(new PanelConsultarFilas_Pelicula(), java.awt.BorderLayout.CENTER);
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -25,33 +34,20 @@ public class ConsultarFilas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelActualizarFila = new javax.swing.JPanel();
-        jScrollPanelConsultarFilas = new javax.swing.JScrollPane();
-        tablaActualizador = new javax.swing.JTable();
-        tituloInsertarFila = new javax.swing.JLabel();
+        panelConsultarFilas = new javax.swing.JPanel();
+        tituloConsultarFilas = new javax.swing.JLabel();
         textoSelectorTabla = new javax.swing.JLabel();
         selectorTabla = new javax.swing.JComboBox<>();
         botonSalir = new javax.swing.JButton();
+        panelCambiante = new javax.swing.JPanel();
+        textoOrden = new javax.swing.JLabel();
+        textoOrden2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        tablaActualizador.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tablaActualizador.setColumnSelectionAllowed(true);
-        jScrollPanelConsultarFilas.setViewportView(tablaActualizador);
-
-        tituloInsertarFila.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
-        tituloInsertarFila.setText("CONSULTAR FILAS:");
+        tituloConsultarFilas.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        tituloConsultarFilas.setText("CONSULTAR FILAS:");
 
         textoSelectorTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoSelectorTabla.setText("Seleccione la tabla a consultar:");
@@ -70,52 +66,139 @@ public class ConsultarFilas extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelActualizarFilaLayout = new javax.swing.GroupLayout(panelActualizarFila);
-        panelActualizarFila.setLayout(panelActualizarFilaLayout);
-        panelActualizarFilaLayout.setHorizontalGroup(
-            panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botonSalir)
-                .addGap(21, 21, 21))
-            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                                .addComponent(textoSelectorTabla)
-                                .addGap(18, 18, 18)
-                                .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tituloInsertarFila)))
-                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelCambianteLayout = new javax.swing.GroupLayout(panelCambiante);
+        panelCambiante.setLayout(panelCambianteLayout);
+        panelCambianteLayout.setHorizontalGroup(
+            panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        panelActualizarFilaLayout.setVerticalGroup(
-            panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(tituloInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelCambianteLayout.setVerticalGroup(
+            panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 473, Short.MAX_VALUE)
+        );
+
+        textoOrden.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoOrden.setText("Tenga en cuenta que las tablas se encuentran ordenadas");
+
+        textoOrden2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoOrden2.setText("alfabéticamente de forma ascendente.");
+
+        javax.swing.GroupLayout panelConsultarFilasLayout = new javax.swing.GroupLayout(panelConsultarFilas);
+        panelConsultarFilas.setLayout(panelConsultarFilasLayout);
+        panelConsultarFilasLayout.setHorizontalGroup(
+            panelConsultarFilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConsultarFilasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelConsultarFilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelConsultarFilasLayout.createSequentialGroup()
+                        .addComponent(panelCambiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelConsultarFilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilasLayout.createSequentialGroup()
+                                .addComponent(botonSalir)
+                                .addGap(21, 21, 21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilasLayout.createSequentialGroup()
+                                .addComponent(textoSelectorTabla)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(203, 203, 203))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilasLayout.createSequentialGroup()
+                                .addComponent(tituloConsultarFilas)
+                                .addGap(211, 211, 211))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(textoOrden2)
+                .addGap(260, 260, 260))
+            .addGroup(panelConsultarFilasLayout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addComponent(textoOrden)
+                .addContainerGap(213, Short.MAX_VALUE))
+        );
+        panelConsultarFilasLayout.setVerticalGroup(
+            panelConsultarFilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConsultarFilasLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(tituloConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93)
-                .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGroup(panelConsultarFilasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoOrden)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoOrden2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(19, 19, 19))
         );
 
-        getContentPane().add(panelActualizarFila, new java.awt.GridBagConstraints());
+        getContentPane().add(panelConsultarFilas, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
         // TODO add your handling code here:
+        panelCambiante.removeAll();
+
+        panelCambiante.setLayout(new java.awt.BorderLayout());
+
+        String opcion = selectorTabla.getSelectedItem().toString();
+
+        switch (opcion) {
+
+            case "Película":
+
+                panelCambiante.add(
+                        new PanelConsultarFilas_Pelicula(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Serie":
+
+                panelCambiante.add(
+                        new PanelConsultarFilas_Serie(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Actor":
+
+                panelCambiante.add(
+                        new PanelConsultarFilas_Actor(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Personaje_Película":
+
+                panelCambiante.add(
+                        new PanelConsultarFilas_PersonajePelicula(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+
+            case "Personaje_Serie":
+
+                panelCambiante.add(
+                        new PanelConsultarFilas_PersonajeSerie(),
+                        java.awt.BorderLayout.CENTER
+                );
+
+                break;
+        }
+
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
     }//GEN-LAST:event_selectorTablaActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -160,12 +243,13 @@ public class ConsultarFilas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSalir;
-    private javax.swing.JScrollPane jScrollPanelConsultarFilas;
-    private javax.swing.JPanel panelActualizarFila;
+    private javax.swing.JPanel panelCambiante;
+    private javax.swing.JPanel panelConsultarFilas;
     private javax.swing.JComboBox<String> selectorTabla;
-    private javax.swing.JTable tablaActualizador;
+    private javax.swing.JLabel textoOrden;
+    private javax.swing.JLabel textoOrden2;
     private javax.swing.JLabel textoSelectorTabla;
-    private javax.swing.JLabel tituloInsertarFila;
+    private javax.swing.JLabel tituloConsultarFilas;
     // End of variables declaration//GEN-END:variables
 
 }

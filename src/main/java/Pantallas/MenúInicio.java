@@ -15,6 +15,7 @@ public class MenúInicio extends javax.swing.JFrame {
      */
     public MenúInicio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
