@@ -4,7 +4,7 @@
  */
 package Servicios.Ficheros.Importar;
 
-import Utils.Constantes;
+
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;
@@ -24,7 +24,9 @@ public class Importar {
             while ((linea = br.readLine()) != null){
                 datos.add(linea);
             }
+            br.close();
             System.out.println(datos);
+            System.out.println("Se ha importado con exito");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -44,7 +46,9 @@ public class Importar {
             while ((linea = br.readLine())!= null){
                 datos.add(linea.replace(';', ':'));
             }
+            br.close();
              System.out.println(datos);
+             System.out.println("Se ha importado con exito");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -68,6 +72,7 @@ public class Importar {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(datos);
+        System.out.println("Se ha importado con exito");
         return datos;
     }
     
@@ -80,7 +85,10 @@ public class Importar {
             while ((linea = br.readLine()) != null){
                 datos.add(linea);
             }
+           
              System.out.println(datos);
+              br.close();
+             System.out.println("Se ha importado con exito");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

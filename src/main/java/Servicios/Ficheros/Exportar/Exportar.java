@@ -26,6 +26,7 @@ public class Exportar {
                 
             }
             bw.close();
+            System.out.println("TXT Exportado correctamente");
         } catch (IOException ex) {
             Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -41,6 +42,7 @@ public class Exportar {
                 bw.newLine();
             }
             bw.close();
+            System.out.println("CSV exportado correctamente");
         } catch (IOException ex) {
             Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,11 +54,13 @@ public class Exportar {
             ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream("Ficheros\\"+objeto.getClass().getSimpleName()+".bin", true));
             oos.writeObject(datos);
             oos.close();
+            System.out.println("BIN exportado correctamente");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
     }
     
@@ -80,6 +84,7 @@ public class Exportar {
         } catch (IOException ex) {
             Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     
