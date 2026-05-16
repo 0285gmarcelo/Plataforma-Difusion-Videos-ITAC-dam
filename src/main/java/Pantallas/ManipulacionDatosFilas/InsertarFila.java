@@ -214,7 +214,7 @@ public class InsertarFila extends javax.swing.JFrame {
                 InsertarBaseDatos.insertarActorBD(actor, con);
             } else if (panelActual instanceof PanelInsertarFila_Pelicula p) {
 
-                Película pelicula = new Película(
+                Pelicula pelicula = new Pelicula(
                         Integer.parseInt(p.getTextFieldCodigo().getText()),
                         p.getTextFieldTítulo().getText(),
                         p.getTextFieldDirector().getText(),

@@ -41,7 +41,7 @@ public class InsertarBaseDatos {
 
     public static void insertarPeliculaBD(Object objecto, Connection con) {
         try {
-            if (objecto instanceof Película pelicula) {
+            if (objecto instanceof Pelicula pelicula) {
 
                 PreparedStatement pst = con.prepareStatement(
                         "INSERT INTO Pelicula VALUES (?,?,?,?,?)"
