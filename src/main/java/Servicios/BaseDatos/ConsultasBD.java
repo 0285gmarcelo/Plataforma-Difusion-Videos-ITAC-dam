@@ -17,7 +17,7 @@ public class ConsultasBD {
 
     public static void informePeliculasCS1(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = " select p.titulo,p.año_estreno,p.duracion, a.nombre , pp.nombre from pelicula p\n"
+        String sql = " select p.titulo,p.año_estreno,p.duracion, a.nombre as actor , pp.nombre as personaje from pelicula p\n"
                 + "join personaje_pelicula  pp on pp.codigo_pelicula = p.codigo\n"
                 + "join actor a on pp.codigo_actor_P = a.codigo\n"
                 + "order by p.duracion desc;";
@@ -27,7 +27,7 @@ public class ConsultasBD {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 System.out.println(rs.getString("titulo") + " - " + rs.getInt("año_estreno") + " - "
-                        + rs.getInt("duracion") + " - " + rs.getString("a.nombre") + " - " + rs.getString("pp.nombre") + " - ");
+                        + rs.getInt("duracion") + " - " + rs.getString("actor") + " - " + rs.getString("personaje") + " - ");
             }
             pst.close();
             con.close();
@@ -39,7 +39,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS2(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = "select s.titulo, s.creador, s.temporadas, a.nombre , ps.nombre\n"
+        String sql = "select s.titulo, s.creador, s.temporadas, a.nombre as actor , ps.nombre as personaje\n"
                 + "from serie s\n"
                 + "join personaje_serie ps on s.codigo = ps.codigo_serie\n"
                 + "join actor a on a.codigo = ps.codigo_actor_S\n"
@@ -50,7 +50,7 @@ public class ConsultasBD {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 System.out.println(rs.getString("titulo") + " - " + rs.getString("creador") + " - "
-                        + rs.getInt("s.temporadas") + " - " + rs.getString("a.nombre") + " - " + rs.getString("ps.nombre") + " - ");
+                        + rs.getInt("s.temporadas") + " - " + rs.getString("actor") + " - " + rs.getString("personaje") + " - ");
             }
             pst.close();
             con.close();
@@ -62,7 +62,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS3(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , s.titulo , ps.episodios \n"
+        String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , s.titulo as serie , ps.episodios as episodios \n"
                 + "from actor a\n"
                 + "left join personaje_serie ps on a.codigo = ps.codigo_actor_S\n"
                 + "left join serie s on ps.codigo_serie = s.codigo\n"
@@ -73,7 +73,7 @@ public class ConsultasBD {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
-                        + rs.getString("lugar_residencia") + " - " + rs.getString("s.titulo") + " - " + rs.getInt("ps.episodios") + " - ");
+                        + rs.getString("lugar_residencia") + " - " + rs.getString("serie") + " - " + rs.getInt("episodios") + " - ");
             }
             pst.close();
             con.close();
@@ -108,18 +108,19 @@ public class ConsultasBD {
 
     public static void informeSeriesCS5(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = "select a.nombre, a.nacionalidad from actor a\n"
+        String sql = "select a.nombre, a.nacionalidad, p.titulo as Pelicula , s.titulo as Serie from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
                 + "left join pelicula p on p.codigo = pp.codigo_pelicula\n"
                 + "left join personaje_serie ps on ps.codigo_actor_S = a.codigo\n"
                 + "left join serie s on s.codigo = ps.codigo_serie\n"
-                + "order by a.nacionalidad asc;";
+                + "order by a.nacionalidad asc";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad") + " - ");
+                System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad") + " - "
+                + rs.getString("Pelicula") + " - " + rs.getString("Serie"));
             }
             pst.close();
             con.close();
@@ -131,7 +132,7 @@ public class ConsultasBD {
 
     public static void informeSeriesCS6(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
-        String sql = "select s.titulo , count(distinct ps.codigo_actor_S) \n"
+        String sql = "select s.titulo , count(distinct ps.codigo_actor_S) as numActores \n"
                 + "from serie s\n"
                 + "left join personaje_serie ps on s.codigo = ps.codigo_serie\n"
                 + "group by s.titulo;";
@@ -140,7 +141,7 @@ public class ConsultasBD {
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("s.titulo") + " - " + rs.getDate("ps.codigo_actor_S") + " - ");
+                System.out.println(rs.getString("s.titulo") + " - " + rs.getInt("numActores"));
             }
             pst.close();
             con.close();
@@ -163,8 +164,7 @@ public class ConsultasBD {
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
-                        + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
+                System.out.println(rs.getString("nombre"));
             }
             pst.close();
             con.close();
@@ -186,8 +186,7 @@ public class ConsultasBD {
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
-                        + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
+                System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad"));
             }
             pst.close();
             con.close();
@@ -208,8 +207,8 @@ public class ConsultasBD {
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
-                        + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
+                System.out.println(rs.getInt("codigo") + " - " + rs.getString("titulo") + " - "
+                        + rs.getString("director") + " - " + rs.getString("año_estreno") + " - " + rs.getInt("duracion"));
             }
             pst.close();
             con.close();
