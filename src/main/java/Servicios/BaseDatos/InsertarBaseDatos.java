@@ -6,7 +6,6 @@ package Servicios.BaseDatos;
 
 import Modelos.*;
 import java.sql.*;
-import java.util.logging.*;
 
 /**
  *
