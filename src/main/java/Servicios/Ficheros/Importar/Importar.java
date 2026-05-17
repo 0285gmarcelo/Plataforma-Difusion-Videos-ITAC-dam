@@ -5,6 +5,7 @@
 package Servicios.Ficheros.Importar;
 
 
+import Excepciones.YaImportadoException;
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;
@@ -15,7 +16,7 @@ import java.util.logging.*;
  */
 public class Importar {
     
-    public static List<String> importarTXT(Object objeto){
+    public static List<String> importarTXT(Object objeto) throws YaImportadoException{
         List<String> datos = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".txt"));
@@ -36,7 +37,7 @@ public class Importar {
             return datos;
     }
     
-    public static List<String> importarCSV(Object objeto){
+    public static List<String> importarCSV(Object objeto) throws YaImportadoException{
         System.out.println(objeto.getClass().getSimpleName()+".csv");
         List<String> datos = new ArrayList<>();
         
@@ -57,7 +58,7 @@ public class Importar {
         return datos;
     }
     
-    public static List<String> importarBinario(Object objeto){
+    public static List<String> importarBinario(Object objeto) throws YaImportadoException{
         List<String> datos = new ArrayList<>();
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros\\"+objeto.getClass().getSimpleName()+".bin"));
@@ -76,7 +77,7 @@ public class Importar {
         return datos;
     }
     
-     public static List<String> importarJSON(Object objeto){
+     public static List<String> importarJSON(Object objeto) throws YaImportadoException{
         List<String> datos = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".json"));
