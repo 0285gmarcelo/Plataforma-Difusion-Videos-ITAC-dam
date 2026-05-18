@@ -15,7 +15,12 @@ import java.util.logging.Logger;
  * @author isard
  */
 public class Exportar {
-    
+    /**
+     * Exportar una lista de datos a un fichero TXT.
+     * 
+     * @param datos lista con los datos a exportar
+     * @param objeto el objeto usado para obtener el nombre del fichero
+     */
     public static void exporatTXT(List<String> datos, Object objeto) {
         try {
             
@@ -31,7 +36,12 @@ public class Exportar {
             Logger.getLogger(Exportar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Exporta una lista de datos a un fichero CSV.
+     * 
+     * @param datos lista con los datos
+     * @param objeto  el objeto usado para el nombre del fichero
+     */
     public static void exportarCSV(List<String> datos, Object objeto){
         
         
@@ -48,11 +58,19 @@ public class Exportar {
         }
         
     }
-    
+    /**
+     * Exportar un lista de datos  a un fichero binario.
+     * 
+     * @param datos lista de datos
+     * @param objeto el objeto usado para el nombre del fichero
+     */
     public static void exportarBINARIO(List<String> datos, Object objeto){
         try { 
+            //Crear el fichero binario
             ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream("Ficheros\\"+objeto.getClass().getSimpleName()+".bin", true));
+            //Guarda la lista completa
             oos.writeObject(datos);
+            //Cierra el flujo
             oos.close();
             System.out.println("BIN exportado correctamente");
         } catch (FileNotFoundException ex) {
@@ -63,20 +81,28 @@ public class Exportar {
         
         
     }
-    
+    /**
+     * Exportar una lista de datos a un fichero JSON
+     * 
+     * @param datos lista de datos
+     * @param objeto el objeto usado para el nombre
+     */
     public static void exportarJSON(List<String> datos, Object objeto){
         try {
             
+            //Crear el fichero JSON
             BufferedWriter bw = new BufferedWriter(new FileWriter("Ficheros\\"+objeto.getClass().getSimpleName()+".json", true));
-            
+            //Iniciao del array JSON
             bw.write("[");
             bw.newLine();
+            //Recorre la lista
             for (int i = 0 ; i < datos.size(); i++) {
                 bw.write(datos.get(i));
                 bw.newLine();
                 
                 
             }
+            //Fin del array JSON
             bw.write("[");
             bw.newLine();
             bw.close();
