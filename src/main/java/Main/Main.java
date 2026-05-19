@@ -11,7 +11,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        MenúInicio prueba = new MenúInicio();
+        MenuPrincipal prueba = new MenuPrincipal();
         prueba.setVisible(true);
     }
     

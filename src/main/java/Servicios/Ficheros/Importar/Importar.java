@@ -4,133 +4,161 @@
  */
 package Servicios.Ficheros.Importar;
 
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import Servicios.BaseDatos.InsertarBaseDatos;
+import Servicios.Validaciones.Validaciones;
+import Modelos.*;
 
-import Excepciones.YaImportadoException;
+import javax.swing.*;
 import java.io.*;
-import java.util.*;
-import java.util.logging.*;
+import java.sql.Connection;
+import java.time.LocalDate;
+import java.util.List;
 
-/**
- *
- * @author isard
- */
 public class Importar {
-    /**
-     * Importar los datos de un fichero TXT.
-     * 
-     * El nombre del fichero se obtiene automaticamente
-     * usando el nombre de la clase del objeto recibido.
-     * 
-     * @param objeto el objeto del que se quiere importar el fichero
-     * @return lista con las lineas leidas del fichero
-     * @throws YaImportadoException  excepcion personalizada por si ya fue importada
-     */
-    public static List<String> importarTXT(Object objeto) throws YaImportadoException{
-        List<String> datos = new ArrayList<>();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".txt"));
-            String linea;
-            
-            while ((linea = br.readLine()) != null){
-                datos.add(linea);
+
+    // ================= IMPORTACIÓN GENERAL =================
+    public static void importar(String tabla, String extension, String separador) throws Exception {
+
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+
+        BufferedReader br = new BufferedReader(
+                new FileReader("Ficheros\\" + tabla + extension)
+        );
+
+        String linea;
+        int numLinea = 0;
+
+        while ((linea = br.readLine()) != null) {
+            numLinea++;
+
+            try {
+                procesarLinea(tabla, linea, separador, numLinea, con);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Error en línea " + numLinea + ": " + e.getMessage(),
+                        "Error de importación",
+                        JOptionPane.ERROR_MESSAGE
+                );
             }
-            br.close();
-            System.out.println(datos);
-            System.out.println("Se ha importado con exito");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-            return datos;
+
+        br.close();
+        con.close();
     }
-    /**
-     * Importa los datos de un fichero CSV.
-     * 
-     * @param objeto el objeto de que se quiere importar el fichero
-     * @return lista con las lineas leidas del fichero
-     * @throws YaImportadoException excepcion personalizada por si ya fue importada
-     */
-    public static List<String> importarCSV(Object objeto) throws YaImportadoException{
-        System.out.println(objeto.getClass().getSimpleName()+".csv");
-        List<String> datos = new ArrayList<>();
-        
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".csv"));
-            String linea;
-            while ((linea = br.readLine())!= null){
-                datos.add(linea.replace(';', ':'));
+
+    // ================= PROCESAR UNA LÍNEA =================
+    private static void procesarLinea(String tabla, String linea, String separador, int numLinea, Connection con) throws Exception {
+
+        String[] d = linea.split(separador);
+
+        switch (tabla) {
+
+            case "pelicula" -> {
+
+                Pelicula p = new Pelicula(
+                        Integer.parseInt(d[0]),
+                        d[1],
+                        d[2],
+                        Integer.parseInt(d[3]),
+                        Integer.parseInt(d[4])
+                );
+
+                Validaciones.validarPelicula(p);
+                InsertarBaseDatos.insertarPeliculaBDImport(p, con);
             }
-            br.close();
-             System.out.println(datos);
-             System.out.println("Se ha importado con exito");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return datos;
-    }
-    /**
-     * Importa los datos desde un fichero binario.
-     * 
-     * @param objeto: objeto del que se quiere importar el fichero
-     * @return lista con los datos recuperados
-     * @throws YaImportadoException excepcion personalizada por si ya fue importada
-     */
-    public static List<String> importarBinario(Object objeto) throws YaImportadoException{
-        // Lista donde se almacenarán los datos
-        List<String> datos = new ArrayList<>();
-        try {
-            //Abre el fichero binario
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros\\"+objeto.getClass().getSimpleName()+".bin"));
-            //Lee el objeto del fichero y lo convierte a List<String>
-            datos = (List<String>) ois.readObject();
-            //Cierre
-            ois.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println(datos);
-        System.out.println("Se ha importado con exito");
-        //Devolver los datos importados
-        return datos;
-    }
-    /**
-     * Importar los datos desde un fichero JSON.
-     * 
-     * @param objeto el objeto del que se quiere importar el fichero
-     * @return lista con las lineas del JSON
-     * @throws YaImportadoException excepcion personalizada por si ya fue importada
-     */
-     public static List<String> importarJSON(Object objeto) throws YaImportadoException{
-        List<String> datos = new ArrayList<>();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("Ficheros\\"+objeto.getClass().getSimpleName()+".json"));
-            String linea;
-            
-            while ((linea = br.readLine()) != null){
-                datos.add(linea);
+
+            case "serie" -> {
+
+                Serie s = new Serie(
+                        Integer.parseInt(d[0]),
+                        d[1],
+                        d[2],
+                        d[3],
+                        Integer.parseInt(d[4]),
+                        Integer.parseInt(d[5])
+                );
+
+                Validaciones.validarSerie(s);
+                InsertarBaseDatos.insertarSerieBDImport(s, con);
             }
-           
-             System.out.println(datos);
-              br.close();
-             System.out.println("Se ha importado con exito");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Importar.class.getName()).log(Level.SEVERE, null, ex);
+
+            case "actor" -> {
+
+                Actor a = new Actor(
+                        Integer.parseInt(d[0]),
+                        d[1],
+                        LocalDate.parse(d[2]),
+                        d[3],
+                        d[4]
+                );
+
+                Validaciones.validarActor(a);
+                InsertarBaseDatos.insertarActorBDImport(a, con);
+            }
+
+            case "personaje_pelicula" -> {
+
+                Personaje_Pelicula pp = new Personaje_Pelicula(
+                        Integer.parseInt(d[0]),
+                        Integer.parseInt(d[1]),
+                        d[2],
+                        d[3]
+                );
+
+                Validaciones.validarPersonajePelicula(pp);
+                InsertarBaseDatos.insertarPersonajePeliculaBDImport(pp, con);
+            }
+
+            case "personaje_serie" -> {
+
+                Personaje_Serie ps = new Personaje_Serie(
+                        Integer.parseInt(d[0]),
+                        Integer.parseInt(d[1]),
+                        d[2],
+                        d[3],
+                        Integer.parseInt(d[4]),
+                        d[5]
+                );
+
+                Validaciones.validarPersonajeSerie(ps);
+                InsertarBaseDatos.insertarPersonajeSerieBDImport(ps, con);
+            }
         }
-        
-            return datos;
     }
-    
-   
-    
+
+    // ================= BINARIO =================
+    public static void importarBIN(String tabla) throws Exception {
+
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+
+        ObjectInputStream ois = new ObjectInputStream(
+                new FileInputStream("Ficheros\\" + tabla + ".bin")
+        );
+
+        List<String> datos = (List<String>) ois.readObject();
+
+        int numLinea = 0;
+
+        for (String linea : datos) {
+            numLinea++;
+
+            try {
+                procesarLinea(tabla, linea, ";", numLinea, con);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Error en línea " + numLinea + ": " + e.getMessage(),
+                        "Error BIN",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
+
+        ois.close();
+        con.close();
+    }
 }

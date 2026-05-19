@@ -4,6 +4,9 @@
  */
 package Pantallas.CreacionEliminacionFilas;
 
+import Servicios.Ficheros.Importar.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author isard
@@ -40,6 +43,7 @@ public class ImportarTabla extends javax.swing.JFrame {
         iconoTXT = new javax.swing.JLabel();
         textoSelectorTabla = new javax.swing.JLabel();
         selectorTabla = new javax.swing.JComboBox<>();
+        textoAclaracion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -103,19 +107,12 @@ public class ImportarTabla extends javax.swing.JFrame {
             }
         });
 
+        textoAclaracion.setText("El fichero a importar debe llevar el nombre de la tabla seleccionada.");
+
         javax.swing.GroupLayout panelImportarTablaLayout = new javax.swing.GroupLayout(panelImportarTabla);
         panelImportarTabla.setLayout(panelImportarTablaLayout);
         panelImportarTablaLayout.setHorizontalGroup(
             panelImportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportarTablaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panelImportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportarTablaLayout.createSequentialGroup()
-                        .addComponent(botonSalir)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportarTablaLayout.createSequentialGroup()
-                        .addComponent(tituloImportarTabla)
-                        .addGap(192, 192, 192))))
             .addGroup(panelImportarTablaLayout.createSequentialGroup()
                 .addGroup(panelImportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelImportarTablaLayout.createSequentialGroup()
@@ -141,6 +138,18 @@ public class ImportarTabla extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportarTablaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelImportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportarTablaLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportarTablaLayout.createSequentialGroup()
+                        .addComponent(tituloImportarTabla)
+                        .addGap(192, 192, 192))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportarTablaLayout.createSequentialGroup()
+                        .addComponent(textoAclaracion)
+                        .addGap(238, 238, 238))))
         );
         panelImportarTablaLayout.setVerticalGroup(
             panelImportarTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +177,9 @@ public class ImportarTabla extends javax.swing.JFrame {
                         .addComponent(iconoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
+                .addComponent(textoAclaracion)
+                .addGap(9, 9, 9)
                 .addComponent(botonSalir)
                 .addGap(22, 22, 22))
         );
@@ -180,14 +191,46 @@ public class ImportarTabla extends javax.swing.JFrame {
 
     private void botonTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTXTActionPerformed
         // TODO add your handling code here:
+
+        try {
+            String tabla = ExportarTabla.convertirTabla(selectorTabla.getSelectedItem().toString());
+
+            Importar.importar(tabla, ".txt", ";");
+
+            JOptionPane.showMessageDialog(this, "✔ Importación TXT correcta");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error TXT: " + e.getMessage());
+        }
     }//GEN-LAST:event_botonTXTActionPerformed
 
     private void botonBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBinarioActionPerformed
         // TODO add your handling code here:
+
+        try {
+            String tabla = ExportarTabla.convertirTabla(selectorTabla.getSelectedItem().toString());
+
+            Importar.importarBIN(tabla);
+
+            JOptionPane.showMessageDialog(this, "✔ Importación BIN correcta");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error BIN: " + e.getMessage());
+        }
     }//GEN-LAST:event_botonBinarioActionPerformed
 
     private void botonCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCSVActionPerformed
         // TODO add your handling code here:
+        try {
+            String tabla = ExportarTabla.convertirTabla(selectorTabla.getSelectedItem().toString());
+
+            Importar.importar(tabla, ".csv", ":");
+
+            JOptionPane.showMessageDialog(this, "✔ Importación CSV correcta");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error CSV: " + e.getMessage());
+        }
     }//GEN-LAST:event_botonCSVActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -197,6 +240,16 @@ public class ImportarTabla extends javax.swing.JFrame {
 
     private void botonJSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJSONActionPerformed
         // TODO add your handling code here:
+        try {
+            String tabla = ExportarTabla.convertirTabla(selectorTabla.getSelectedItem().toString());
+
+            Importar.importar(tabla, ".json", ";");
+
+            JOptionPane.showMessageDialog(this, "✔ Importación JSON correcta");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error JSON: " + e.getMessage());
+        }
     }//GEN-LAST:event_botonJSONActionPerformed
 
     private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
@@ -250,6 +303,7 @@ public class ImportarTabla extends javax.swing.JFrame {
     private javax.swing.JLabel iconoTXT;
     private javax.swing.JPanel panelImportarTabla;
     private javax.swing.JComboBox<String> selectorTabla;
+    private javax.swing.JLabel textoAclaracion;
     private javax.swing.JLabel textoSelectorTabla;
     private javax.swing.JLabel tituloImportarTabla;
     // End of variables declaration//GEN-END:variables

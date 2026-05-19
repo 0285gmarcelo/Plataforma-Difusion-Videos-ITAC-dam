@@ -4,6 +4,9 @@
  */
 package Pantallas.CreacionEliminacionFilas.Serie;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -28,6 +31,8 @@ public class PanelEliminarFila_Serie extends javax.swing.JPanel {
 
         eliminarSerie = new javax.swing.JScrollPane();
         tablaEliminarSerie = new javax.swing.JTable();
+        textoEliminar = new javax.swing.JLabel();
+        textFieldIdentificadorEliminador = new javax.swing.JTextField();
 
         tablaEliminarSerie.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -42,31 +47,64 @@ public class PanelEliminarFila_Serie extends javax.swing.JPanel {
         ));
         eliminarSerie.setViewportView(tablaEliminarSerie);
 
+        textoEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoEliminar.setText("Introduce el Identificador para eliminar:");
+
+        textFieldIdentificadorEliminador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorEliminadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(238, 238, 238)
+                .addComponent(textoEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldIdentificadorEliminador, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(eliminarSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .addComponent(eliminarSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(401, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoEliminar)
+                    .addComponent(textFieldIdentificadorEliminador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(eliminarSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(eliminarSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(63, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textFieldIdentificadorEliminadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorEliminadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorEliminadorActionPerformed
+
+    public JTable getTablaEliminarSerie() {
+        return tablaEliminarSerie;
+    }
+
+    public JTextField getTextFieldIdentificadorEliminador() {
+        return textFieldIdentificadorEliminador;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane eliminarSerie;
     private javax.swing.JTable tablaEliminarSerie;
+    private javax.swing.JTextField textFieldIdentificadorEliminador;
+    private javax.swing.JLabel textoEliminar;
     // End of variables declaration//GEN-END:variables
 }

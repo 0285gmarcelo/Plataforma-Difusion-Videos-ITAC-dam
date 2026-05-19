@@ -8,6 +8,7 @@ import Servicios.BaseDatos.LeerDatos;
 import Servicios.BaseDatos.ServicioBase_de_Datos;
 import java.sql.Connection;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,8 +21,15 @@ public class PanelConsultarFila_PersonajePelicula extends javax.swing.JPanel {
      */
     public PanelConsultarFila_PersonajePelicula() {
         initComponents();
+
         Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
-        LeerDatos.consultarTabla("personaje_pelicula", "codigo_pelicula", con, tablaConsultarPersonajePelicula);
+
+        LeerDatos.consultarTabla(
+                "personaje_pelicula",
+                "codigo_pelicula",
+                con,
+                tablaConsultarPersonajePelicula
+        );
     }
 
     /**
@@ -35,6 +43,10 @@ public class PanelConsultarFila_PersonajePelicula extends javax.swing.JPanel {
 
         consultarPersonajePelicula = new javax.swing.JScrollPane();
         tablaConsultarPersonajePelicula = new javax.swing.JTable();
+        textoConsultarCompleja1 = new javax.swing.JLabel();
+        textFieldIdentificadorConsultadorComplejo1 = new javax.swing.JTextField();
+        textoConsultarCompleja2 = new javax.swing.JLabel();
+        textFieldIdentificadorConsultadorComplejo2 = new javax.swing.JTextField();
 
         tablaConsultarPersonajePelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -49,30 +61,88 @@ public class PanelConsultarFila_PersonajePelicula extends javax.swing.JPanel {
         ));
         consultarPersonajePelicula.setViewportView(tablaConsultarPersonajePelicula);
 
+        textoConsultarCompleja1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoConsultarCompleja1.setText("Introduce el Identificador de Película para consultar:");
+
+        textFieldIdentificadorConsultadorComplejo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorConsultadorComplejo1ActionPerformed(evt);
+            }
+        });
+
+        textoConsultarCompleja2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoConsultarCompleja2.setText("Introduce el Identificador de Actor para consultar:");
+
+        textFieldIdentificadorConsultadorComplejo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorConsultadorComplejo2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consultarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(consultarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoConsultarCompleja1)
+                            .addComponent(textoConsultarCompleja2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldIdentificadorConsultadorComplejo1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldIdentificadorConsultadorComplejo2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(138, 138, 138))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consultarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                .addComponent(consultarPersonajePelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoConsultarCompleja1)
+                    .addComponent(textFieldIdentificadorConsultadorComplejo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoConsultarCompleja2)
+                    .addComponent(textFieldIdentificadorConsultadorComplejo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textFieldIdentificadorConsultadorComplejo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorConsultadorComplejo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorConsultadorComplejo1ActionPerformed
+
+    private void textFieldIdentificadorConsultadorComplejo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorConsultadorComplejo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorConsultadorComplejo2ActionPerformed
 
     public JTable getTablaConsultarPersonajePelicula() {
         return tablaConsultarPersonajePelicula;
     }
 
+    public JTextField getTextFieldIdentificadorConsultadorComplejo1() {
+        return textFieldIdentificadorConsultadorComplejo1;
+    }
+
+    public JTextField getTextFieldIdentificadorConsultadorComplejo2() {
+        return textFieldIdentificadorConsultadorComplejo2;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane consultarPersonajePelicula;
     private javax.swing.JTable tablaConsultarPersonajePelicula;
+    private javax.swing.JTextField textFieldIdentificadorConsultadorComplejo1;
+    private javax.swing.JTextField textFieldIdentificadorConsultadorComplejo2;
+    private javax.swing.JLabel textoConsultarCompleja1;
+    private javax.swing.JLabel textoConsultarCompleja2;
     // End of variables declaration//GEN-END:variables
 }

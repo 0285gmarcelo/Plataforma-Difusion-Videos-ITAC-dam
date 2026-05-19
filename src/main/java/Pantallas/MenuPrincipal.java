@@ -9,12 +9,12 @@ package Pantallas;
  *
  * @author isard
  */
-public class MenúPrincipal extends javax.swing.JFrame {
+public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form MenúPrincipal
      */
-    public MenúPrincipal() {
+    public MenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -102,20 +102,24 @@ public class MenúPrincipal extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addComponent(botonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonCrearEliminar)
-                        .addGap(177, 177, 177)
                         .addComponent(botonManipular)))
                 .addGap(103, 103, 103))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúPrincipalLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addContainerGap())
-            .addGroup(panelMenúPrincipalLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(iconoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(iconoCrearEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(148, 148, 148)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenúPrincipalLayout.createSequentialGroup()
+                .addGroup(panelMenúPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelMenúPrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botonCrearEliminar)
+                        .addGap(148, 148, 148))
+                    .addGroup(panelMenúPrincipalLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(iconoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(iconoCrearEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128)))
                 .addComponent(iconoManipular, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
         );
@@ -155,19 +159,19 @@ public class MenúPrincipal extends javax.swing.JFrame {
 
     private void botonManipularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonManipularActionPerformed
         // TODO add your handling code here:
-        new MenúManipulacion().setVisible(true);
+        new MenuManipulacion().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonManipularActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         // TODO add your handling code here:
-        new MenúConsultas().setVisible(true);
+        new MenuConsultas().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonCrearEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearEliminarActionPerformed
         // TODO add your handling code here:
-        new MenúCreacionEliminacion().setVisible(true);
+        new MenuCreacionEliminacion().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCrearEliminarActionPerformed
 
@@ -188,20 +192,21 @@ public class MenúPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenúPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenúPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenúPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenúPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenúPrincipal().setVisible(true);
+                new MenuPrincipal().setVisible(true);
             }
         });
     }

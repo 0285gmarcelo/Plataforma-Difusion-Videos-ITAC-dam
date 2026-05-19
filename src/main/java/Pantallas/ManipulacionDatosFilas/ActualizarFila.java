@@ -4,11 +4,19 @@
  */
 package Pantallas.ManipulacionDatosFilas;
 
+import Excepciones.DatoInvalidoException;
 import Pantallas.ManipulacionDatosFilas.Actor.PanelActualizarFila_Actor;
 import Pantallas.ManipulacionDatosFilas.Pelicula.PanelActualizarFila_Pelicula;
 import Pantallas.ManipulacionDatosFilas.PersonajePelicula.PanelActualizarFila_PersonajePelicula;
 import Pantallas.ManipulacionDatosFilas.PersonajeSerie.PanelActualizarFila_PersonajeSerie;
 import Pantallas.ManipulacionDatosFilas.Serie.PanelActualizarFila_Serie;
+import Servicios.BaseDatos.Actualizar_EliminarDatos;
+import java.sql.Connection;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import javax.swing.SwingUtilities;
+import Servicios.Validaciones.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,17 +24,42 @@ import Pantallas.ManipulacionDatosFilas.Serie.PanelActualizarFila_Serie;
  */
 public class ActualizarFila extends javax.swing.JFrame {
 
+    private javax.swing.JPanel panelActual;
+
     /**
      * Creates new form ActualizarFila
      */
     public ActualizarFila() {
         initComponents();
-        panelCambiante.removeAll();
-        panelCambiante.setLayout(new java.awt.BorderLayout());
-        panelCambiante.add(new PanelActualizarFila_Pelicula(), java.awt.BorderLayout.CENTER);
-        panelCambiante.revalidate();
-        panelCambiante.repaint();
         this.setLocationRelativeTo(null);
+
+        panelCambiante.setLayout(new java.awt.BorderLayout());
+
+        SwingUtilities.invokeLater(() -> {
+            PanelActualizarFila_Pelicula p = new PanelActualizarFila_Pelicula();
+            panelActual = p;
+
+            panelCambiante.add(p, java.awt.BorderLayout.CENTER);
+            panelCambiante.revalidate();
+            panelCambiante.repaint();
+
+            SwingUtilities.invokeLater(() -> {
+                cargarTablaYListener(
+                        "pelicula",
+                        "codigo",
+                        p.getTablaActualizarPelicula(),
+                        p.getTextFieldCodigo(),
+                        p.getTextFieldTítulo(),
+                        p.getTextFieldDirector(),
+                        p.getTextFieldAñoEstreno(),
+                        p.getTextFieldDuracion()
+                );
+            });
+            panelCambiante.add(p, java.awt.BorderLayout.CENTER);
+
+            panelCambiante.revalidate();
+            panelCambiante.repaint();
+        });
     }
 
     /**
@@ -39,34 +72,36 @@ public class ActualizarFila extends javax.swing.JFrame {
     private void initComponents() {
 
         panelActualizarFila = new javax.swing.JPanel();
-        tituloInsertarFila = new javax.swing.JLabel();
-        textoSelectorTabla = new javax.swing.JLabel();
-        selectorTabla = new javax.swing.JComboBox<>();
+        textoActualizar = new javax.swing.JLabel();
         botonActualizarFila = new javax.swing.JButton();
+        tituloConsultarFila = new javax.swing.JLabel();
+        textoActualizarTabla = new javax.swing.JLabel();
+        selectorTabla = new javax.swing.JComboBox<>();
         botonSalir = new javax.swing.JButton();
-        textoActualizarFila2 = new javax.swing.JLabel();
         panelCambiante = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        tituloInsertarFila.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
-        tituloInsertarFila.setText("ACTUALIZAR FILAS:");
+        textoActualizar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoActualizar.setText("Para consultar una fila presiona el botón ACTUALIZAR FILA.");
 
-        textoSelectorTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoSelectorTabla.setText("Seleccione la tabla a actualizar:");
+        botonActualizarFila.setText("ACTUALIZAR FILA");
+        botonActualizarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarFilaActionPerformed(evt);
+            }
+        });
+
+        tituloConsultarFila.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        tituloConsultarFila.setText("ACTUALIZAR FILA");
+
+        textoActualizarTabla.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoActualizarTabla.setText("Seleccione la tabla a actualizar:");
 
         selectorTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Película", "Serie", "Actor", "Personaje_Película", "Personaje_Serie" }));
         selectorTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectorTablaActionPerformed(evt);
-            }
-        });
-
-        botonActualizarFila.setText("ACTUALIZAR");
-        botonActualizarFila.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActualizarFilaActionPerformed(evt);
             }
         });
 
@@ -77,14 +112,11 @@ public class ActualizarFila extends javax.swing.JFrame {
             }
         });
 
-        textoActualizarFila2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoActualizarFila2.setText("Para actualizar la Fila presione el botón de ACTUALIZAR.");
-
         javax.swing.GroupLayout panelCambianteLayout = new javax.swing.GroupLayout(panelCambiante);
         panelCambiante.setLayout(panelCambianteLayout);
         panelCambianteLayout.setHorizontalGroup(
             panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 514, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelCambianteLayout.setVerticalGroup(
             panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,118 +127,336 @@ public class ActualizarFila extends javax.swing.JFrame {
         panelActualizarFila.setLayout(panelActualizarFilaLayout);
         panelActualizarFilaLayout.setHorizontalGroup(
             panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelCambiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(botonActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(688, 688, 688)
+                .addComponent(botonSalir)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
-                        .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonSalir, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(panelCambiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
-                                .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tituloInsertarFila)
-                                    .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                                        .addComponent(textoSelectorTabla)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(83, 83, 83)))
-                        .addGap(33, 33, 33))
+                        .addComponent(textoActualizarTabla)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(198, 198, 198))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
-                        .addComponent(textoActualizarFila2)
-                        .addGap(109, 109, 109))))
+                        .addComponent(botonActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(257, 257, 257))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                        .addComponent(textoActualizar)
+                        .addGap(184, 184, 184))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActualizarFilaLayout.createSequentialGroup()
+                        .addComponent(tituloConsultarFila)
+                        .addGap(225, 225, 225))))
         );
         panelActualizarFilaLayout.setVerticalGroup(
             panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelActualizarFilaLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(tituloInsertarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(tituloConsultarFila)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelActualizarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textoSelectorTabla)
-                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoActualizarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textoActualizarFila2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(botonActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(botonSalir)
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(panelActualizarFila, new java.awt.GridBagConstraints());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 766, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 769, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelActualizarFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonActualizarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarFilaActionPerformed
+        // TODO add your handling code here:
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+
+        try {
+            String opcion = selectorTabla.getSelectedItem().toString();
+
+            switch (opcion) {
+
+                case "Película" -> {
+                    PanelActualizarFila_Pelicula p = (PanelActualizarFila_Pelicula) panelActual;
+
+                    int codigo = Integer.parseInt(p.getTextFieldCodigo().getText());
+
+                    // ✔ VALIDACIONES (AQUÍ ES DONDE DEBEN IR)
+                    Validaciones.validarTitulo(p.getTextFieldTítulo().getText());
+                    Validaciones.validarDirector(p.getTextFieldDirector().getText());
+                    Validaciones.validarAnyo(Integer.parseInt(p.getTextFieldAñoEstreno().getText()));
+
+                    int duracion = Integer.parseInt(p.getTextFieldDuracion().getText());
+                    if (duracion <= 0) {
+                        throw new DatoInvalidoException("Duración inválida");
+                    }
+
+                    // ✔ UPDATE
+                    Actualizar_EliminarDatos.actualizar("pelicula", codigo, "titulo", p.getTextFieldTítulo().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("pelicula", codigo, "director", p.getTextFieldDirector().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("pelicula", codigo, "año_estreno", p.getTextFieldAñoEstreno().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("pelicula", codigo, "duracion", p.getTextFieldDuracion().getText(), con);
+
+                    LeerDatos.consultarTabla("pelicula", "codigo", con, p.getTablaActualizarPelicula());
+                }
+
+                case "Serie" -> {
+                    PanelActualizarFila_Serie s = (PanelActualizarFila_Serie) panelActual;
+
+                    int codigo = Integer.parseInt(s.getTextFieldCodigo().getText());
+
+                    Validaciones.validarTitulo(s.getTextFieldTítulo().getText());
+                    Validaciones.validarCreador(s.getTextFieldCreador().getText());
+                    Validaciones.validarAnyo(Integer.parseInt(s.getTextFieldAñoEmision().getText()));
+
+                    int temporadas = Integer.parseInt(s.getTextFieldTemporadas().getText());
+                    int episodios = Integer.parseInt(s.getTextFieldDEpisodios().getText());
+
+                    if (temporadas < 0) {
+                        throw new DatoInvalidoException("Temporadas inválidas");
+                    }
+                    if (episodios < 0) {
+                        throw new DatoInvalidoException("Episodios inválidos");
+                    }
+
+                    Actualizar_EliminarDatos.actualizar("serie", codigo, "titulo", s.getTextFieldTítulo().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("serie", codigo, "creador", s.getTextFieldCreador().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("serie", codigo, "años_emision", s.getTextFieldAñoEmision().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("serie", codigo, "temporadas", s.getTextFieldTemporadas().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("serie", codigo, "episodios", s.getTextFieldDEpisodios().getText(), con);
+
+                    LeerDatos.consultarTabla("serie", "codigo", con, s.getTablaActualizarSerie());
+                }
+
+                case "Actor" -> {
+                    PanelActualizarFila_Actor a = (PanelActualizarFila_Actor) panelActual;
+
+                    int codigo = Integer.parseInt(a.getTextFieldCodigo().getText());
+
+                    Validaciones.validarNombreActor(a.getTextFieldNombre().getText());
+                    Validaciones.validarFechaNacimiento(java.time.LocalDate.parse(a.getTextFieldFechaNacimiento().getText()));
+                    Validaciones.validarResidencia(a.getTextFieldLugarRsidencia().getText());
+                    Validaciones.validarNacionalidad(a.getTextFieldNacionalidad().getText());
+
+                    Actualizar_EliminarDatos.actualizar("actor", codigo, "nombre", a.getTextFieldNombre().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("actor", codigo, "fecha_nacimiento", a.getTextFieldFechaNacimiento().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("actor", codigo, "lugar_residencia", a.getTextFieldLugarRsidencia().getText(), con);
+                    Actualizar_EliminarDatos.actualizar("actor", codigo, "nacionalidad", a.getTextFieldNacionalidad().getText(), con);
+
+                    LeerDatos.consultarTabla("actor", "codigo", con, a.getTablaActualizarActor());
+                }
+
+                case "Personaje_Película" -> {
+                    PanelActualizarFila_PersonajePelicula pp = (PanelActualizarFila_PersonajePelicula) panelActual;
+
+                    int codP = Integer.parseInt(pp.getTextFieldCodigoPelicula().getText());
+                    int codA = Integer.parseInt(pp.getTextFieldCodigoActor().getText());
+
+                    Validaciones.validarTipoPersonaje(pp.getTextFieldTipo().getText());
+
+                    Actualizar_EliminarDatos.actualizarPeliculas_personaje(codP, codA, "nombre", pp.getTextFieldNombre().getText(), con);
+                    Actualizar_EliminarDatos.actualizarPeliculas_personaje(codP, codA, "tipo", pp.getTextFieldTipo().getText(), con);
+
+                    LeerDatos.consultarTabla("personaje_pelicula", "codigo_pelicula", con, pp.getTablaActualizarPersonajePelicula());
+                }
+
+                case "Personaje_Serie" -> {
+                    PanelActualizarFila_PersonajeSerie ps = (PanelActualizarFila_PersonajeSerie) panelActual;
+
+                    int codS = Integer.parseInt(ps.getTextFieldCodigoSerie().getText());
+                    int codA = Integer.parseInt(ps.getTextFieldCodigoActor().getText());
+
+                    Validaciones.validarTipoPersonaje(ps.getTextFieldTipo().getText());
+
+                    String duracion = ps.getTextFieldDuracion().getText();
+
+                    Actualizar_EliminarDatos.actualizarSeries_personaje(codS, codA, "nombre", ps.getTextFieldNombre().getText(), con);
+                    Actualizar_EliminarDatos.actualizarSeries_personaje(codS, codA, "tipo", ps.getTextFieldTipo().getText(), con);
+                    Actualizar_EliminarDatos.actualizarSeries_personaje(codS, codA, "duracion", ps.getTextFieldDuracion().getText(), con);
+
+                    LeerDatos.consultarTabla("personaje_serie", "codigo_serie", con, ps.getTablaActualizarPersonajeSerie());
+                }
+            }
+
+            JOptionPane.showMessageDialog(this, "✔ Actualizado correctamente");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_botonActualizarFilaActionPerformed
+
     private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
         // TODO add your handling code here:
         panelCambiante.removeAll();
-
         panelCambiante.setLayout(new java.awt.BorderLayout());
 
         String opcion = selectorTabla.getSelectedItem().toString();
 
         switch (opcion) {
 
-            case "Película":
+            case "Película": {
 
-                panelCambiante.add(
-                        new PanelActualizarFila_Pelicula(),
-                        java.awt.BorderLayout.CENTER
-                );
+                PanelActualizarFila_Pelicula p = new PanelActualizarFila_Pelicula();
+                panelActual = p;
 
-                break;
+                panelCambiante.add(p, java.awt.BorderLayout.CENTER);
+                panelCambiante.revalidate();
+                panelCambiante.repaint();
 
-            case "Serie":
-
-                panelCambiante.add(
-                        new PanelActualizarFila_Serie(),
-                        java.awt.BorderLayout.CENTER
-                );
-
-                break;
-
-            case "Actor":
-
-                panelCambiante.add(
-                        new PanelActualizarFila_Actor(),
-                        java.awt.BorderLayout.CENTER
-                );
+                SwingUtilities.invokeLater(() -> {
+                    cargarTablaYListener(
+                            "pelicula",
+                            "codigo",
+                            p.getTablaActualizarPelicula(),
+                            p.getTextFieldCodigo(),
+                            p.getTextFieldTítulo(),
+                            p.getTextFieldDirector(),
+                            p.getTextFieldAñoEstreno(),
+                            p.getTextFieldDuracion()
+                    );
+                });
 
                 break;
+            }
 
-            case "Personaje_Película":
+            case "Serie": {
 
-                panelCambiante.add(
-                        new PanelActualizarFila_PersonajePelicula(),
-                        java.awt.BorderLayout.CENTER
-                );
+                PanelActualizarFila_Serie s = new PanelActualizarFila_Serie();
+                panelActual = s;
+
+                panelCambiante.add(s, java.awt.BorderLayout.CENTER);
+                panelCambiante.revalidate();
+                panelCambiante.repaint();
+
+                SwingUtilities.invokeLater(() -> {
+                    cargarTablaYListener(
+                            "serie",
+                            "codigo",
+                            s.getTablaActualizarSerie(),
+                            s.getTextFieldCodigo(),
+                            s.getTextFieldTítulo(),
+                            s.getTextFieldCreador(),
+                            s.getTextFieldAñoEmision(),
+                            s.getTextFieldTemporadas(),
+                            s.getTextFieldDEpisodios()
+                    );
+                });
 
                 break;
+            }
 
-            case "Personaje_Serie":
+            case "Actor": {
 
-                panelCambiante.add(
-                        new PanelActualizarFila_PersonajeSerie(),
-                        java.awt.BorderLayout.CENTER
-                );
+                PanelActualizarFila_Actor a = new PanelActualizarFila_Actor();
+                panelActual = a;
+
+                panelCambiante.add(a, java.awt.BorderLayout.CENTER);
+                panelCambiante.revalidate();
+                panelCambiante.repaint();
+
+                SwingUtilities.invokeLater(() -> {
+                    cargarTablaYListener(
+                            "actor",
+                            "codigo",
+                            a.getTablaActualizarActor(),
+                            a.getTextFieldCodigo(),
+                            a.getTextFieldNombre(),
+                            a.getTextFieldFechaNacimiento(),
+                            a.getTextFieldLugarRsidencia(),
+                            a.getTextFieldNacionalidad()
+                    );
+                });
 
                 break;
+            }
+
+            case "Personaje_Película": {
+
+                PanelActualizarFila_PersonajePelicula pp = new PanelActualizarFila_PersonajePelicula();
+                panelActual = pp;
+
+                panelCambiante.add(pp, java.awt.BorderLayout.CENTER);
+                panelCambiante.revalidate();
+                panelCambiante.repaint();
+
+                SwingUtilities.invokeLater(() -> {
+                    cargarTablaYListener(
+                            "personaje_pelicula",
+                            "codigo_pelicula",
+                            pp.getTablaActualizarPersonajePelicula(),
+                            pp.getTextFieldCodigoPelicula(),
+                            pp.getTextFieldCodigoActor(),
+                            pp.getTextFieldNombre(),
+                            pp.getTextFieldTipo()
+                    );
+                });
+
+                break;
+            }
+
+            case "Personaje_Serie": {
+
+                PanelActualizarFila_PersonajeSerie ps = new PanelActualizarFila_PersonajeSerie();
+                panelActual = ps;
+
+                panelCambiante.add(ps, java.awt.BorderLayout.CENTER);
+                panelCambiante.revalidate();
+                panelCambiante.repaint();
+
+                SwingUtilities.invokeLater(() -> {
+                    cargarTablaYListener(
+                            "personaje_serie",
+                            "codigo_serie",
+                            ps.getTablaActualizarPersonajeSerie(),
+                            ps.getTextFieldCodigoSerie(),
+                            ps.getTextFieldCodigoActor(),
+                            ps.getTextFieldNombre(),
+                            ps.getTextFieldTipo(),
+                            ps.getTextFieldEpisodios(),
+                            ps.getTextFieldDuracion()
+                    );
+                });
+
+                break;
+            }
         }
-
-        panelCambiante.revalidate();
-        panelCambiante.repaint();
     }//GEN-LAST:event_selectorTablaActionPerformed
-
-    private void botonActualizarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarFilaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonActualizarFilaActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
@@ -248,14 +498,77 @@ public class ActualizarFila extends javax.swing.JFrame {
         });
     }
 
+    public static void cargarListenerTabla(javax.swing.JTable tabla,
+            javax.swing.JTextField... fields) {
+
+        javax.swing.SwingUtilities.invokeLater(() -> {
+
+            tabla.getSelectionModel().addListSelectionListener(e -> {
+                if (!e.getValueIsAdjusting() && tabla.getSelectedRow() != -1) {
+
+                    int fila = tabla.getSelectedRow();
+
+                    for (int i = 0; i < fields.length; i++) {
+                        fields[i].setText(String.valueOf(tabla.getValueAt(fila, i)));
+                    }
+                }
+            });
+
+            if (tabla.getRowCount() > 0) {
+                tabla.setRowSelectionInterval(0, 0);
+
+                int fila = 0;
+                for (int i = 0; i < fields.length; i++) {
+                    fields[i].setText(String.valueOf(tabla.getValueAt(fila, i)));
+                }
+            }
+        });
+    }
+
+    public static void cargarTablaYListener(
+            String tabla,
+            String columnaId,
+            javax.swing.JTable jTable,
+            javax.swing.JTextField... fields) {
+
+        LeerDatos.consultarTabla(
+                tabla,
+                columnaId,
+                ServicioBase_de_Datos.inciarBase_De_Datos(),
+                jTable
+        );
+
+        cargarListenerTabla(jTable, fields);
+    }
+
+    private void actualizarCampoSiNoVacio(
+            String tabla,
+            int id,
+            String columna,
+            String valor,
+            Connection con
+    ) throws Exception {
+
+        if (valor == null || valor.isBlank()) {
+            return;
+        }
+
+        Actualizar_EliminarDatos.actualizarCampoValidado(
+                tabla,
+                id,
+                columna,
+                valor,
+                con
+        );
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonActualizarFila;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel panelActualizarFila;
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JComboBox<String> selectorTabla;
-    private javax.swing.JLabel textoActualizarFila2;
-    private javax.swing.JLabel textoSelectorTabla;
-    private javax.swing.JLabel tituloInsertarFila;
+    private javax.swing.JLabel textoActualizar;
+    private javax.swing.JLabel textoActualizarTabla;
+    private javax.swing.JLabel tituloConsultarFila;
     // End of variables declaration//GEN-END:variables
 }

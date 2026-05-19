@@ -30,12 +30,12 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jDialog1 = new javax.swing.JDialog();
-        textoCódigoSerie = new javax.swing.JLabel();
-        textoCódigoActor = new javax.swing.JLabel();
+        textoCodigoSerie = new javax.swing.JLabel();
+        textoCodigoActor = new javax.swing.JLabel();
         textoTipo = new javax.swing.JLabel();
         textoNombre = new javax.swing.JLabel();
         textFieldCodigoSerie = new javax.swing.JTextField();
-        textFieldCódigoActor = new javax.swing.JTextField();
+        textFieldCodigoActor = new javax.swing.JTextField();
         textFieldNombre = new javax.swing.JTextField();
         textFieldTipo = new javax.swing.JTextField();
         textoDuracion = new javax.swing.JLabel();
@@ -56,8 +56,8 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
-        textoCódigoSerie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoCódigoSerie.setText("Código Serie:");
+        textoCodigoSerie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigoSerie.setText("Código Serie:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -65,10 +65,10 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(59, 107, 0, 0);
-        add(textoCódigoSerie, gridBagConstraints);
+        add(textoCodigoSerie, gridBagConstraints);
 
-        textoCódigoActor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoCódigoActor.setText("Código Actor:");
+        textoCodigoActor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigoActor.setText("Código Actor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -76,7 +76,7 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(27, 107, 0, 0);
-        add(textoCódigoActor, gridBagConstraints);
+        add(textoCodigoActor, gridBagConstraints);
 
         textoTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoTipo.setText("Tipo:");
@@ -109,7 +109,7 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 90;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(29, 62, 0, 94);
-        add(textFieldCódigoActor, gridBagConstraints);
+        add(textFieldCodigoActor, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 2;
@@ -169,7 +169,7 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
     }
 
     public JTextField getTextFieldCódigoActor() {
-        return textFieldCódigoActor;
+        return textFieldCodigoActor;
     }
 
     public JTextField getTextFieldDuracion() {
@@ -191,14 +191,14 @@ public class PanelInsertarFila_PersonajeSerie extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JTextField textFieldCodigoActor;
     private javax.swing.JTextField textFieldCodigoSerie;
-    private javax.swing.JTextField textFieldCódigoActor;
     private javax.swing.JTextField textFieldDuracion;
     private javax.swing.JTextField textFieldEpisodios;
     private javax.swing.JTextField textFieldNombre;
     private javax.swing.JTextField textFieldTipo;
-    private javax.swing.JLabel textoCódigoActor;
-    private javax.swing.JLabel textoCódigoSerie;
+    private javax.swing.JLabel textoCodigoActor;
+    private javax.swing.JLabel textoCodigoSerie;
     private javax.swing.JLabel textoDuracion;
     private javax.swing.JLabel textoEpisodios;
     private javax.swing.JLabel textoNombre;

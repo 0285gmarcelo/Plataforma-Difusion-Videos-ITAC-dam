@@ -7,6 +7,9 @@ package Servicios.BaseDatos;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import javax.swing.JTable;
 
 /**
@@ -21,16 +24,34 @@ public class LeerDatos {
                     "SELECT * FROM " + tabla + " ORDER BY " + columnaOrden + " ASC"
             );
 
+            //ps.setString(1, tabla);
             ResultSet rs = ps.executeQuery();
 
             ResultSetMetaData meta = rs.getMetaData();
 
             int columnas = meta.getColumnCount();
 
-            javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel() {
+            javax.swing.table.DefaultTableModel modelo
+                    = new javax.swing.table.DefaultTableModel() {
+
                 @Override
                 public boolean isCellEditable(int row, int column) {
                     return false;
+                }
+
+                @Override
+                public Class<?> getColumnClass(int columnIndex) {
+
+                    // intenta detectar el tipo real desde los datos cargados
+                    for (int row = 0; row < getRowCount(); row++) {
+                        Object value = getValueAt(row, columnIndex);
+
+                        if (value != null) {
+                            return value.getClass();
+                        }
+                    }
+
+                    return Object.class;
                 }
             };
 
@@ -38,6 +59,7 @@ public class LeerDatos {
                 modelo.addColumn(meta.getColumnName(i));
             }
 
+            //ArrayList<Object> listaObjetos
             while (rs.next()) {
 
                 Object[] fila = new Object[columnas];
@@ -45,7 +67,7 @@ public class LeerDatos {
                 for (int i = 0; i < columnas; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
-
+                //listaObjetos.add(fila)
                 modelo.addRow(fila);
             }
 
@@ -57,6 +79,7 @@ public class LeerDatos {
         } catch (SQLException ex) {
             Logger.getLogger(Actualizar_EliminarDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //return listaObjetos
     }
 
     public static void consultarFila(String tabla, String columnaId, Object valorId, Connection con, javax.swing.JTable tablaVisual) {
@@ -142,6 +165,61 @@ public class LeerDatos {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public static void consultarFilaCompuesta(
+            String tabla,
+            String columna1,
+            int valor1,
+            String columna2,
+            int valor2,
+            Connection con,
+            JTable jTable) {
+
+        try {
+
+            String sql = "SELECT * FROM " + tabla
+                    + " WHERE " + columna1 + " = ? AND " + columna2 + " = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, valor1);
+            ps.setInt(2, valor2);
+
+            ResultSet rs = ps.executeQuery();
+
+            ResultSetMetaData meta = rs.getMetaData();
+            int columnas = meta.getColumnCount();
+
+            javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+
+            for (int i = 1; i <= columnas; i++) {
+                model.addColumn(meta.getColumnName(i));
+            }
+
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+
+                for (int i = 1; i <= columnas; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
+
+                model.addRow(fila);
+            }
+
+            jTable.setModel(model);
+
+            rs.close();
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

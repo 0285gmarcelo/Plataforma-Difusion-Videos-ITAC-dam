@@ -20,7 +20,7 @@
               <EmptySpace pref="101" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="textoCódigo" min="-2" max="-2" attributes="0"/>
+                      <Component id="textoCodigo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="textFieldCodigo" min="-2" pref="154" max="-2" attributes="0"/>
                   </Group>
@@ -57,7 +57,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textoCódigo" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="textoCodigo" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="textFieldCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="textoC&#xf3;digo">
+    <Component class="javax.swing.JLabel" name="textoCodigo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>

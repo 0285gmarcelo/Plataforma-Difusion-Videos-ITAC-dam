@@ -4,6 +4,12 @@
  */
 package Pantallas.CreacionEliminacionFilas;
 
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import Servicios.Ficheros.Exportar.*;
+import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.ArrayList;
+import java.sql.*;
 /**
  *
  * @author isard
@@ -185,17 +191,104 @@ public class ExportarTabla extends javax.swing.JFrame {
 
     private void botonTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTXTActionPerformed
         // TODO add your handling code here:
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
 
+        try {
+            String opcion = selectorTabla.getSelectedItem().toString().trim().toLowerCase();
+
+            String tabla = switch (opcion) {
+                case "Película" ->
+                    "pelicula";
+                case "Serie" ->
+                    "serie";
+                case "Actor" ->
+                    "actor";
+                case "Personaje_Película" ->
+                    "personaje_pelicula";
+                case "Personaje_Serie" ->
+                    "personaje_serie";
+                default ->
+                    throw new RuntimeException("Tabla inválida");
+            };
+
+            List<String> datos = obtenerDatosTabla(con, tabla);
+
+            Exportar.exporatTXT(datos, tabla);
+
+            JOptionPane.showMessageDialog(this, "✔ Exportado TXT correctamente");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "❌ Error al exportar TXT", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonTXTActionPerformed
 
     private void botonBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBinarioActionPerformed
         // TODO add your handling code here:
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
 
+        try {
+            String opcion = selectorTabla.getSelectedItem().toString().trim();
+
+            String tabla = switch (opcion) {
+                case "Película" ->
+                    "pelicula";
+                case "Serie" ->
+                    "serie";
+                case "Actor" ->
+                    "actor";
+                case "Personaje_Película" ->
+                    "personaje_pelicula";
+                case "Personaje_Serie" ->
+                    "personaje_serie";
+                default ->
+                    throw new RuntimeException("Tabla inválida");
+            };
+
+            List<String> datos = obtenerDatosTabla(con, tabla);
+
+            Exportar.exportarBINARIO(datos, tabla);
+
+            JOptionPane.showMessageDialog(this, "✔ Exportado BINARIO correctamente");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "❌ Error al exportar BINARIO", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonBinarioActionPerformed
 
     private void botonCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCSVActionPerformed
         // TODO add your handling code here:
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
 
+        try {
+            String opcion = selectorTabla.getSelectedItem().toString().trim();
+
+            String tabla = switch (opcion) {
+                case "Película" ->
+                    "pelicula";
+                case "Serie" ->
+                    "serie";
+                case "Actor" ->
+                    "actor";
+                case "Personaje_Película" ->
+                    "personaje_pelicula";
+                case "Personaje_Serie" ->
+                    "personaje_serie";
+                default ->
+                    throw new RuntimeException("Tabla inválida");
+            };
+
+            List<String> datos = obtenerDatosTabla(con, tabla);
+
+            Exportar.exportarCSV(datos, tabla);
+
+            JOptionPane.showMessageDialog(this, "✔ Exportado CSV correctamente");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "❌ Error al exportar CSV", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonCSVActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -205,6 +298,36 @@ public class ExportarTabla extends javax.swing.JFrame {
 
     private void botonJSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJSONActionPerformed
         // TODO add your handling code here:
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+
+        try {
+            String opcion = selectorTabla.getSelectedItem().toString().trim();
+
+            String tabla = switch (opcion) {
+                case "Película" ->
+                    "pelicula";
+                case "Serie" ->
+                    "serie";
+                case "Actor" ->
+                    "actor";
+                case "Personaje_Película" ->
+                    "personaje_pelicula";
+                case "Personaje_Serie" ->
+                    "personaje_serie";
+                default ->
+                    throw new RuntimeException("Tabla inválida");
+            };
+
+            List<String> datos = obtenerDatosTabla(con, tabla);
+
+            Exportar.exportarJSON(datos, tabla);
+
+            JOptionPane.showMessageDialog(this, "✔ Exportado JSON correctamente");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "❌ Error al exportar JSON", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonJSONActionPerformed
 
     private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
@@ -246,6 +369,90 @@ public class ExportarTabla extends javax.swing.JFrame {
         });
     }
 
+    public List<String> obtenerDatosTabla(Connection con, String tabla) {
+        List<String> datos = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM " + tabla);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                switch (tabla) {
+
+                    case "pelicula" ->
+                        datos.add(
+                                rs.getInt("codigo") + ";"
+                                + rs.getString("titulo") + ";"
+                                + rs.getString("director") + ";"
+                                + rs.getInt("año_estreno") + ";"
+                                + rs.getInt("duracion")
+                        );
+
+                    case "serie" ->
+                        datos.add(
+                                rs.getInt("codigo") + ";"
+                                + rs.getString("titulo") + ";"
+                                + rs.getString("creador") + ";"
+                                + rs.getString("años_emision") + ";"
+                                + rs.getInt("temporadas") + ";"
+                                + rs.getInt("episodios")
+                        );
+
+                    case "actor" ->
+                        datos.add(
+                                rs.getInt("codigo") + ";"
+                                + rs.getString("nombre") + ";"
+                                + rs.getString("fecha_nacimiento") + ";"
+                                + rs.getString("lugar_residencia") + ";"
+                                + rs.getString("nacionalidad")
+                        );
+
+                    case "personaje_pelicula" ->
+                        datos.add(
+                                rs.getInt("codigo_pelicula") + ";"
+                                + rs.getInt("codigo_actor_P") + ";"
+                                + rs.getString("nombre") + ";"
+                                + rs.getString("tipo")
+                        );
+
+                    case "personaje_serie" ->
+                        datos.add(
+                                rs.getInt("codigo_serie") + ";"
+                                + rs.getInt("codigo_actor_S") + ";"
+                                + rs.getString("nombre") + ";"
+                                + rs.getString("tipo") + ";"
+                                + rs.getString("duracion")
+                        );
+                }
+            }
+
+            rs.close();
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return datos;
+    }
+
+    public static String convertirTabla(String opcion) {
+        return switch (opcion) {
+            case "Película" ->
+                "pelicula";
+            case "Serie" ->
+                "serie";
+            case "Actor" ->
+                "actor";
+            case "Personaje_Película" ->
+                "personaje_pelicula";
+            case "Personaje_Serie" ->
+                "personaje_serie";
+            default ->
+                throw new IllegalArgumentException("Tabla no válida: " + opcion);
+        };
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBinario;
     private javax.swing.JButton botonCSV;

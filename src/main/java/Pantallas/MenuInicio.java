@@ -8,12 +8,12 @@ package Pantallas;
  *
  * @author isard
  */
-public class MenúInicio extends javax.swing.JFrame {
+public class MenuInicio extends javax.swing.JFrame {
 
     /**
      * Creates new form PantallaPrueba
      */
-    public MenúInicio() {
+    public MenuInicio() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -89,7 +89,7 @@ public class MenúInicio extends javax.swing.JFrame {
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
         // TODO add your handling code here:
-        new MenúPrincipal().setVisible(true);
+        new MenuPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonComenzarActionPerformed
 
@@ -110,14 +110,18 @@ public class MenúInicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenúInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenúInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenúInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenúInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -126,7 +130,7 @@ public class MenúInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenúInicio().setVisible(true);
+                new MenuInicio().setVisible(true);
 
             }
         });

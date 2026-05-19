@@ -5,10 +5,10 @@
 package Pantallas.ConsultasFilas.Actor;
 
 import java.sql.*;
-import java.util.logging.*;
 import Servicios.BaseDatos.LeerDatos;
 import Servicios.BaseDatos.ServicioBase_de_Datos;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,8 +21,15 @@ public class PanelConsultarFila_Actor extends javax.swing.JPanel {
      */
     public PanelConsultarFila_Actor() {
         initComponents();
+
         Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
-        LeerDatos.consultarTabla("actor", "codigo", con, tablaConsultarActor);
+
+        LeerDatos.consultarTabla(
+                "actor",
+                "codigo",
+                con,
+                tablaConsultarActor
+        );
     }
 
     /**
@@ -36,6 +43,8 @@ public class PanelConsultarFila_Actor extends javax.swing.JPanel {
 
         consultarActor = new javax.swing.JScrollPane();
         tablaConsultarActor = new javax.swing.JTable();
+        textoConsultar = new javax.swing.JLabel();
+        textFieldIdentificadorConsultador = new javax.swing.JTextField();
 
         tablaConsultarActor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -50,31 +59,60 @@ public class PanelConsultarFila_Actor extends javax.swing.JPanel {
         ));
         consultarActor.setViewportView(tablaConsultarActor);
 
+        textoConsultar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoConsultar.setText("Introduce el Identificador para consultar:");
+
+        textFieldIdentificadorConsultador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorConsultadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consultarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addComponent(consultarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(253, 253, 253)
+                .addComponent(textoConsultar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldIdentificadorConsultador, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consultarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(consultarActor, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoConsultar)
+                    .addComponent(textFieldIdentificadorConsultador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void textFieldIdentificadorConsultadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorConsultadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorConsultadorActionPerformed
+
     public JTable getTablaConsultarActor() {
         return tablaConsultarActor;
+    }
+
+    public JTextField getTextFieldIdentificadorConsultador() {
+        return textFieldIdentificadorConsultador;
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane consultarActor;
     private javax.swing.JTable tablaConsultarActor;
+    private javax.swing.JTextField textFieldIdentificadorConsultador;
+    private javax.swing.JLabel textoConsultar;
     // End of variables declaration//GEN-END:variables
 }

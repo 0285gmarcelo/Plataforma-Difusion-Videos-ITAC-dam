@@ -9,6 +9,13 @@ import Pantallas.CreacionEliminacionFilas.Pelicula.PanelEliminarFila_Pelicula;
 import Pantallas.CreacionEliminacionFilas.PersonajePelicula.PanelEliminarFila_PersonajePelicula;
 import Pantallas.CreacionEliminacionFilas.PersonajeSerie.PanelEliminarFila_PersonajeSerie;
 import Pantallas.CreacionEliminacionFilas.Serie.PanelEliminarFila_Serie;
+import java.sql.Connection;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import javax.swing.SwingUtilities;
+import Pantallas.ManipulacionDatosFilas.ActualizarFila;
+import Servicios.BaseDatos.Actualizar_EliminarDatos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,16 +23,35 @@ import Pantallas.CreacionEliminacionFilas.Serie.PanelEliminarFila_Serie;
  */
 public class EliminarFila extends javax.swing.JFrame {
 
+    private javax.swing.JPanel panelActual;
+
     /**
      * Creates new form EliminarfILA
      */
     public EliminarFila() {
         initComponents();
-        panelCambiante.setLayout(new java.awt.BorderLayout());
-        panelCambiante.add(new PanelEliminarFila_Pelicula(), java.awt.BorderLayout.CENTER);
-        panelCambiante.revalidate();
-        panelCambiante.repaint(); 
         this.setLocationRelativeTo(null);
+
+        panelCambiante.setLayout(new java.awt.BorderLayout());
+
+        // Cargar Película por defecto
+        SwingUtilities.invokeLater(() -> {
+            PanelEliminarFila_Pelicula p = new PanelEliminarFila_Pelicula();
+            panelActual = p;
+
+            panelCambiante.add(p, java.awt.BorderLayout.CENTER);
+            panelCambiante.revalidate();
+            panelCambiante.repaint();
+
+            SwingUtilities.invokeLater(() -> {
+                ActualizarFila.cargarTablaYListener(
+                        "pelicula",
+                        "codigo",
+                        p.getTablaEliminarPelicula(),
+                        p.getTextFieldIdentificadorEliminador()
+                );
+            });
+        });
     }
 
     /**
@@ -44,8 +70,6 @@ public class EliminarFila extends javax.swing.JFrame {
         textoSelectorTabla = new javax.swing.JLabel();
         selectorTabla = new javax.swing.JComboBox<>();
         botonSalir = new javax.swing.JButton();
-        textoEliminar = new javax.swing.JLabel();
-        textFieldIdentificadorEliminar = new javax.swing.JTextField();
         panelCambiante = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,20 +105,11 @@ public class EliminarFila extends javax.swing.JFrame {
             }
         });
 
-        textoEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoEliminar.setText("Introduce el Identificador para eliminar:");
-
-        textFieldIdentificadorEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldIdentificadorEliminarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelCambianteLayout = new javax.swing.GroupLayout(panelCambiante);
         panelCambiante.setLayout(panelCambianteLayout);
         panelCambianteLayout.setHorizontalGroup(
             panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
+            .addGap(0, 836, Short.MAX_VALUE)
         );
         panelCambianteLayout.setVerticalGroup(
             panelCambianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,61 +120,50 @@ public class EliminarFila extends javax.swing.JFrame {
         panelEliminarFila.setLayout(panelEliminarFilaLayout);
         panelEliminarFilaLayout.setHorizontalGroup(
             panelEliminarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonSalir)
+                .addGap(21, 21, 21))
             .addGroup(panelEliminarFilaLayout.createSequentialGroup()
                 .addGroup(panelEliminarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelEliminarFilaLayout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(272, 272, 272)
                         .addComponent(textoSelectorTabla)
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelEliminarFilaLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(textoEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldIdentificadorEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelEliminarFilaLayout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(textoEliminar2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(panelEliminarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
-                        .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
+                        .addComponent(botonEliminarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(306, 306, 306))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
                         .addComponent(tituloEliminarFila)
-                        .addGap(151, 151, 151))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panelEliminarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
-                        .addComponent(botonSalir)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
-                        .addComponent(botonEliminarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(175, 175, 175))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarFilaLayout.createSequentialGroup()
-                        .addComponent(textoEliminar2)
-                        .addGap(115, 115, 115))))
+                        .addGap(286, 286, 286))))
         );
         panelEliminarFilaLayout.setVerticalGroup(
             panelEliminarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEliminarFilaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tituloEliminarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(tituloEliminarFila)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelEliminarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelEliminarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textoEliminar)
-                    .addComponent(textFieldIdentificadorEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(botonEliminarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(botonEliminarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textoEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(18, 18, 18))
         );
@@ -170,63 +174,234 @@ public class EliminarFila extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEliminarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarFilaActionPerformed
-        // TODO add your handling code here:
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+
+        try {
+            String opcion = selectorTabla.getSelectedItem().toString();
+
+            int confirmacion = JOptionPane.showConfirmDialog(
+                    this,
+                    "¿Seguro que deseas eliminar esta fila?",
+                    "Confirmar eliminación",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirmacion != JOptionPane.YES_OPTION) {
+                return;
+            }
+
+            switch (opcion) {
+
+                case "Película" -> {
+                    PanelEliminarFila_Pelicula p
+                            = (PanelEliminarFila_Pelicula) panelActual;
+
+                    int codigo = Integer.parseInt(
+                            p.getTextFieldIdentificadorEliminador().getText()
+                    );
+
+                    Actualizar_EliminarDatos.eliminar(
+                            "pelicula", codigo, con
+                    );
+
+                    LeerDatos.consultarTabla(
+                            "pelicula",
+                            "codigo",
+                            con,
+                            p.getTablaEliminarPelicula()
+                    );
+                }
+
+                case "Serie" -> {
+                    PanelEliminarFila_Serie s
+                            = (PanelEliminarFila_Serie) panelActual;
+
+                    int codigo = Integer.parseInt(
+                            s.getTextFieldIdentificadorEliminador().getText()
+                    );
+
+                    Actualizar_EliminarDatos.eliminar(
+                            "serie", codigo, con
+                    );
+
+                    LeerDatos.consultarTabla(
+                            "serie",
+                            "codigo",
+                            con,
+                            s.getTablaEliminarSerie()
+                    );
+                }
+
+                case "Actor" -> {
+                    PanelEliminarFila_Actor a
+                            = (PanelEliminarFila_Actor) panelActual;
+
+                    int codigo = Integer.parseInt(
+                            a.getTextFieldIdentificadorEliminador().getText()
+                    );
+
+                    Actualizar_EliminarDatos.eliminar(
+                            "actor", codigo, con
+                    );
+
+                    LeerDatos.consultarTabla(
+                            "actor",
+                            "codigo",
+                            con,
+                            a.getTablaEliminarActor()
+                    );
+                }
+
+                case "Personaje_Película" -> {
+                    PanelEliminarFila_PersonajePelicula pp
+                            = (PanelEliminarFila_PersonajePelicula) panelActual;
+
+                    int codigoPelicula = Integer.parseInt(
+                            pp.getTextFieldIdentificadorEliminadorComplejo1().getText()
+                    );
+
+                    int codigoActor = Integer.parseInt(
+                            pp.getTextFieldIdentificadorEliminadorComplejo2().getText()
+                    );
+
+                    Actualizar_EliminarDatos.eliminarPersonaje_Pelicula(
+                            codigoActor,
+                            codigoPelicula,
+                            con
+                    );
+
+                    LeerDatos.consultarTabla(
+                            "personaje_pelicula",
+                            "codigo_pelicula",
+                            con,
+                            pp.getTablaEliminarPersonajePelicula()
+                    );
+                }
+
+                case "Personaje_Serie" -> {
+                    PanelEliminarFila_PersonajeSerie ps
+                            = (PanelEliminarFila_PersonajeSerie) panelActual;
+
+                    int codigoSerie = Integer.parseInt(
+                            ps.getTextFieldIdentificadorEliminadorComplejo1().getText()
+                    );
+
+                    int codigoActor = Integer.parseInt(
+                            ps.getTextFieldIdentificadorEliminadorComplejo2().getText()
+                    );
+
+                    Actualizar_EliminarDatos.eliminarPersonaje_Serie(
+                            codigoActor,
+                            codigoSerie,
+                            con
+                    );
+
+                    LeerDatos.consultarTabla(
+                            "personaje_serie",
+                            "codigo_serie",
+                            con,
+                            ps.getTablaEliminarPersonajeSerie()
+                    );
+                }
+            }
+
+            JOptionPane.showMessageDialog(this, "Fila eliminada correctamente");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al eliminar la fila");
+        }
+
     }//GEN-LAST:event_botonEliminarFilaActionPerformed
 
     private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
         // TODO add your handling code here:
-        panelCambiante.removeAll();
 
+        panelCambiante.removeAll();
         panelCambiante.setLayout(new java.awt.BorderLayout());
 
         String opcion = selectorTabla.getSelectedItem().toString();
 
         switch (opcion) {
 
-            case "Película":
+            case "Película" -> {
+                PanelEliminarFila_Pelicula p = new PanelEliminarFila_Pelicula();
+                panelActual = p;
+                panelCambiante.add(p, java.awt.BorderLayout.CENTER);
 
-                panelCambiante.add(
-                        new PanelEliminarFila_Pelicula(),
-                        java.awt.BorderLayout.CENTER
-                );
+                SwingUtilities.invokeLater(() -> {
+                    ActualizarFila.cargarTablaYListener(
+                            "pelicula",
+                            "codigo",
+                            p.getTablaEliminarPelicula(),
+                            p.getTextFieldIdentificadorEliminador()
+                    );
+                });
+            }
 
-                break;
+            case "Serie" -> {
+                PanelEliminarFila_Serie s = new PanelEliminarFila_Serie();
+                panelActual = s;
+                panelCambiante.add(s, java.awt.BorderLayout.CENTER);
 
-            case "Serie":
+                SwingUtilities.invokeLater(() -> {
+                    ActualizarFila.cargarTablaYListener(
+                            "serie",
+                            "codigo",
+                            s.getTablaEliminarSerie(),
+                            s.getTextFieldIdentificadorEliminador()
+                    );
+                });
+            }
 
-                panelCambiante.add(
-                        new PanelEliminarFila_Serie(),
-                        java.awt.BorderLayout.CENTER
-                );
+            case "Actor" -> {
+                PanelEliminarFila_Actor a = new PanelEliminarFila_Actor();
+                panelActual = a;
+                panelCambiante.add(a, java.awt.BorderLayout.CENTER);
 
-                break;
+                SwingUtilities.invokeLater(() -> {
+                    ActualizarFila.cargarTablaYListener(
+                            "actor",
+                            "codigo",
+                            a.getTablaEliminarActor(),
+                            a.getTextFieldIdentificadorEliminador()
+                    );
+                });
+            }
 
-            case "Actor":
+            case "Personaje_Película" -> {
+                PanelEliminarFila_PersonajePelicula pp
+                        = new PanelEliminarFila_PersonajePelicula();
+                panelActual = pp;
+                panelCambiante.add(pp, java.awt.BorderLayout.CENTER);
 
-                panelCambiante.add(
-                        new PanelEliminarFila_Actor(),
-                        java.awt.BorderLayout.CENTER
-                );
+                SwingUtilities.invokeLater(() -> {
+                    ActualizarFila.cargarTablaYListener(
+                            "personaje_pelicula",
+                            "codigo_pelicula",
+                            pp.getTablaEliminarPersonajePelicula(),
+                            pp.getTextFieldIdentificadorEliminadorComplejo1(),
+                            pp.getTextFieldIdentificadorEliminadorComplejo2()
+                    );
+                });
+            }
 
-                break;
+            case "Personaje_Serie" -> {
+                PanelEliminarFila_PersonajeSerie ps
+                        = new PanelEliminarFila_PersonajeSerie();
+                panelActual = ps;
+                panelCambiante.add(ps, java.awt.BorderLayout.CENTER);
 
-            case "Personaje_Película":
-
-                panelCambiante.add(
-                        new PanelEliminarFila_PersonajePelicula(),
-                        java.awt.BorderLayout.CENTER
-                );
-
-                break;
-
-            case "Personaje_Serie":
-
-                panelCambiante.add(
-                        new PanelEliminarFila_PersonajeSerie(),
-                        java.awt.BorderLayout.CENTER
-                );
-
-                break;
+                SwingUtilities.invokeLater(() -> {
+                    ActualizarFila.cargarTablaYListener(
+                            "personaje_serie",
+                            "codigo_serie",
+                            ps.getTablaEliminarPersonajeSerie(),
+                            ps.getTextFieldIdentificadorEliminadorComplejo1(),
+                            ps.getTextFieldIdentificadorEliminadorComplejo2()
+                    );
+                });
+            }
         }
 
         panelCambiante.revalidate();
@@ -237,10 +412,6 @@ public class EliminarFila extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
-
-    private void textFieldIdentificadorEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldIdentificadorEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,8 +455,6 @@ public class EliminarFila extends javax.swing.JFrame {
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panelEliminarFila;
     private javax.swing.JComboBox<String> selectorTabla;
-    private javax.swing.JTextField textFieldIdentificadorEliminar;
-    private javax.swing.JLabel textoEliminar;
     private javax.swing.JLabel textoEliminar2;
     private javax.swing.JLabel textoSelectorTabla;
     private javax.swing.JLabel tituloEliminarFila;

@@ -28,7 +28,7 @@ public class PanelInsertarFila_Serie extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textoCódigo = new javax.swing.JLabel();
+        textoCodigo = new javax.swing.JLabel();
         textoTitulo = new javax.swing.JLabel();
         textoAñoEmision = new javax.swing.JLabel();
         textoCreador = new javax.swing.JLabel();
@@ -41,8 +41,8 @@ public class PanelInsertarFila_Serie extends javax.swing.JPanel {
         textFieldTemporadas = new javax.swing.JTextField();
         textFieldDEpisodios = new javax.swing.JTextField();
 
-        textoCódigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoCódigo.setText("Código:");
+        textoCodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigo.setText("Código:");
 
         textoTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoTitulo.setText("Título:");
@@ -67,7 +67,7 @@ public class PanelInsertarFila_Serie extends javax.swing.JPanel {
                 .addContainerGap(101, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textoCódigo)
+                        .addComponent(textoCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -95,7 +95,7 @@ public class PanelInsertarFila_Serie extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textoCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -155,8 +155,8 @@ public class PanelInsertarFila_Serie extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldTemporadas;
     private javax.swing.JTextField textFieldTítulo;
     private javax.swing.JLabel textoAñoEmision;
+    private javax.swing.JLabel textoCodigo;
     private javax.swing.JLabel textoCreador;
-    private javax.swing.JLabel textoCódigo;
     private javax.swing.JLabel textoEpisodios;
     private javax.swing.JLabel textoTemporadas;
     private javax.swing.JLabel textoTitulo;

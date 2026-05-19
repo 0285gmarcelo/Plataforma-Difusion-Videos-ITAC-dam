@@ -4,6 +4,10 @@
  */
 package Pantallas.ConsultasFilas;
 
+import javax.swing.table.DefaultTableModel;
+import Servicios.BaseDatos.RegistroEnMemoria;
+import Servicios.BaseDatos.RegistroInsert;
+
 /**
  *
  * @author isard
@@ -16,6 +20,9 @@ public class DatosInsertados extends javax.swing.JFrame {
     public DatosInsertados() {
         initComponents();
         this.setLocationRelativeTo(null);
+
+        cargarTabla();
+
     }
 
     /**
@@ -68,26 +75,30 @@ public class DatosInsertados extends javax.swing.JFrame {
         panelDatosInsertados.setLayout(panelDatosInsertadosLayout);
         panelDatosInsertadosLayout.setHorizontalGroup(
             panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDatosInsertadosLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonSalir)
+                .addGap(16, 16, 16))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                        .addComponent(botonSalir)
-                        .addGap(16, 16, 16))
+                        .addComponent(jScrollPanelConsultarFilas)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                        .addComponent(textoDatosInsertados)
-                        .addGap(157, 157, 157))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                        .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                        .addComponent(tituloDatosInsertados)
-                        .addGap(138, 138, 138))))
+                        .addGap(267, 267, 267)
+                        .addGroup(panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                                .addComponent(tituloDatosInsertados)
+                                .addGap(216, 216, 216))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
+                                .addComponent(textoDatosInsertados)
+                                .addGap(250, 250, 250))))))
         );
         panelDatosInsertadosLayout.setVerticalGroup(
             panelDatosInsertadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosInsertadosLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addComponent(tituloDatosInsertados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPanelConsultarFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,16 +133,24 @@ public class DatosInsertados extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DatosInsertados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInsertados.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DatosInsertados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInsertados.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DatosInsertados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInsertados.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DatosInsertados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosInsertados.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -143,6 +162,29 @@ public class DatosInsertados extends javax.swing.JFrame {
         });
     }
 
+    private void cargarTabla() {
+
+        DefaultTableModel model = new DefaultTableModel();
+
+        model.addColumn("Tabla");
+        model.addColumn("Datos insertados");
+
+        for (RegistroInsert r : RegistroEnMemoria.getInserts()) {
+            model.addRow(new Object[]{
+                r.getTabla(),
+                r.getDatos()
+            });
+        }
+
+        tablaDatosInsertados.setModel(model);
+        tablaDatosInsertados.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tablaDatosInsertados.getColumnModel().getColumn(0).setMinWidth(150);
+        tablaDatosInsertados.getColumnModel().getColumn(0).setMaxWidth(190);
+
+        tablaDatosInsertados.getColumnModel().getColumn(1).setPreferredWidth(500);
+        // 🔒 evitar edición
+        tablaDatosInsertados.setDefaultEditor(Object.class, null);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSalir;
     private javax.swing.JScrollPane jScrollPanelConsultarFilas;

@@ -8,6 +8,7 @@ import Servicios.BaseDatos.LeerDatos;
 import Servicios.BaseDatos.ServicioBase_de_Datos;
 import java.sql.Connection;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,8 +21,18 @@ public class PanelConsultarFila_Pelicula extends javax.swing.JPanel {
      */
     public PanelConsultarFila_Pelicula() {
         initComponents();
+
         Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
-        LeerDatos.consultarTabla("pelicula", "codigo", con, tablaConsultarPelicula);
+
+        //lista = 
+        LeerDatos.consultarTabla(
+                "pelicula",
+                "codigo",
+                con,
+                tablaConsultarPelicula
+        );
+        
+        //Muestro en la tabla
     }
 
     /**
@@ -35,6 +46,8 @@ public class PanelConsultarFila_Pelicula extends javax.swing.JPanel {
 
         consultarPelicula = new javax.swing.JScrollPane();
         tablaConsultarPelicula = new javax.swing.JTable();
+        textoConsultar = new javax.swing.JLabel();
+        textFieldIdentificadorConsultador = new javax.swing.JTextField();
 
         tablaConsultarPelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -49,31 +62,61 @@ public class PanelConsultarFila_Pelicula extends javax.swing.JPanel {
         ));
         consultarPelicula.setViewportView(tablaConsultarPelicula);
 
+        textoConsultar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoConsultar.setText("Introduce el Identificador para consultar:");
+
+        textFieldIdentificadorConsultador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorConsultadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consultarPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(consultarPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(textoConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldIdentificadorConsultador, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(170, 170, 170))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consultarPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(consultarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoConsultar)
+                    .addComponent(textFieldIdentificadorConsultador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void textFieldIdentificadorConsultadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorConsultadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorConsultadorActionPerformed
+
     public JTable getTablaConsultarPelicula() {
         return tablaConsultarPelicula;
+    }
+
+    public JTextField getTextFieldIdentificadorConsultador() {
+        return textFieldIdentificadorConsultador;
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane consultarPelicula;
     private javax.swing.JTable tablaConsultarPelicula;
+    private javax.swing.JTextField textFieldIdentificadorConsultador;
+    private javax.swing.JLabel textoConsultar;
     // End of variables declaration//GEN-END:variables
 }

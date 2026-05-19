@@ -4,6 +4,12 @@
  */
 package Pantallas.ManipulacionDatosFilas.Actor;
 
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import java.sql.Connection;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -15,6 +21,8 @@ public class PanelActualizarFila_Actor extends javax.swing.JPanel {
      */
     public PanelActualizarFila_Actor() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        LeerDatos.consultarTabla("actor", "codigo", con, tablaActualizarActor);
     }
 
     /**
@@ -28,6 +36,16 @@ public class PanelActualizarFila_Actor extends javax.swing.JPanel {
 
         scrollPanelActualizarActor = new javax.swing.JScrollPane();
         tablaActualizarActor = new javax.swing.JTable();
+        textoCodigo = new javax.swing.JLabel();
+        textoNombre = new javax.swing.JLabel();
+        textoLugarResidencia = new javax.swing.JLabel();
+        textoFechaNacimiento = new javax.swing.JLabel();
+        textoNacionalidad = new javax.swing.JLabel();
+        textFieldCodigo = new javax.swing.JTextField();
+        textFieldNombre = new javax.swing.JTextField();
+        textFieldFechaNacimiento = new javax.swing.JTextField();
+        textFieldLugarRsidencia = new javax.swing.JTextField();
+        textFieldNacionalidad = new javax.swing.JTextField();
 
         tablaActualizarActor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -42,27 +60,123 @@ public class PanelActualizarFila_Actor extends javax.swing.JPanel {
         ));
         scrollPanelActualizarActor.setViewportView(tablaActualizarActor);
 
+        textoCodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigo.setText("Código:");
+
+        textoNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoNombre.setText("Nombre:");
+
+        textoLugarResidencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoLugarResidencia.setText("Lugar Residencia:");
+
+        textoFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoFechaNacimiento.setText("Fecha Nacimiento:");
+
+        textoNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoNacionalidad.setText("Nacionalidad:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(scrollPanelActualizarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoCodigo)
+                        .addGap(76, 76, 76)
+                        .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoNombre)
+                        .addGap(70, 70, 70)
+                        .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoFechaNacimiento)
+                        .addGap(12, 12, 12)
+                        .addComponent(textFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoLugarResidencia)
+                        .addGap(18, 18, 18)
+                        .addComponent(textFieldLugarRsidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoNacionalidad)
+                        .addGap(42, 42, 42)
+                        .addComponent(textFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(223, 223, 223))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                .addComponent(scrollPanelActualizarActor, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoFechaNacimiento)
+                    .addComponent(textFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoLugarResidencia)
+                    .addComponent(textFieldLugarRsidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoNacionalidad)
+                    .addComponent(textFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getTablaActualizarActor() {
+        return tablaActualizarActor;
+    }
+
+    public JTextField getTextFieldCodigo() {
+        return textFieldCodigo;
+    }
+
+    public JTextField getTextFieldFechaNacimiento() {
+        return textFieldFechaNacimiento;
+    }
+
+    public JTextField getTextFieldLugarRsidencia() {
+        return textFieldLugarRsidencia;
+    }
+
+    public JTextField getTextFieldNacionalidad() {
+        return textFieldNacionalidad;
+    }
+
+    public JTextField getTextFieldNombre() {
+        return textFieldNombre;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane scrollPanelActualizarActor;
     private javax.swing.JTable tablaActualizarActor;
+    private javax.swing.JTextField textFieldCodigo;
+    private javax.swing.JTextField textFieldFechaNacimiento;
+    private javax.swing.JTextField textFieldLugarRsidencia;
+    private javax.swing.JTextField textFieldNacionalidad;
+    private javax.swing.JTextField textFieldNombre;
+    private javax.swing.JLabel textoCodigo;
+    private javax.swing.JLabel textoFechaNacimiento;
+    private javax.swing.JLabel textoLugarResidencia;
+    private javax.swing.JLabel textoNacionalidad;
+    private javax.swing.JLabel textoNombre;
     // End of variables declaration//GEN-END:variables
 }

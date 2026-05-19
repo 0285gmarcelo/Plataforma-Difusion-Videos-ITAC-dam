@@ -21,6 +21,8 @@ public class PanelConsultarFilas_Serie extends javax.swing.JPanel {
         initComponents();
         Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
         LeerDatos.consultarTabla("serie", "titulo", con, tablaConsultarSeries);
+        javax.swing.table.TableRowSorter<javax.swing.table.TableModel> sorter = new javax.swing.table.TableRowSorter<>(tablaConsultarSeries.getModel());
+        tablaConsultarSeries.setRowSorter(sorter);
     }
 
     /**

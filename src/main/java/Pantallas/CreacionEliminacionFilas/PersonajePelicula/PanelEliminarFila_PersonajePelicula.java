@@ -4,6 +4,9 @@
  */
 package Pantallas.CreacionEliminacionFilas.PersonajePelicula;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -28,6 +31,10 @@ public class PanelEliminarFila_PersonajePelicula extends javax.swing.JPanel {
 
         eliminarPersonajePelicula = new javax.swing.JScrollPane();
         tablaEliminarPersonajePelicula = new javax.swing.JTable();
+        textoEliminarCompleja1 = new javax.swing.JLabel();
+        textFieldIdentificadorEliminadorComplejo1 = new javax.swing.JTextField();
+        textoEliminarCompleja2 = new javax.swing.JLabel();
+        textFieldIdentificadorEliminadorComplejo2 = new javax.swing.JTextField();
 
         tablaEliminarPersonajePelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -42,31 +49,91 @@ public class PanelEliminarFila_PersonajePelicula extends javax.swing.JPanel {
         ));
         eliminarPersonajePelicula.setViewportView(tablaEliminarPersonajePelicula);
 
+        textoEliminarCompleja1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoEliminarCompleja1.setText("Introduce el Identificador de Película para eliminar:");
+
+        textFieldIdentificadorEliminadorComplejo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorEliminadorComplejo1ActionPerformed(evt);
+            }
+        });
+
+        textoEliminarCompleja2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoEliminarCompleja2.setText("Introduce el Identificador de Actor para eliminar:");
+
+        textFieldIdentificadorEliminadorComplejo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorEliminadorComplejo2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoEliminarCompleja1)
+                    .addComponent(textoEliminarCompleja2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldIdentificadorEliminadorComplejo1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldIdentificadorEliminadorComplejo2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(139, 139, 139))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(eliminarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .addComponent(eliminarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(401, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoEliminarCompleja1)
+                    .addComponent(textFieldIdentificadorEliminadorComplejo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoEliminarCompleja2)
+                    .addComponent(textFieldIdentificadorEliminadorComplejo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(eliminarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(eliminarPersonajePelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(68, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textFieldIdentificadorEliminadorComplejo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorEliminadorComplejo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorEliminadorComplejo1ActionPerformed
+
+    private void textFieldIdentificadorEliminadorComplejo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorEliminadorComplejo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorEliminadorComplejo2ActionPerformed
+
+    public JTable getTablaEliminarPersonajePelicula() {
+        return tablaEliminarPersonajePelicula;
+    }
+
+    public JTextField getTextFieldIdentificadorEliminadorComplejo1() {
+        return textFieldIdentificadorEliminadorComplejo1;
+    }
+
+    public JTextField getTextFieldIdentificadorEliminadorComplejo2() {
+        return textFieldIdentificadorEliminadorComplejo2;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane eliminarPersonajePelicula;
     private javax.swing.JTable tablaEliminarPersonajePelicula;
+    private javax.swing.JTextField textFieldIdentificadorEliminadorComplejo1;
+    private javax.swing.JTextField textFieldIdentificadorEliminadorComplejo2;
+    private javax.swing.JLabel textoEliminarCompleja1;
+    private javax.swing.JLabel textoEliminarCompleja2;
     // End of variables declaration//GEN-END:variables
 }

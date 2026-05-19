@@ -4,6 +4,13 @@
  */
 package Pantallas.ManipulacionDatosFilas.Pelicula;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import java.sql.Connection;
+import javax.swing.JTable;
+
 /**
  *
  * @author isard
@@ -15,6 +22,8 @@ public class PanelActualizarFila_Pelicula extends javax.swing.JPanel {
      */
     public PanelActualizarFila_Pelicula() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        LeerDatos.consultarTabla("pelicula", "codigo", con, tablaActualizarPelicula);
     }
 
     /**
@@ -28,6 +37,16 @@ public class PanelActualizarFila_Pelicula extends javax.swing.JPanel {
 
         scrollPanelActualizarPelicula = new javax.swing.JScrollPane();
         tablaActualizarPelicula = new javax.swing.JTable();
+        textoCódigo = new javax.swing.JLabel();
+        textoTítulo = new javax.swing.JLabel();
+        textoAñoEstreno = new javax.swing.JLabel();
+        textoDirector = new javax.swing.JLabel();
+        textoDuracion = new javax.swing.JLabel();
+        textFieldCodigo = new javax.swing.JTextField();
+        textFieldTítulo = new javax.swing.JTextField();
+        textFieldDirector = new javax.swing.JTextField();
+        textFieldAñoEstreno = new javax.swing.JTextField();
+        textFieldDuracion = new javax.swing.JTextField();
 
         tablaActualizarPelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -42,27 +61,123 @@ public class PanelActualizarFila_Pelicula extends javax.swing.JPanel {
         ));
         scrollPanelActualizarPelicula.setViewportView(tablaActualizarPelicula);
 
+        textoCódigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCódigo.setText("Código:");
+
+        textoTítulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoTítulo.setText("Título:");
+
+        textoAñoEstreno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoAñoEstreno.setText("Año Estreno:");
+
+        textoDirector.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoDirector.setText("Director:");
+
+        textoDuracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoDuracion.setText("Duración:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(scrollPanelActualizarPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoCódigo)
+                        .addGap(43, 43, 43)
+                        .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoTítulo)
+                        .addGap(53, 53, 53)
+                        .addComponent(textFieldTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoDirector)
+                        .addGap(38, 38, 38)
+                        .addComponent(textFieldDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoAñoEstreno)
+                        .addGap(12, 12, 12)
+                        .addComponent(textFieldAñoEstreno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoDuracion)
+                        .addGap(32, 32, 32)
+                        .addComponent(textFieldDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(243, 243, 243))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                .addComponent(scrollPanelActualizarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(textFieldTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoDirector)
+                    .addComponent(textFieldDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoAñoEstreno)
+                    .addComponent(textFieldAñoEstreno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoDuracion)
+                    .addComponent(textFieldDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getTablaActualizarPelicula() {
+        return tablaActualizarPelicula;
+    }
+
+    public JTextField getTextFieldAñoEstreno() {
+        return textFieldAñoEstreno;
+    }
+
+    public JTextField getTextFieldCodigo() {
+        return textFieldCodigo;
+    }
+
+    public JTextField getTextFieldDirector() {
+        return textFieldDirector;
+    }
+
+    public JTextField getTextFieldDuracion() {
+        return textFieldDuracion;
+    }
+
+    public JTextField getTextFieldTítulo() {
+        return textFieldTítulo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane scrollPanelActualizarPelicula;
     private javax.swing.JTable tablaActualizarPelicula;
+    private javax.swing.JTextField textFieldAñoEstreno;
+    private javax.swing.JTextField textFieldCodigo;
+    private javax.swing.JTextField textFieldDirector;
+    private javax.swing.JTextField textFieldDuracion;
+    private javax.swing.JTextField textFieldTítulo;
+    private javax.swing.JLabel textoAñoEstreno;
+    private javax.swing.JLabel textoCódigo;
+    private javax.swing.JLabel textoDirector;
+    private javax.swing.JLabel textoDuracion;
+    private javax.swing.JLabel textoTítulo;
     // End of variables declaration//GEN-END:variables
 }

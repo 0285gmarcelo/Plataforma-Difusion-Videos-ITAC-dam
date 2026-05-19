@@ -30,7 +30,7 @@ public class PanelInsertarFila_Actor extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        textoCódigo = new javax.swing.JLabel();
+        textoCodigo = new javax.swing.JLabel();
         textoNombre = new javax.swing.JLabel();
         textoLugarResidencia = new javax.swing.JLabel();
         textoFechaNacimiento = new javax.swing.JLabel();
@@ -43,15 +43,15 @@ public class PanelInsertarFila_Actor extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
-        textoCódigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoCódigo.setText("Código:");
+        textoCodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigo.setText("Código:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(56, 91, 0, 0);
-        add(textoCódigo, gridBagConstraints);
+        add(textoCodigo, gridBagConstraints);
 
         textoNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoNombre.setText("Nombre:");
@@ -163,7 +163,7 @@ public class PanelInsertarFila_Actor extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldLugarRsidencia;
     private javax.swing.JTextField textFieldNacionalidad;
     private javax.swing.JTextField textFieldNombre;
-    private javax.swing.JLabel textoCódigo;
+    private javax.swing.JLabel textoCodigo;
     private javax.swing.JLabel textoFechaNacimiento;
     private javax.swing.JLabel textoLugarResidencia;
     private javax.swing.JLabel textoNacionalidad;

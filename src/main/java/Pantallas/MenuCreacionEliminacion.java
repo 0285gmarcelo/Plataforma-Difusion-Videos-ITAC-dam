@@ -8,12 +8,12 @@ import Pantallas.CreacionEliminacionFilas.*;
  *
  * @author isard
  */
-public class MenúCreacionEliminacion extends javax.swing.JFrame {
+public class MenuCreacionEliminacion extends javax.swing.JFrame {
 
     /**
      * Creates new form MenúCreacionEliminacion
      */
-    public MenúCreacionEliminacion() {
+    public MenuCreacionEliminacion() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -101,17 +101,17 @@ public class MenúCreacionEliminacion extends javax.swing.JFrame {
                 .addComponent(botonAtrasCreacion)
                 .addContainerGap())
             .addGroup(panelMenúCreacionEliminacionLayout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(106, 106, 106)
+                .addComponent(tituloMenuCreacionEliminacion)
+                .addContainerGap(115, Short.MAX_VALUE))
+            .addGroup(panelMenúCreacionEliminacionLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
                 .addComponent(iconoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(iconoExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(148, 148, 148)
                 .addComponent(iconoImportar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
-            .addGroup(panelMenúCreacionEliminacionLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(tituloMenuCreacionEliminacion)
-                .addContainerGap(115, Short.MAX_VALUE))
         );
         panelMenúCreacionEliminacionLayout.setVerticalGroup(
             panelMenúCreacionEliminacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,13 +169,13 @@ public class MenúCreacionEliminacion extends javax.swing.JFrame {
 
     private void botonAtrasCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasCreacionActionPerformed
         // TODO add your handling code here:
-        new MenúPrincipal().setVisible(true);
+        new MenuPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonAtrasCreacionActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        new MenúPrincipal().setVisible(true);
+        new MenuPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed
 
@@ -201,20 +201,21 @@ public class MenúCreacionEliminacion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenúCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenúCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenúCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenúCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCreacionEliminacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenúCreacionEliminacion().setVisible(true);
+                new MenuCreacionEliminacion().setVisible(true);
             }
         });
     }

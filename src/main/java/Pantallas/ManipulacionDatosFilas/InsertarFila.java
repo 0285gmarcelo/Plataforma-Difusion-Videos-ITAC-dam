@@ -4,6 +4,7 @@
  */
 package Pantallas.ManipulacionDatosFilas;
 
+import Excepciones.DatoInvalidoException;
 import Pantallas.ManipulacionDatosFilas.Actor.PanelInsertarFila_Actor;
 import Pantallas.ManipulacionDatosFilas.Pelicula.PanelInsertarFila_Pelicula;
 import Pantallas.ManipulacionDatosFilas.PersonajePelicula.PanelInsertarFila_PersonajePelicula;
@@ -11,11 +12,14 @@ import Pantallas.ManipulacionDatosFilas.PersonajeSerie.PanelInsertarFila_Persona
 import Pantallas.ManipulacionDatosFilas.Serie.PanelInsertarFila_Serie;
 import Servicios.BaseDatos.InsertarBaseDatos;
 import java.sql.Connection;
-import Servicios.BaseDatos.LeerDatos;
 import Servicios.BaseDatos.ServicioBase_de_Datos;
 import Modelos.*;
 import javax.swing.JPanel;
-
+import javax.swing.JOptionPane;
+import Servicios.Validaciones.Validaciones;
+import java.sql.SQLException;
+import Servicios.Validaciones.Validaciones;
+import Excepciones.*;
 /**
  *
  * @author isard
@@ -194,10 +198,10 @@ public class InsertarFila extends javax.swing.JFrame {
     }//GEN-LAST:event_selectorTablaActionPerformed
 
     private void botonInsertarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarFilaActionPerformed
-        // TODO add your handling code here:
-        try {
+        Connection con = null;
 
-            Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        try {
+            con = ServicioBase_de_Datos.inciarBase_De_Datos();
 
             java.awt.Component panelActual = panelCambiante.getComponent(0);
 
@@ -211,7 +215,11 @@ public class InsertarFila extends javax.swing.JFrame {
                         p.getTextFieldNacionalidad().getText()
                 );
 
+                Validaciones.validarActor(actor);
                 InsertarBaseDatos.insertarActorBD(actor, con);
+
+                JOptionPane.showMessageDialog(this, "Actor insertado correctamente.");
+
             } else if (panelActual instanceof PanelInsertarFila_Pelicula p) {
 
                 Pelicula pelicula = new Pelicula(
@@ -222,7 +230,11 @@ public class InsertarFila extends javax.swing.JFrame {
                         Integer.parseInt(p.getTextFieldDuracion().getText())
                 );
 
+                Validaciones.validarPelicula(pelicula);
                 InsertarBaseDatos.insertarPeliculaBD(pelicula, con);
+
+                JOptionPane.showMessageDialog(this, "Película insertada correctamente.");
+
             } else if (panelActual instanceof PanelInsertarFila_Serie p) {
 
                 Serie serie = new Serie(
@@ -234,17 +246,25 @@ public class InsertarFila extends javax.swing.JFrame {
                         Integer.parseInt(p.getTextFieldDEpisodios().getText())
                 );
 
+                Validaciones.validarSerie(serie);
                 InsertarBaseDatos.insertarSerieBD(serie, con);
+
+                JOptionPane.showMessageDialog(this, "Serie insertada correctamente.");
+
             } else if (panelActual instanceof PanelInsertarFila_PersonajePelicula p) {
 
-                Personaje_Película pp = new Personaje_Película(
-                        Integer.parseInt(p.getTextFieldCodigo().getText()),
+                Personaje_Pelicula pp = new Personaje_Pelicula(
+                        Integer.parseInt(p.getTextFieldCodigoPelicula().getText()),
                         Integer.parseInt(p.getTextFieldCódigoActor().getText()),
                         p.getTextFieldNombre().getText(),
                         p.getTextFieldTipo().getText()
                 );
 
+                Validaciones.validarPersonajePelicula(pp);
                 InsertarBaseDatos.insertarPersonajePeliculaBD(pp, con);
+
+                JOptionPane.showMessageDialog(this, "Personaje de película insertado correctamente.");
+
             } else if (panelActual instanceof PanelInsertarFila_PersonajeSerie p) {
 
                 Personaje_Serie ps = new Personaje_Serie(
@@ -256,13 +276,32 @@ public class InsertarFila extends javax.swing.JFrame {
                         p.getTextFieldDuracion().getText()
                 );
 
+                Validaciones.validarPersonajeSerie(ps);
                 InsertarBaseDatos.insertarPersonajeSerieBD(ps, con);
+
+                JOptionPane.showMessageDialog(this, "Personaje de serie insertado correctamente.");
             }
 
-            con.close();
+        } catch (TipoPersonajeException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error de tipo de personaje", JOptionPane.ERROR_MESSAGE);
+
+        } catch (DatoInvalidoException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Dato inválido", JOptionPane.ERROR_MESSAGE);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: formato numérico incorrecto", "Error de formato", JOptionPane.ERROR_MESSAGE);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_botonInsertarFilaActionPerformed
 
@@ -280,16 +319,24 @@ public class InsertarFila extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

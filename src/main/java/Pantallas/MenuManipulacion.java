@@ -8,12 +8,12 @@ import Pantallas.ManipulacionDatosFilas.*;
  *
  * @author isard
  */
-public class MenúManipulacion extends javax.swing.JFrame {
+public class MenuManipulacion extends javax.swing.JFrame {
 
     /**
      * Creates new form MenúManipulacion
      */
-    public MenúManipulacion() {
+    public MenuManipulacion() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -146,12 +146,11 @@ public class MenúManipulacion extends javax.swing.JFrame {
     private void botonInsertarFilasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarFilasActionPerformed
         // TODO add your handling code here:
         new InsertarFila().setVisible(true);
-       
     }//GEN-LAST:event_botonInsertarFilasActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        new MenúPrincipal().setVisible(true);
+        new MenuPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed
 
@@ -172,20 +171,21 @@ public class MenúManipulacion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenúManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenúManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenúManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenúManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuManipulacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenúManipulacion().setVisible(true);
+                new MenuManipulacion().setVisible(true);
             }
         });
     }

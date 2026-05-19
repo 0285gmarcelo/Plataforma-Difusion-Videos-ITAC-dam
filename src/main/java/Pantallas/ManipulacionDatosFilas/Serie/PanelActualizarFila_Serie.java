@@ -4,6 +4,13 @@
  */
 package Pantallas.ManipulacionDatosFilas.Serie;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import java.sql.Connection;
+import javax.swing.JTable;
+
 /**
  *
  * @author isard
@@ -15,6 +22,8 @@ public class PanelActualizarFila_Serie extends javax.swing.JPanel {
      */
     public PanelActualizarFila_Serie() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        LeerDatos.consultarTabla("serie", "codigo", con, tablaActualizarSerie);
     }
 
     /**
@@ -28,6 +37,18 @@ public class PanelActualizarFila_Serie extends javax.swing.JPanel {
 
         scrollPanelActualizarSerie = new javax.swing.JScrollPane();
         tablaActualizarSerie = new javax.swing.JTable();
+        textFieldTítulo = new javax.swing.JTextField();
+        textFieldCreador = new javax.swing.JTextField();
+        textFieldAñoEmision = new javax.swing.JTextField();
+        textoEpisodios = new javax.swing.JLabel();
+        textoTemporadas = new javax.swing.JLabel();
+        textFieldTemporadas = new javax.swing.JTextField();
+        textoCodigo = new javax.swing.JLabel();
+        textFieldDEpisodios = new javax.swing.JTextField();
+        textoTitulo = new javax.swing.JLabel();
+        textoAñoEmision = new javax.swing.JLabel();
+        textoCreador = new javax.swing.JLabel();
+        textFieldCodigo = new javax.swing.JTextField();
 
         tablaActualizarSerie.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -42,27 +63,137 @@ public class PanelActualizarFila_Serie extends javax.swing.JPanel {
         ));
         scrollPanelActualizarSerie.setViewportView(tablaActualizarSerie);
 
+        textoEpisodios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoEpisodios.setText("Episodios:");
+
+        textoTemporadas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoTemporadas.setText("Temporadas:");
+
+        textoCodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigo.setText("Código:");
+
+        textoTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoTitulo.setText("Título:");
+
+        textoAñoEmision.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoAñoEmision.setText("Año Emisión");
+
+        textoCreador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCreador.setText("Creador:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(scrollPanelActualizarSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoEpisodios)
+                        .addGap(85, 85, 85)
+                        .addComponent(textFieldDEpisodios, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(textoCodigo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textoTemporadas)
+                                .addComponent(textoAñoEmision))
+                            .addGap(67, 67, 67)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textFieldAñoEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textFieldTemporadas, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(textoTitulo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(textoCreador)
+                            .addGap(93, 93, 93)
+                            .addComponent(textFieldCreador, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(219, 219, 219))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                .addComponent(scrollPanelActualizarSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoCreador)
+                    .addComponent(textFieldCreador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoAñoEmision)
+                    .addComponent(textFieldAñoEmision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoTemporadas)
+                    .addComponent(textFieldTemporadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoEpisodios)
+                    .addComponent(textFieldDEpisodios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getTablaActualizarSerie() {
+        return tablaActualizarSerie;
+    }
+
+    public JTextField getTextFieldAñoEmision() {
+        return textFieldAñoEmision;
+    }
+
+    public JTextField getTextFieldCodigo() {
+        return textFieldCodigo;
+    }
+
+    public JTextField getTextFieldCreador() {
+        return textFieldCreador;
+    }
+
+    public JTextField getTextFieldDEpisodios() {
+        return textFieldDEpisodios;
+    }
+
+    public JTextField getTextFieldTemporadas() {
+        return textFieldTemporadas;
+    }
+
+    public JTextField getTextFieldTítulo() {
+        return textFieldTítulo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane scrollPanelActualizarSerie;
     private javax.swing.JTable tablaActualizarSerie;
+    private javax.swing.JTextField textFieldAñoEmision;
+    private javax.swing.JTextField textFieldCodigo;
+    private javax.swing.JTextField textFieldCreador;
+    private javax.swing.JTextField textFieldDEpisodios;
+    private javax.swing.JTextField textFieldTemporadas;
+    private javax.swing.JTextField textFieldTítulo;
+    private javax.swing.JLabel textoAñoEmision;
+    private javax.swing.JLabel textoCodigo;
+    private javax.swing.JLabel textoCreador;
+    private javax.swing.JLabel textoEpisodios;
+    private javax.swing.JLabel textoTemporadas;
+    private javax.swing.JLabel textoTitulo;
     // End of variables declaration//GEN-END:variables
 }

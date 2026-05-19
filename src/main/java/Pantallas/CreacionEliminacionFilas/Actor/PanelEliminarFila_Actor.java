@@ -4,6 +4,9 @@
  */
 package Pantallas.CreacionEliminacionFilas.Actor;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author isard
@@ -28,6 +31,8 @@ public class PanelEliminarFila_Actor extends javax.swing.JPanel {
 
         eliminarActor = new javax.swing.JScrollPane();
         tablaEliminarActor = new javax.swing.JTable();
+        textoEliminar = new javax.swing.JLabel();
+        textFieldIdentificadorEliminador = new javax.swing.JTextField();
 
         tablaEliminarActor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -42,27 +47,60 @@ public class PanelEliminarFila_Actor extends javax.swing.JPanel {
         ));
         eliminarActor.setViewportView(tablaEliminarActor);
 
+        textoEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoEliminar.setText("Introduce el Identificador para eliminar:");
+
+        textFieldIdentificadorEliminador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdentificadorEliminadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eliminarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(eliminarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(textoEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldIdentificadorEliminador, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eliminarActor, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(eliminarActor, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoEliminar)
+                    .addComponent(textFieldIdentificadorEliminador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textFieldIdentificadorEliminadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorEliminadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdentificadorEliminadorActionPerformed
+
+    public JTable getTablaEliminarActor() {
+        return tablaEliminarActor;
+    }
+
+    public JTextField getTextFieldIdentificadorEliminador() {
+        return textFieldIdentificadorEliminador;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane eliminarActor;
     private javax.swing.JTable tablaEliminarActor;
+    private javax.swing.JTextField textFieldIdentificadorEliminador;
+    private javax.swing.JLabel textoEliminar;
     // End of variables declaration//GEN-END:variables
 }

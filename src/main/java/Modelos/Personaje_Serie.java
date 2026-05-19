@@ -6,7 +6,7 @@ import Excepciones.TipoPersonajeException;
  *
  * @author isard
  */
-public class Personaje_Serie implements Interfaces.InterfazJSON{
+public class Personaje_Serie implements Interfaces.InterfazJSON {
 
     private int codigo_Serie;
     private int codigo_Actor;
@@ -15,17 +15,19 @@ public class Personaje_Serie implements Interfaces.InterfazJSON{
     private int episodios;
     private String duracion;
 
-    public Personaje_Serie(int codigo_Actor,int codigo_Serie,String nombre, String tipo, int episodios, String duracion) throws TipoPersonajeException {
+    public Personaje_Serie(int codigo_Actor,
+            int codigo_Serie,
+            String nombre,
+            String tipo,
+            int episodios,
+            String duracion) throws TipoPersonajeException {
+
         this.codigo_Actor = codigo_Actor;
         this.codigo_Serie = codigo_Serie;
         this.nombre = nombre;
-        this.tipo = tipo;
         this.episodios = episodios;
         this.duracion = duracion;
-
-        if (!this.tipo.equalsIgnoreCase("Principal") || !this.tipo.equalsIgnoreCase("Recurrente") || !this.tipo.equalsIgnoreCase("Invitado")) {
-            throw new TipoPersonajeException("ERROR: El personaje debe ser de tipo Principal, Recurrente o Invitado.");
-        }
+        this.tipo = tipo;
     }
 
     public int getCodigo_Serie() {
@@ -70,24 +72,18 @@ public class Personaje_Serie implements Interfaces.InterfazJSON{
 
     @Override
     public String toString() {
-        return  codigo_Serie + ";" + codigo_Actor + ";" + nombre + ";" + tipo + ";" + episodios + ";" + duracion;
+        return codigo_Serie + ";" + codigo_Actor + ";" + nombre + ";" + tipo + ";" + episodios + ";" + duracion;
     }
 
     @Override
     public String diseñoJSON() {
-        return "{" + "\"codigo_Serie\":" + getCodigo_Serie()+ ",\n"
-                 + "\"codigo_Actor\":" + getCodigo_Actor()+ ",\n"
-                 + "\"nombre\":" + getNombre()+ ",\n"
-                 + "\"tipo\":" + getTipo()+ ",\n"
-                 + "\"episodios\":" + getEpisodios()+ ",\n"
-                 + "\"duracion\":" + getDuracion()
-                 + "}"
-                ;
+        return "{" + "\"codigo_Serie\":" + getCodigo_Serie() + ",\n"
+                + "\"codigo_Actor\":" + getCodigo_Actor() + ",\n"
+                + "\"nombre\":" + getNombre() + ",\n"
+                + "\"tipo\":" + getTipo() + ",\n"
+                + "\"episodios\":" + getEpisodios() + ",\n"
+                + "\"duracion\":" + getDuracion()
+                + "}";
     }
-    
-    
-    
-    
-    
 
 }

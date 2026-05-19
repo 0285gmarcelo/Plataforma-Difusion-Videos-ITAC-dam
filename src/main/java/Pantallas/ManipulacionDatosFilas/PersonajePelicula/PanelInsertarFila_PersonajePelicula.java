@@ -29,19 +29,19 @@ public class PanelInsertarFila_PersonajePelicula extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        textoCódigo = new javax.swing.JLabel();
-        textoCódigoActor = new javax.swing.JLabel();
+        textoCodigoPelicula = new javax.swing.JLabel();
+        textoCodigoActor = new javax.swing.JLabel();
         textoTipo = new javax.swing.JLabel();
         textoNombre = new javax.swing.JLabel();
-        textFieldCodigo = new javax.swing.JTextField();
-        textFieldCódigoActor = new javax.swing.JTextField();
+        textFieldCodigoPelicula = new javax.swing.JTextField();
+        textFieldCodigoActor = new javax.swing.JTextField();
         textFieldNombre = new javax.swing.JTextField();
         textFieldTipo = new javax.swing.JTextField();
 
         setLayout(new java.awt.GridBagLayout());
 
-        textoCódigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoCódigo.setText("Código:");
+        textoCodigoPelicula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigoPelicula.setText("Código Película:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -49,10 +49,10 @@ public class PanelInsertarFila_PersonajePelicula extends javax.swing.JPanel {
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(81, 113, 0, 0);
-        add(textoCódigo, gridBagConstraints);
+        add(textoCodigoPelicula, gridBagConstraints);
 
-        textoCódigoActor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoCódigoActor.setText("Código Actor:");
+        textoCodigoActor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigoActor.setText("Código Actor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -60,7 +60,7 @@ public class PanelInsertarFila_PersonajePelicula extends javax.swing.JPanel {
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(27, 113, 0, 0);
-        add(textoCódigoActor, gridBagConstraints);
+        add(textoCodigoActor, gridBagConstraints);
 
         textoTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoTipo.setText("Tipo:");
@@ -80,20 +80,26 @@ public class PanelInsertarFila_PersonajePelicula extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(29, 113, 0, 0);
         add(textoNombre, gridBagConstraints);
+
+        textFieldCodigoPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldCodigoPeliculaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 90;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(83, 33, 0, 117);
-        add(textFieldCodigo, gridBagConstraints);
+        add(textFieldCodigoPelicula, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 90;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(29, 33, 0, 117);
-        add(textFieldCódigoActor, gridBagConstraints);
+        add(textFieldCodigoActor, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -112,8 +118,12 @@ public class PanelInsertarFila_PersonajePelicula extends javax.swing.JPanel {
         add(textFieldTipo, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JTextField getTextFieldCodigo() {
-        return textFieldCodigo;
+    private void textFieldCodigoPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCodigoPeliculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldCodigoPeliculaActionPerformed
+
+    public JTextField getTextFieldCodigoPelicula() {
+        return textFieldCodigoPelicula;
     }
 
     public JTextField getTextFieldNombre() {
@@ -125,19 +135,19 @@ public class PanelInsertarFila_PersonajePelicula extends javax.swing.JPanel {
     }
 
     public JTextField getTextFieldCódigoActor() {
-        return textFieldCódigoActor;
+        return textFieldCodigoActor;
     }
     
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField textFieldCodigo;
-    private javax.swing.JTextField textFieldCódigoActor;
+    private javax.swing.JTextField textFieldCodigoActor;
+    private javax.swing.JTextField textFieldCodigoPelicula;
     private javax.swing.JTextField textFieldNombre;
     private javax.swing.JTextField textFieldTipo;
-    private javax.swing.JLabel textoCódigo;
-    private javax.swing.JLabel textoCódigoActor;
+    private javax.swing.JLabel textoCodigoActor;
+    private javax.swing.JLabel textoCodigoPelicula;
     private javax.swing.JLabel textoNombre;
     private javax.swing.JLabel textoTipo;
     // End of variables declaration//GEN-END:variables

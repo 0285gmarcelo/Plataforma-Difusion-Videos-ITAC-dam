@@ -12,7 +12,8 @@ import Pantallas.ConsultasFilas.Serie.PanelConsultarFila_Serie;
 import java.sql.Connection;
 import Servicios.BaseDatos.LeerDatos;
 import Servicios.BaseDatos.ServicioBase_de_Datos;
-import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import Pantallas.ManipulacionDatosFilas.ActualizarFila;
 
 /**
  *
@@ -20,21 +21,32 @@ import javax.swing.JTable;
  */
 public class ConsultarFila extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ConsultarFila
-     */
+    private javax.swing.JPanel panelActual;
+
     public ConsultarFila() {
         initComponents();
+        this.setLocationRelativeTo(null); //...
+
         panelCambiante.setLayout(new java.awt.BorderLayout());
 
-        PanelConsultarFila_Pelicula panel = new PanelConsultarFila_Pelicula();
-        panelCambiante.add(panel, java.awt.BorderLayout.CENTER);
+        //...
+        SwingUtilities.invokeLater(() -> {
+            PanelConsultarFila_Pelicula p = new PanelConsultarFila_Pelicula();
+            panelActual = p;
 
-        configurarSeleccion(panel.getTablaConsultarPelicula());
+            panelCambiante.add(p, java.awt.BorderLayout.CENTER);
+            panelCambiante.revalidate();
+            panelCambiante.repaint();
 
-        panelCambiante.revalidate();
-        panelCambiante.repaint();
-        this.setLocationRelativeTo(null);
+            SwingUtilities.invokeLater(() -> {
+                ActualizarFila.cargarTablaYListener(
+                        "pelicula",
+                        "codigo",
+                        p.getTablaConsultarPelicula(),
+                        p.getTextFieldIdentificadorConsultador()
+                );
+            });
+        });
     }
 
     /**
@@ -53,8 +65,6 @@ public class ConsultarFila extends javax.swing.JFrame {
         textoSelectorTabla = new javax.swing.JLabel();
         selectorTabla = new javax.swing.JComboBox<>();
         botonSalir = new javax.swing.JButton();
-        textoConsultar = new javax.swing.JLabel();
-        textFieldIdentificadorConsultador = new javax.swing.JTextField();
         panelCambiante = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,15 +100,6 @@ public class ConsultarFila extends javax.swing.JFrame {
             }
         });
 
-        textoConsultar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoConsultar.setText("Introduce el Identificador para consultar:");
-
-        textFieldIdentificadorConsultador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldIdentificadorConsultadorActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelCambianteLayout = new javax.swing.GroupLayout(panelCambiante);
         panelCambiante.setLayout(panelCambianteLayout);
         panelCambianteLayout.setHorizontalGroup(
@@ -114,55 +115,44 @@ public class ConsultarFila extends javax.swing.JFrame {
         panelConsultarFila.setLayout(panelConsultarFilaLayout);
         panelConsultarFilaLayout.setHorizontalGroup(
             panelConsultarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCambiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelConsultarFilaLayout.createSequentialGroup()
-                .addGroup(panelConsultarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonSalir, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelConsultarFilaLayout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(textoConsultar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldIdentificadorConsultador, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(142, 142, 142)))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(244, 244, 244)
                 .addGroup(panelConsultarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
                         .addComponent(textoSelectorTabla)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(198, 198, 198))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
-                        .addComponent(botonConsultarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(257, 257, 257))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
-                        .addComponent(textoConsulta2)
-                        .addGap(184, 184, 184))
+                        .addGap(228, 228, 228))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
                         .addComponent(tituloConsultarFila)
-                        .addGap(225, 225, 225))))
+                        .addGap(265, 265, 265))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
+                        .addComponent(botonConsultarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(295, 295, 295))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
+                        .addComponent(textoConsulta2)
+                        .addGap(228, 228, 228))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarFilaLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(14, 14, 14))))
+            .addComponent(panelCambiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelConsultarFilaLayout.setVerticalGroup(
             panelConsultarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelConsultarFilaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tituloConsultarFila)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
                 .addGroup(panelConsultarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(textoSelectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelCambiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelConsultarFilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textoConsultar)
-                    .addComponent(textFieldIdentificadorConsultador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(botonConsultarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(botonConsultarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textoConsulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(47, 47, 47)
                 .addComponent(botonSalir)
                 .addGap(20, 20, 20))
         );
@@ -172,128 +162,141 @@ public class ConsultarFila extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonConsultarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarFilaActionPerformed
-        // TODO add your handling code here:
-        String opcion = selectorTabla.getSelectedItem().toString();
-
-        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
-
-        switch (opcion) {
-
-            case "Película":
-                LeerDatos.consultarFila(
-                        "pelicula",
-                        "codigo",
-                        textFieldIdentificadorConsultador.getText(),
-                        con,
-                        ((PanelConsultarFila_Pelicula) panelCambiante.getComponent(0)).getTablaConsultarPelicula()
-                );
-                break;
-
-            case "Serie":
-                LeerDatos.consultarFila(
-                        "serie",
-                        "codigo",
-                        textFieldIdentificadorConsultador.getText(),
-                        con,
-                        ((PanelConsultarFila_Serie) panelCambiante.getComponent(0)).getTablaConsultarSerie()
-                );
-                break;
-
-            case "Actor":
-                LeerDatos.consultarFila(
-                        "actor",
-                        "codigo",
-                        textFieldIdentificadorConsultador.getText(),
-                        con,
-                        ((PanelConsultarFila_Actor) panelCambiante.getComponent(0)).getTablaConsultarActor()
-                );
-                break;
-
-            case "Personaje_Película":
-                LeerDatos.consultarFila(
-                        "personaje_pelicula",
-                        "codigo_pelicula",
-                        textFieldIdentificadorConsultador.getText(),
-                        con,
-                        ((PanelConsultarFila_PersonajePelicula) panelCambiante.getComponent(0)).getTablaConsultarPersonajePelicula()
-                );
-                break;
-
-            case "Personaje_Serie":
-                LeerDatos.consultarFila(
-                        "personaje_serie",
-                        "codigo_serie",
-                        textFieldIdentificadorConsultador.getText(),
-                        con,
-                        ((PanelConsultarFila_PersonajeSerie) panelCambiante.getComponent(0)).getTablaConsultarPersonajeSerie()
-                );
-                break;
-        }
-    }//GEN-LAST:event_botonConsultarFilaActionPerformed
-
-    private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
-        // TODO add your handling code here:
-        panelCambiante.removeAll();
-        panelCambiante.setLayout(new java.awt.BorderLayout());
-
-        String opcion = selectorTabla.getSelectedItem().toString();
-
-        switch (opcion) {
-
-            case "Película":
-
-                PanelConsultarFila_Pelicula panel = new PanelConsultarFila_Pelicula();
-                panelCambiante.add(panel, java.awt.BorderLayout.CENTER);
-                configurarSeleccion(panel.getTablaConsultarPelicula());
-
-                break;
-
-            case "Serie":
-
-                PanelConsultarFila_Serie panelSerie = new PanelConsultarFila_Serie();
-                panelCambiante.add(panelSerie, java.awt.BorderLayout.CENTER);
-                configurarSeleccion(panelSerie.getTablaConsultarSerie());
-
-                break;
-
-            case "Actor":
-
-                PanelConsultarFila_Actor panelActor = new PanelConsultarFila_Actor();
-                panelCambiante.add(panelActor, java.awt.BorderLayout.CENTER);
-                configurarSeleccion(panelActor.getTablaConsultarActor());
-
-                break;
-
-            case "Personaje_Película":
-
-                PanelConsultarFila_PersonajePelicula panelPP = new PanelConsultarFila_PersonajePelicula();
-                panelCambiante.add(panelPP, java.awt.BorderLayout.CENTER);
-                configurarSeleccion(panelPP.getTablaConsultarPersonajePelicula());
-
-                break;
-
-            case "Personaje_Serie":
-
-                PanelConsultarFila_PersonajeSerie panelPS = new PanelConsultarFila_PersonajeSerie();
-                panelCambiante.add(panelPS, java.awt.BorderLayout.CENTER);
-                configurarSeleccion(panelPS.getTablaConsultarPersonajeSerie());
-
-                break;
-        }
-
-        panelCambiante.revalidate();
-        panelCambiante.repaint();
-    }//GEN-LAST:event_selectorTablaActionPerformed
-
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    private void textFieldIdentificadorConsultadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorConsultadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldIdentificadorConsultadorActionPerformed
+    private void selectorTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorTablaActionPerformed
+        panelCambiante.removeAll();
+
+        String opcion = selectorTabla.getSelectedItem().toString();
+
+        switch (opcion) {
+
+            case "Película":
+                panelActual = new PanelConsultarFila_Pelicula();
+                break;
+
+            case "Serie":
+                panelActual = new PanelConsultarFila_Serie();
+                break;
+
+            case "Actor":
+                panelActual = new PanelConsultarFila_Actor();
+                break;
+
+            case "Personaje_Película":
+                panelActual = new PanelConsultarFila_PersonajePelicula();
+                break;
+
+            case "Personaje_Serie":
+                panelActual = new PanelConsultarFila_PersonajeSerie();
+                break;
+        }
+
+        panelCambiante.add(panelActual);
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
+
+     
+        inicializarSeleccionSegunPanel();
+    }//GEN-LAST:event_selectorTablaActionPerformed
+
+    private void botonConsultarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarFilaActionPerformed
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        String opcion = selectorTabla.getSelectedItem().toString();
+
+        try {
+
+            switch (opcion) {
+
+                case "Película": {
+                    PanelConsultarFila_Pelicula p
+                            = (PanelConsultarFila_Pelicula) panelActual;
+
+                    LeerDatos.consultarFila(
+                            "pelicula",
+                            "codigo",
+                            Integer.parseInt(p.getTextFieldIdentificadorConsultador().getText()),
+                            con,
+                            p.getTablaConsultarPelicula()
+                    );
+                    break;
+                }
+
+                case "Serie": {
+                    PanelConsultarFila_Serie s
+                            = (PanelConsultarFila_Serie) panelActual;
+
+                    LeerDatos.consultarFila(
+                            "serie",
+                            "codigo",
+                            Integer.parseInt(s.getTextFieldIdentificadorConsultador().getText()),
+                            con,
+                            s.getTablaConsultarSerie()
+                    );
+                    break;
+                }
+
+                case "Actor": {
+                    PanelConsultarFila_Actor a
+                            = (PanelConsultarFila_Actor) panelActual;
+
+                    LeerDatos.consultarFila(
+                            "actor",
+                            "codigo",
+                            Integer.parseInt(a.getTextFieldIdentificadorConsultador().getText()),
+                            con,
+                            a.getTablaConsultarActor()
+                    );
+                    break;
+                }
+
+                case "Personaje_Película": {
+                    PanelConsultarFila_PersonajePelicula pp
+                            = (PanelConsultarFila_PersonajePelicula) panelActual;
+
+                    LeerDatos.consultarFilaCompuesta(
+                            "personaje_pelicula",
+                            "codigo_pelicula",
+                            Integer.parseInt(pp.getTextFieldIdentificadorConsultadorComplejo1().getText()),
+                            "codigo_actor_P",
+                            Integer.parseInt(pp.getTextFieldIdentificadorConsultadorComplejo2().getText()),
+                            con,
+                            pp.getTablaConsultarPersonajePelicula()
+                    );
+                    break;
+                }
+
+                case "Personaje_Serie": {
+                    PanelConsultarFila_PersonajeSerie ps
+                            = (PanelConsultarFila_PersonajeSerie) panelActual;
+
+                    LeerDatos.consultarFilaCompuesta(
+                            "personaje_serie",
+                            "codigo_serie",
+                            Integer.parseInt(ps.getTextFieldIdentificadorConsultadorComplejo1().getText()),
+                            "codigo_actor_S",
+                            Integer.parseInt(ps.getTextFieldIdentificadorConsultadorComplejo2().getText()),
+                            con,
+                            ps.getTablaConsultarPersonajeSerie()
+                    );
+                    break;
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Los códigos deben ser números válidos");
+            e.printStackTrace();
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Error al consultar");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_botonConsultarFilaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,16 +312,24 @@ public class ConsultarFila extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFila.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -330,25 +341,105 @@ public class ConsultarFila extends javax.swing.JFrame {
         });
     }
 
+    private void inicializarSeleccionSegunPanel() {
+
+        String opcion = selectorTabla.getSelectedItem().toString();
+
+        switch (opcion) {
+
+            case "Película":
+                configurarSeleccion(((PanelConsultarFila_Pelicula) panelActual).getTablaConsultarPelicula());
+                break;
+
+            case "Serie":
+                configurarSeleccion(((PanelConsultarFila_Serie) panelActual).getTablaConsultarSerie());
+                break;
+
+            case "Actor":
+                configurarSeleccion(((PanelConsultarFila_Actor) panelActual).getTablaConsultarActor());
+                break;
+
+            case "Personaje_Película":
+                configurarSeleccion(((PanelConsultarFila_PersonajePelicula) panelActual).getTablaConsultarPersonajePelicula());
+                break;
+
+            case "Personaje_Serie":
+                configurarSeleccion(((PanelConsultarFila_PersonajeSerie) panelActual).getTablaConsultarPersonajeSerie());
+                break;
+        }
+    }
+
     private void configurarSeleccion(javax.swing.JTable tabla) {
         tabla.getSelectionModel().addListSelectionListener(e -> {
+
             if (!e.getValueIsAdjusting() && tabla.getSelectedRow() != -1) {
-                Object id = tabla.getValueAt(tabla.getSelectedRow(), 0);
-                textFieldIdentificadorConsultador.setText(id.toString());
+
+                int row = tabla.getSelectedRow();
+                String opcion = selectorTabla.getSelectedItem().toString();
+
+                switch (opcion) {
+
+                    case "Película": {
+                        PanelConsultarFila_Pelicula panel
+                                = (PanelConsultarFila_Pelicula) panelActual;
+
+                        panel.getTextFieldIdentificadorConsultador()
+                                .setText(tabla.getValueAt(row, 0).toString());
+                        break;
+                    }
+
+                    case "Serie": {
+                        PanelConsultarFila_Serie panel
+                                = (PanelConsultarFila_Serie) panelActual;
+
+                        panel.getTextFieldIdentificadorConsultador()
+                                .setText(tabla.getValueAt(row, 0).toString());
+                        break;
+                    }
+
+                    case "Actor": {
+                        PanelConsultarFila_Actor panel
+                                = (PanelConsultarFila_Actor) panelActual;
+
+                        panel.getTextFieldIdentificadorConsultador()
+                                .setText(tabla.getValueAt(row, 0).toString());
+                        break;
+                    }
+
+                    case "Personaje_Película": {
+                        PanelConsultarFila_PersonajePelicula panel
+                                = (PanelConsultarFila_PersonajePelicula) panelActual;
+
+                        panel.getTextFieldIdentificadorConsultadorComplejo1()
+                                .setText(tabla.getValueAt(row, 0).toString());
+
+                        panel.getTextFieldIdentificadorConsultadorComplejo2()
+                                .setText(tabla.getValueAt(row, 1).toString());
+                        break;
+                    }
+
+                    case "Personaje_Serie": {
+                        PanelConsultarFila_PersonajeSerie panel
+                                = (PanelConsultarFila_PersonajeSerie) panelActual;
+
+                        panel.getTextFieldIdentificadorConsultadorComplejo1()
+                                .setText(tabla.getValueAt(row, 0).toString());
+
+                        panel.getTextFieldIdentificadorConsultadorComplejo2()
+                                .setText(tabla.getValueAt(row, 1).toString());
+                        break;
+                    }
+                }
             }
         });
     }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonConsultarFila;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panelConsultarFila;
     private javax.swing.JComboBox<String> selectorTabla;
-    private javax.swing.JTextField textFieldIdentificadorConsultador;
     private javax.swing.JLabel textoConsulta2;
-    private javax.swing.JLabel textoConsultar;
     private javax.swing.JLabel textoSelectorTabla;
     private javax.swing.JLabel tituloConsultarFila;
     // End of variables declaration//GEN-END:variables

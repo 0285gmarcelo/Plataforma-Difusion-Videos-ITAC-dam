@@ -4,6 +4,13 @@
  */
 package Pantallas.ManipulacionDatosFilas.PersonajePelicula;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import Servicios.BaseDatos.LeerDatos;
+import Servicios.BaseDatos.ServicioBase_de_Datos;
+import java.sql.Connection;
+import javax.swing.JTable;
+
 /**
  *
  * @author isard
@@ -15,6 +22,8 @@ public class PanelActualizarFila_PersonajePelicula extends javax.swing.JPanel {
      */
     public PanelActualizarFila_PersonajePelicula() {
         initComponents();
+        Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
+        LeerDatos.consultarTabla("personaje_pelicula", "codigo_pelicula", con, tablaActualizarPersonajePelicula);
     }
 
     /**
@@ -28,6 +37,14 @@ public class PanelActualizarFila_PersonajePelicula extends javax.swing.JPanel {
 
         scrollPanelActualizarPersonajePelicula = new javax.swing.JScrollPane();
         tablaActualizarPersonajePelicula = new javax.swing.JTable();
+        textoCodigoPelicula = new javax.swing.JLabel();
+        textoCodigoActor = new javax.swing.JLabel();
+        textoTipo = new javax.swing.JLabel();
+        textoNombre = new javax.swing.JLabel();
+        textFieldCodigoPelicula = new javax.swing.JTextField();
+        textFieldCodigoActor = new javax.swing.JTextField();
+        textFieldNombre = new javax.swing.JTextField();
+        textFieldTipo = new javax.swing.JTextField();
 
         tablaActualizarPersonajePelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -42,27 +59,106 @@ public class PanelActualizarFila_PersonajePelicula extends javax.swing.JPanel {
         ));
         scrollPanelActualizarPersonajePelicula.setViewportView(tablaActualizarPersonajePelicula);
 
+        textoCodigoPelicula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigoPelicula.setText("Código Película:");
+
+        textoCodigoActor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoCodigoActor.setText("Código Actor:");
+
+        textoTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoTipo.setText("Tipo:");
+
+        textoNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textoNombre.setText("Nombre:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scrollPanelActualizarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textoCodigoPelicula)
+                                .addGap(21, 21, 21)
+                                .addComponent(textFieldCodigoPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textoCodigoActor)
+                                .addGap(33, 33, 33)
+                                .addComponent(textFieldCodigoActor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textoNombre)
+                                .addGap(64, 64, 64)
+                                .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textoTipo)
+                                .addGap(88, 88, 88)
+                                .addComponent(textFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(232, 232, 232))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPanelActualizarPersonajePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(scrollPanelActualizarPersonajePelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldCodigoPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoCodigoPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoCodigoActor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(textFieldCodigoActor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoNombre)
+                    .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoTipo)
+                    .addComponent(textFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getTablaActualizarPersonajePelicula() {
+        return tablaActualizarPersonajePelicula;
+    }
+
+    public JTextField getTextFieldCodigoPelicula() {
+        return textFieldCodigoPelicula;
+    }
+
+    public JTextField getTextFieldCodigoActor() {
+        return textFieldCodigoActor;
+    }
+
+    public JTextField getTextFieldNombre() {
+        return textFieldNombre;
+    }
+
+    public JTextField getTextFieldTipo() {
+        return textFieldTipo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane scrollPanelActualizarPersonajePelicula;
     private javax.swing.JTable tablaActualizarPersonajePelicula;
+    private javax.swing.JTextField textFieldCodigoActor;
+    private javax.swing.JTextField textFieldCodigoPelicula;
+    private javax.swing.JTextField textFieldNombre;
+    private javax.swing.JTextField textFieldTipo;
+    private javax.swing.JLabel textoCodigoActor;
+    private javax.swing.JLabel textoCodigoPelicula;
+    private javax.swing.JLabel textoNombre;
+    private javax.swing.JLabel textoTipo;
     // End of variables declaration//GEN-END:variables
 }

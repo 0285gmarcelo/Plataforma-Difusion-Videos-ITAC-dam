@@ -20,7 +20,7 @@ public class GenerarInformes {
      * @param sql consulta SQL
      * @param nombreArchivo nombre del fichero
      */
-    public static void generarInforme(Connection con, String sql, String nombreArchivo) {
+    public static void GenerarInforme(Connection con, String sql, String nombreArchivo) {
 
         try {
 
