@@ -12,7 +12,6 @@ import java.sql.*;
  * @author isard
  */
 public class GenerarInformes {
-
     /**
      * Genera un informe en un fichero txt.
      *
