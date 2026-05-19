@@ -31,7 +31,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("titulo") + " - " + rs.getInt("año_estreno") + " - "
                         + rs.getInt("duracion") + " - " + rs.getString("actor") + " - " + rs.getString("personaje") + " - ");
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -56,7 +56,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("titulo") + " - " + rs.getString("creador") + " - "
                         + rs.getInt("s.temporadas") + " - " + rs.getString("actor") + " - " + rs.getString("personaje") + " - ");
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -81,7 +81,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
                         + rs.getString("lugar_residencia") + " - " + rs.getString("serie") + " - " + rs.getInt("episodios") + " - ");
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -106,7 +106,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("nombre") + " - " + rs.getDate("fecha_nacimiento") + " - "
                         + rs.getString("lugar_residencia") + " - " + rs.getString("p.titulo") + " - " + rs.getInt("pp.tipo") + " - ");
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -132,7 +132,7 @@ public class ConsultasBD {
                 System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad") + " - "
                 + rs.getString("Pelicula") + " - " + rs.getString("Serie"));
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -155,7 +155,7 @@ public class ConsultasBD {
             while (rs.next()) {
                 System.out.println(rs.getString("s.titulo") + " - " + rs.getInt("numActores"));
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -180,7 +180,7 @@ public class ConsultasBD {
             while (rs.next()) {
                 System.out.println(rs.getString("nombre"));
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -204,7 +204,7 @@ public class ConsultasBD {
             while (rs.next()) {
                 System.out.println(rs.getString("nombre") + " - " + rs.getString("nacionalidad"));
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
@@ -228,7 +228,7 @@ public class ConsultasBD {
                 System.out.println(rs.getInt("codigo") + " - " + rs.getString("titulo") + " - "
                         + rs.getString("director") + " - " + rs.getString("año_estreno") + " - " + rs.getInt("duracion"));
             }
-            GenerarInformes.generarInforme(con, sql, nombreArchivo);
+            GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
             pst.close();
             con.close();
         } catch (SQLException ex) {
