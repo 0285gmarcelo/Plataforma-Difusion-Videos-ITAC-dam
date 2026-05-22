@@ -10,35 +10,84 @@ import java.sql.PreparedStatement;
 import java.time.LocalDate;
 
 /**
+ * Clase encargada de realizar operaciones de actualización y eliminación
+ * sobre la base de datos.
  *
- * @author isard
+ * Incluye:
+ * - UPDATE genérico
+ * - UPDATE en tablas relacionales (películas/series/personajes)
+ * - DELETE genérico
+ * - DELETE en tablas relacionales
+ * - UPDATE con validación previa de datos
+ *
+ * @author Carlos
  */
 public class Actualizar_EliminarDatos {
 
+    /**
+     * Actualiza un campo concreto de cualquier tabla.
+     *
+     * FLUJO:
+     * 1. Construye consulta UPDATE dinámica
+     * 2. Asigna valores con PreparedStatement
+     * 3. Ejecuta actualización
+     * 4. Muestra resultado por consola
+     * 5. Cierra recursos
+     *
+     * @param tabla tabla donde se hará la actualización
+     * @param codigo identificador del registro (PK)
+     * @param columna columna que se actualizará
+     * @param nuevoContenido nuevo valor del campo
+     * @param con conexión activa a la base de datos
+     */
     public static void actualizar(String tabla, int codigo, String columna, String nuevoContenido, Connection con) {
 
         try {
+            
+            // Construcción dinámica del UPDATE (tabla y columna variables)
             PreparedStatement ps = con.prepareStatement(
                     "UPDATE " + tabla + " SET " + columna + " = ? WHERE codigo = ?"
             );
 
+            // Asigna el nuevo valor al campo
             ps.setString(1, nuevoContenido);
+            
+            // Asigna el identificador del registro
             ps.setInt(2, codigo);
 
+            // Ejecuta la actualización y obtiene cuántas filas fueron afectadas
             int filas = ps.executeUpdate();
 
+            // Mensajes de control
             System.out.println("Actualización OK");
             System.out.println("Tabla: " + tabla + " | Filas: " + filas);
 
+            // Cierra statement
             ps.close();
 
         } catch (SQLException ex) {
             System.out.println("Error en actualizar()");
             ex.printStackTrace();
+            // Relanza excepción como Runtime para control global
             throw new RuntimeException(ex);
         }
     }
-
+    /**
+     * Actualiza un campo específico de la tabla personaje_pelicula.
+     *
+     * FLUJO:
+     * 1. Construye UPDATE con clave compuesta (película + actor)
+     * 2. Asigna parámetros
+     * 3. Ejecuta actualización
+     * 4. Muestra confirmación
+     * 5. Cierra recursos
+     *
+     * @param codigoPelicula ID de la película
+     * @param codigoActor ID del actor
+     * @param columna campo a modificar
+     * @param nuevoValor nuevo valor
+     * @param con conexión activa
+     */
     public static void actualizarPeliculas_personaje(
             int codigoPelicula,
             int codigoActor,
@@ -69,6 +118,18 @@ public class Actualizar_EliminarDatos {
         }
     }
 
+    /**
+     * Actualiza un campo específico en personaje_serie.
+     *
+     * FLUJO:
+     * - Igual que películas pero usando PK compuesta de serie + actor
+     *
+     * @param codigoSerie ID de la serie
+     * @param codigoActor ID del actor
+     * @param columna campo a modificar
+     * @param nuevoValor nuevo valor
+     * @param con conexión activa
+     */
     public static void actualizarSeries_personaje(
             int codigoSerie,
             int codigoActor,
@@ -98,7 +159,20 @@ public class Actualizar_EliminarDatos {
             throw new RuntimeException(ex); // 👈 IMPORTANTE
         }
     }
-
+    /**
+     * Elimina un registro de cualquier tabla usando su código.
+     *
+     * FLUJO:
+     * 1. Construye DELETE dinámico
+     * 2. Asigna ID
+     * 3. Ejecuta eliminación
+     * 4. Muestra resultado
+     * 5. Cierra recursos
+     *
+     * @param tabla tabla donde se eliminará el registro
+     * @param codigo ID del registro a eliminar
+     * @param con conexión activa
+     */
     public static void eliminar(String tabla, int codigo, Connection con) throws SQLException {
         try {
             PreparedStatement ps = con.prepareStatement(
@@ -120,7 +194,18 @@ public class Actualizar_EliminarDatos {
             throw ex; // 🔴 ESTO es lo único importante
         }
     }
-
+    
+     /**
+     * Elimina una relación actor-película en la tabla intermedia.
+     *
+     * FLUJO:
+     * - Usa clave compuesta (película + actor)
+     * - Ejecuta DELETE seguro con parámetros
+     *
+     * @param codigoActor ID del actor
+     * @param codigoPelicula ID de la película
+     * @param con conexión activa
+     */
     public static void eliminarPersonaje_Pelicula(
             int codigoActor,
             int codigoPelicula,
@@ -145,7 +230,16 @@ public class Actualizar_EliminarDatos {
             throw ex;
         }
     }
-
+    /**
+     * Elimina una relación actor-serie en la tabla intermedia.
+     *
+     * FLUJO:
+     * - DELETE con clave compuesta (serie + actor)
+     *
+     * @param codigoActor ID del actor
+     * @param codigoSerie ID de la serie
+     * @param con conexión activa
+     */
     public static void eliminarPersonaje_Serie(
             int codigoActor,
             int codigoSerie,
@@ -171,7 +265,20 @@ public class Actualizar_EliminarDatos {
             throw ex;
         }
     }
-    
+     /**
+     * Actualiza un campo SOLO si pasa validación previa.
+     *
+     * FLUJO:
+     * 1. Comprueba si el valor es nulo o vacío
+     * 2. Según la tabla, aplica validaciones específicas
+     * 3. Si todo es correcto, ejecuta UPDATE real
+     *
+     * @param tabla tabla a actualizar
+     * @param id identificador del registro
+     * @param columna campo a modificar
+     * @param valor nuevo valor
+     * @param con conexión activa
+     */
     public static void actualizarCampoValidado(
         String tabla,
         int id,
