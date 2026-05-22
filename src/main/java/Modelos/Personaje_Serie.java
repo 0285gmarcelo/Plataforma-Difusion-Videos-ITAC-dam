@@ -3,20 +3,18 @@ package Modelos;
 import Excepciones.TipoPersonajeException;
 
 /**
- * Clase que representa la relación entre una Serie y un Actor,
- * indicando el personaje que interpreta el actor dentro de la serie.
+ * Clase que representa la relación entre una Serie y un Actor, indicando el
+ * personaje que interpreta el actor dentro de la serie.
  *
- * Esta clase actúa como entidad intermedia entre:
- * - una serie (codigo_Serie)
- * - un actor (codigo_Actor)
+ * Esta clase actúa como entidad intermedia entre: - una serie (codigo_Serie) -
+ * un actor (codigo_Actor)
  *
- * Además almacena información adicional como:
- * - nombre del personaje
- * - tipo de personaje (principal, secundario, etc.)
- * - número de episodios en los que aparece
- * - duración asociada
+ * Además almacena información adicional como: - nombre del personaje - tipo de
+ * personaje (principal, secundario, etc.) - número de episodios en los que
+ * aparece - duración asociada
  *
- * Implementa la interfaz InterfazJSON para permitir exportación en formato JSON.
+ * Implementa la interfaz InterfazJSON para permitir exportación en formato
+ * JSON.
  *
  * @author Carlos
  */
@@ -31,15 +29,15 @@ public class Personaje_Serie implements Interfaces.InterfazJSON {
     private String duracion;
 
     //Constructor 
-    public Personaje_Serie(int codigo_Actor,
-            int codigo_Serie,
+    public Personaje_Serie(int codigo_Serie,
+            int codigo_Actor,
             String nombre,
             String tipo,
             int episodios,
             String duracion) throws TipoPersonajeException {
 
-        this.codigo_Actor = codigo_Actor;
         this.codigo_Serie = codigo_Serie;
+        this.codigo_Actor = codigo_Actor;
         this.nombre = nombre;
         this.episodios = episodios;
         this.duracion = duracion;
@@ -47,7 +45,6 @@ public class Personaje_Serie implements Interfaces.InterfazJSON {
     }
 
     //Metodos
-    
     //Codigo de la serie
     public int getCodigo_Serie() {
         return codigo_Serie;

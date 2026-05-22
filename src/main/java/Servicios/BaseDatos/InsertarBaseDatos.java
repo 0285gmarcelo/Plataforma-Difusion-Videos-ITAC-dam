@@ -280,9 +280,9 @@ public class InsertarBaseDatos {
             // Verifica que el objeto recibido sea realmente un Actor
             if (objecto instanceof Actor actor) {
                 
-                // Sentencia SQL con IGNORE para evitar errores por duplicados
+                // Sentencia SQL 
                 PreparedStatement pst = con.prepareStatement(
-                        "INSERT IGNORE INTO Actor VALUES (?,?,?,?,?)"
+                        "INSERT INTO Actor VALUES (?,?,?,?,?)"
                 );
                 
                 // Asignación de valores del objeto Actor a la consulta SQL
@@ -324,9 +324,9 @@ public class InsertarBaseDatos {
             // Verifica que el objeto recibido sea realmente una Pelicula
             if (objecto instanceof Pelicula pelicula) {
                 
-                // Sentencia SQL con IGNORE para evitar errores por duplicados
+                // Sentencia SQL 
                 PreparedStatement pst = con.prepareStatement(
-                        "INSERT IGNORE INTO Pelicula VALUES (?,?,?,?,?)"
+                        "INSERT INTO Pelicula VALUES (?,?,?,?,?)"
                 );
                 
                 // Asignación de valores del objeto pelicula a la consulta SQL
@@ -364,9 +364,9 @@ public class InsertarBaseDatos {
             // Verifica que el objeto recibido sea realmente una Serie
             if (objecto instanceof Serie serie) {
                 
-                // Sentencia SQL con IGNORE para evitar errores por duplicados
+                // Sentencia SQL
                 PreparedStatement pst = con.prepareStatement(
-                        "INSERT IGNORE INTO Serie VALUES (?,?,?,?,?,?)"
+                        "INSERT INTO Serie VALUES (?,?,?,?,?,?)"
                 );
                 
                 // Asignación de valores del objeto Serie a la consulta SQL
@@ -449,7 +449,7 @@ public class InsertarBaseDatos {
                 
                 // Asignación de valores del objeto personaje serie a la consulta SQL
                 PreparedStatement pst = con.prepareStatement(
-                        "INSERT IGNORE INTO Personaje_Pelicula VALUES (?,?,?,?)"
+                        "INSERT INTO Personaje_Pelicula VALUES (?,?,?,?)"
                 );
                 
                 // Asignación de valores del objeto personaje pelicula a la consulta SQL

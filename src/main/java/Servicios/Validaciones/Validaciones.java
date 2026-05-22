@@ -8,21 +8,18 @@ import Modelos.*;
 import Excepciones.DatoInvalidoException;
 import Excepciones.TipoPersonajeException;
 import java.time.LocalDate;
+
 /**
- * Esta clase esta encargada de validar los datos antes de insertarlos
- * en la base de datos
- * 
- * Contiene metodos para validar:
- * - Actores
- * - Peliculas
- * - Series
- * - Personajes Series
- * - Personajes Pelicula
- * 
+ * Esta clase esta encargada de validar los datos antes de insertarlos en la
+ * base de datos
+ *
+ * Contiene metodos para validar: - Actores - Peliculas - Series - Personajes
+ * Series - Personajes Pelicula
+ *
  * Tambien utiliza expresiones regulares para comprobar el formatos validos
- * 
+ *
  * Lanza excepciones personalizadas cuano los datos no son correctos
- * 
+ *
  * @author Carlos y Andre
  */
 public class Validaciones {
@@ -34,8 +31,7 @@ public class Validaciones {
     private static final String REGEX_SOLO_LETRAS
             = "[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+";
     /**
-     * REGEX_TEXTO permite texto general con letras,
-     * numeros y algunos simbolos
+     * REGEX_TEXTO permite texto general con letras, numeros y algunos simbolos
      */
     private static final String REGEX_TEXTO
             = "[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9 .,:;()\\-]+";
@@ -44,12 +40,17 @@ public class Validaciones {
      */
     private static final String REGEX_SOLO_NUMEROS
             = "[0-9]+";
+    /**
+     * REGEX_ANIOS_EMISION SOLO PERMITE EL FORMATO DE AÑOS EMISION CON NUMEROS Y
+     * EL -
+     */
+    private static final String REGEX_ANIOS_EMISION = "\\d{4}-\\d{4}";
 
 // ================= ACTOR (CAMPOS) =================
     /**
      * Validar el numero del actor.
-     * 
-     * @param nombre: el nombre del actor 
+     *
+     * @param nombre: el nombre del actor
      */
     public static void validarNombreActor(String nombre) {
         //Se comprueba si esta vacio
@@ -61,15 +62,16 @@ public class Validaciones {
             throw new DatoInvalidoException("El nombre del actor no es válido.");
         }
     }
+
     /**
      * Validar el lugar de residencia
-     * 
+     *
      * @param residencia: El lugar de residencia
      */
     public static void validarResidencia(String residencia) {
         //Se comprueba si esta vacio
         if (residencia == null || residencia.isBlank()) {
-            
+
             throw new DatoInvalidoException("Residencia vacía.");
         }
         //Se comprueba si el formato es valido
@@ -77,9 +79,10 @@ public class Validaciones {
             throw new DatoInvalidoException("Residencia no válida.");
         }
     }
+
     /**
      * Validar la nacionalidad
-     * 
+     *
      * @param nacionalidad: la nacionalidad del actor
      */
     public static void validarNacionalidad(String nacionalidad) {
@@ -92,10 +95,11 @@ public class Validaciones {
             throw new DatoInvalidoException("Nacionalidad no válida.");
         }
     }
+
     /**
      * Validar la fecha de nacimiento
-     * 
-     * @param fecha: la fecha de nacimiento del actor 
+     *
+     * @param fecha: la fecha de nacimiento del actor
      */
     public static void validarFechaNacimiento(LocalDate fecha) {
         //Se comprueba si exsiste la fecha
@@ -111,7 +115,7 @@ public class Validaciones {
 // ================= PELÍCULA =================
     /**
      * Validar el titulo
-     * 
+     *
      * @param titulo: el titulo de la pelicula o serie
      */
     public static void validarTitulo(String titulo) {
@@ -120,10 +124,11 @@ public class Validaciones {
             throw new DatoInvalidoException("Título vacío.");
         }
     }
+
     /**
      * Validar el director de una pelicula
-     * 
-     * @param director:El nombre del director 
+     *
+     * @param director:El nombre del director
      */
     public static void validarDirector(String director) {
         //Se comprueba si esta vacio
@@ -135,10 +140,11 @@ public class Validaciones {
             throw new DatoInvalidoException("El nombre del director no es válido.");
         }
     }
+
     /**
      * Validar el año de estreno
-     * 
-     * @param anyo:El año de estreno 
+     *
+     * @param anyo:El año de estreno
      */
     public static void validarAnyo(int anyo) {
 
@@ -151,10 +157,11 @@ public class Validaciones {
             throw new DatoInvalidoException("Año fuera de rango.");
         }
     }
+
     /**
      * Validar la duracion
-     * 
-     * @param duracion:La duracion en minutos 
+     *
+     * @param duracion:La duracion en minutos
      */
     public static void validarDuracion(int duracion) {
 
@@ -171,11 +178,11 @@ public class Validaciones {
 // ================= SERIE =================
     /**
      * Validar el creador de la serie
-     * 
-     * @param creador;El  nombre del creador 
+     *
+     * @param creador;El nombre del creador
      */
     public static void validarCreador(String creador) {
-         // Se comprueba si esta vacio
+        // Se comprueba si esta vacio
         if (creador == null || creador.isBlank()) {
             throw new DatoInvalidoException("Creador vacío.");
         }
@@ -184,24 +191,28 @@ public class Validaciones {
             throw new DatoInvalidoException("El creador solo puede contener letras.");
         }
     }
+
     /**
      * Validar los años de emisión
-     * 
+     *
      * @param aniosEmision :El año de emision
      */
     public static void validarAniosEmision(String aniosEmision) {
-        // Se comprueba si esta vacio
+        //Se comprueba si esta vacío
         if (aniosEmision == null || aniosEmision.isBlank()) {
             throw new DatoInvalidoException("Años de emisión vacío.");
         }
-        //Se comprueba si el formato es valido
-        if (!aniosEmision.matches(REGEX_SOLO_NUMEROS)) {
-            throw new DatoInvalidoException("Años de emisión debe contener solo números.");
+        // Se comprueba si es valido
+        if (!aniosEmision.matches(REGEX_ANIOS_EMISION)) {
+            throw new DatoInvalidoException(
+                    "Formato inválido. Debe ser: 2008-2013"
+            );
         }
     }
+
     /**
      * Validar el numero de temporadas
-     * 
+     *
      * @param temporadas:El numero de temporadas
      */
     public static void validarTemporadas(int temporadas) {
@@ -215,9 +226,10 @@ public class Validaciones {
             throw new DatoInvalidoException("Temporadas no válidas.");
         }
     }
+
     /**
      * Validar el numero de episodios.
-     * 
+     *
      * @param episodios :El numero de episodios
      */
     public static void validarEpisodios(int episodios) {
@@ -235,8 +247,8 @@ public class Validaciones {
 // ================= PERSONAJES =================
     /**
      * Validar el nombre de un personaje
-     * 
-     * @param nombre:El nombre del personaje 
+     *
+     * @param nombre:El nombre del personaje
      */
     public static void validarNombrePersonaje(String nombre) {
         // Se comprueba si esta vacio
@@ -252,8 +264,8 @@ public class Validaciones {
 // ================= TIPO PERSONAJE PELÍCULA =================
     /**
      * Validar el tipo de personaje de pelicula
-     * 
-     * @param tipo;El tipo del personaje 
+     *
+     * @param tipo;El tipo del personaje
      */
     public static void validarTipoPersonaje(String tipo) {
         // Se comprueba si esta vacio
@@ -271,8 +283,8 @@ public class Validaciones {
 // ================= TIPO PERSONAJE SERIE =================
     /**
      * Validar el tipo de personaje de serie
-     * 
-     * @param tipo:El tipo de personaje 
+     *
+     * @param tipo:El tipo de personaje
      */
     public static void validarTipoPersonajeSerie(String tipo) {
         // Se comprueba si esta vacio
@@ -288,10 +300,9 @@ public class Validaciones {
     }
 
 // ================= PERSONAJE SERIE =================
-    
     /**
      * Validar el duracion textual de un personaje
-     * 
+     *
      * @param duracion:La duracion textual
      */
     public static void validarDuracionPersonajeSerie(String duracion) {
@@ -308,10 +319,11 @@ public class Validaciones {
             throw new DatoInvalidoException("Duración no válida.");
         }
     }
+
     /**
      * Validar episodios del personaje de serie
-     * 
-     * @param episodios:El numero de episodios 
+     *
+     * @param episodios:El numero de episodios
      */
     public static void validarEpisodiosPersonajeSerie(int episodios) {
 
@@ -328,56 +340,78 @@ public class Validaciones {
 // ================= MODELOS COMPLETOS =================
     /**
      * Validar todos los datos de un actor
-     * 
-     * @param actor:El actor a validar 
+     *
+     * @param actor:El actor a validar
      */
     public static void validarActor(Actor actor) {
+        validarCodigo(actor.getCodigo());
         validarNombreActor(actor.getNombre());
         validarFechaNacimiento(actor.getFecha_Nacimiento());
         validarResidencia(actor.getLugar_Residencia());
         validarNacionalidad(actor.getNacionalidad());
     }
+
     /**
      * Validar todos los datos de una pelicula
-     * 
-     * @param p:La pelicula a validar 
+     *
+     * @param p:La pelicula a validar
      */
     public static void validarPelicula(Pelicula p) {
+        validarCodigo(p.getCodigo());
         validarTitulo(p.getTitulo());
         validarDirector(p.getDirector());
         validarAnyo(p.getAnyo_estreno());
         validarDuracion(p.getDuracion());
     }
+
     /**
      * Validar todos los datos de una serie
-     * 
-     * @param s:La serie a validar 
+     *
+     * @param s:La serie a validar
      */
     public static void validarSerie(Serie s) {
+        validarCodigo(s.getCodigo());
         validarTitulo(s.getTitulo());
         validarCreador(s.getCreador());
         validarAniosEmision(s.getAnyos_Emision());
         validarTemporadas(s.getTemporadas());
         validarEpisodios(s.getEpisodios());
     }
+
     /**
      * Validar todas los datos de personaje de peliculas
-     * 
-     * @param pp:El personaje pelicula 
+     *
+     * @param pp:El personaje pelicula
      */
     public static void validarPersonajePelicula(Personaje_Pelicula pp) {
+        validarCodigo(pp.getCodigo_Pelicula());
+        validarCodigo(pp.getCodigo_Actor());
         validarNombrePersonaje(pp.getNombre());
         validarTipoPersonaje(pp.getTipo());
     }
+
     /**
      * Validar todas los datos de un personje de pelicula
-     * 
-     * @param ps:El personaje serie 
+     *
+     * @param ps:El personaje serie
      */
     public static void validarPersonajeSerie(Personaje_Serie ps) {
+        validarCodigo(ps.getCodigo_Serie());
+        validarCodigo(ps.getCodigo_Actor());
         validarNombrePersonaje(ps.getNombre());
         validarTipoPersonajeSerie(ps.getTipo());
         validarEpisodiosPersonajeSerie(ps.getEpisodios());
         validarDuracionPersonajeSerie(ps.getDuracion());
+    }
+
+    /**
+     * Validar código genérico positivo
+     *
+     * @param codigo: código de cualquier entidad
+     */
+    public static void validarCodigo(int codigo) {
+        if (codigo <= 0) {
+            throw new DatoInvalidoException("Código inválido.");
+        }
     }
 }
