@@ -62,7 +62,7 @@ public class PanelConsultarFila_PersonajeSerie extends javax.swing.JPanel {
         consultarPersonajeSerie.setViewportView(tablaConsultarPersonajeSerie);
 
         textoConsultarCompleja1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textoConsultarCompleja1.setText("Introduce el Identificador de Película para consultar:");
+        textoConsultarCompleja1.setText("Introduce el Identificador de Serie para consultar:");
 
         textoConsultarCompleja2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoConsultarCompleja2.setText("Introduce el Identificador de Actor para consultar:");

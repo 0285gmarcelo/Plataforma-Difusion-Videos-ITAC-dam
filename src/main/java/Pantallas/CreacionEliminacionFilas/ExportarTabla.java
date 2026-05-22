@@ -194,7 +194,7 @@ public class ExportarTabla extends javax.swing.JFrame {
         Connection con = ServicioBase_de_Datos.inciarBase_De_Datos();
 
         try {
-            String opcion = selectorTabla.getSelectedItem().toString().trim().toLowerCase();
+            String opcion = selectorTabla.getSelectedItem().toString().trim();
 
             String tabla = switch (opcion) {
                 case "Película" ->
