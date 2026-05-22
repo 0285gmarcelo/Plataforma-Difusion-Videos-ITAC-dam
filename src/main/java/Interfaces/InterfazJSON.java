@@ -15,7 +15,7 @@ package Interfaces;
  * - Facilitar exportaciones a ficheros .json
  * - Permitir que distintas clases generen su propia estructura JSON
  *
- * La <T> indica que es una interfaz genérica y puede adaptarse
+ * La <@code T> indica que es una interfaz genérica y puede adaptarse
  * a distintos tipos de objetos.
  *
  * @param <T> tipo de objeto que implementará la interfaz
