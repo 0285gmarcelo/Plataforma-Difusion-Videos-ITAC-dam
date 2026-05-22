@@ -24,19 +24,16 @@ import java.util.logging.Logger;
 public class ConsultasBD {
     
     /**
-     * Genera Informe1: de películas con actores y personajes asociados.
+     * Informe 1:
+     * Muestra todas las películas junto con:
+     * - Año de estreno
+     * - Duración
+     * - Actor participante
+     * - Personaje interpretado
      * 
-     * Flujo del método:
-     * 1. Inicializa la base de datos (aunque normalmente ya debería estar abierta)
-     * 2. Define el nombre del informe
-     * 3. Construye la consulta SQL con JOIN entre tablas
-     * 4. Ejecuta la consulta
-     * 5. Recorre los resultados fila a fila
-     * 6. Muestra los datos por consola
-     * 7. Genera un informe externo
-     * 8. Cierra recursos
-     *
-     * @param con:La conexión activa a la base de datos
+     * El informe se ordena por duración de película de forma descendente.
+     * 
+     * @param con conexión activa con la base de datos
      */
     public static void informePeliculasCS1(Connection con) {
         
@@ -46,7 +43,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta1";
         
-        // Consulta SQL con JOIN entre película, personaje y actor
+        // Consulta SQL
         String sql = " select p.titulo,p.año_estreno,p.duracion, a.nombre as actor , pp.nombre as personaje from pelicula p\n"
                 + "join personaje_pelicula  pp on pp.codigo_pelicula = p.codigo\n"
                 + "join actor a on pp.codigo_actor_P = a.codigo\n"
@@ -72,20 +69,23 @@ public class ConsultasBD {
             // Cierra conexión a base de datos
             con.close();
         } catch (SQLException ex) {
+            
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-     /**
-     * Informe 2: Series con actores y personajes.
-     *
-     * Pasos:
-     * - Ejecuta JOIN entre serie, personaje y actor
-     * - Ordena por temporadas (series más largas primero)
-     * - Imprime resultados
-     * - Genera informe externo
-     *
-     * @param con conexión activa a la base de datos
+      /**
+     * Informe 2:
+     * Muestra todas las series junto con:
+     * - Creador
+     * - Número de temporadas
+     * - Actor participante
+     * - Personaje interpretado
+     * 
+     * El informe se ordena por número de temporadas.
+     * 
+     * @param con:La conexión activa con la base de datos
      */
     public static void informeSeriesCS2(Connection con) {
         
@@ -95,7 +95,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta2";
         
-        
+        // Consulta SQL
         String sql = "select s.titulo, s.creador, s.temporadas, a.nombre as actor , ps.nombre as personaje\n"
                 + "from serie s\n"
                 + "join personaje_serie ps on s.codigo = ps.codigo_serie\n"
@@ -122,6 +122,7 @@ public class ConsultasBD {
             // Cierra conexión a base de datos
             con.close();
         } catch (SQLException ex) {
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -144,7 +145,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta3";
         
-        
+        // Consulta SQL
         String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , s.titulo as serie , ps.episodios as episodios \n"
                 + "from actor a\n"
                 + "left join personaje_serie ps on a.codigo = ps.codigo_actor_S\n"
@@ -172,6 +173,7 @@ public class ConsultasBD {
             // Cierra conexión a base de datos
             con.close();
         } catch (SQLException ex) {
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -194,7 +196,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta4";
         
-        
+        // Consulta SQL
         String sql = "select a.nombre, a.fecha_nacimiento, a.lugar_residencia , p.titulo, pp.tipo\n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
@@ -222,6 +224,7 @@ public class ConsultasBD {
             // Cierra conexión a base de datos
             con.close();
         } catch (SQLException ex) {
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -244,7 +247,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta5";
         
-        
+        // Consulta SQL
         String sql = "select a.nombre, a.nacionalidad, p.titulo as Pelicula , s.titulo as Serie from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
                 + "left join pelicula p on p.codigo = pp.codigo_pelicula\n"
@@ -272,6 +275,7 @@ public class ConsultasBD {
             // Cierra conexión a base de datos
             con.close();
         } catch (SQLException ex) {
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -293,7 +297,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta6";
         
-        
+        // Consulta SQL
         String sql = "select s.titulo , count(distinct ps.codigo_actor_S) as numActores \n"
                 + "from serie s\n"
                 + "left join personaje_serie ps on s.codigo = ps.codigo_serie\n"
@@ -318,6 +322,7 @@ public class ConsultasBD {
             // Cierra conexión a base de datos
             con.close();
         } catch (SQLException ex) {
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -341,10 +346,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta7";
         
-        // Consulta:
-         // - LEFT JOIN para incluir actores sin registros en alguna tabla
-         // - GROUP BY para agrupar por actor
-         // - HAVING para filtrar por cantidad total de participaciones
+        // Consulta SQL
         String sql = "select a.nombre \n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
@@ -372,6 +374,7 @@ public class ConsultasBD {
             // Cierra la conexión a la base de datos
             con.close();
         } catch (SQLException ex) {
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -393,7 +396,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta8";
         
-         
+        // Consulta SQL
         String sql = "select a.nombre, a.nacionalidad \n"
                 + "from actor a\n"
                 + "left join personaje_pelicula pp on a.codigo = pp.codigo_actor_P\n"
@@ -421,7 +424,7 @@ public class ConsultasBD {
             con.close();
             
         } catch (SQLException ex) {
-            // Registra error en caso de fallo SQL
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -435,7 +438,7 @@ public class ConsultasBD {
         // Nombre del informe que se generado
         String nombreArchivo = "Consulta9";
         
-        
+        // Consulta SQL
         String sql = "select * from pelicula\n"
                 + "where año_estreno between 2010 and 2020\n"
                 + "and titulo like '%Misterio%'\n"
@@ -460,6 +463,7 @@ public class ConsultasBD {
             // Cierra conexión a base de datos
             con.close();
         } catch (SQLException ex) {
+            // Captura errores SQL
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
