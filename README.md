@@ -127,20 +127,6 @@ Para evitar errores de integridad referencial seguir este orden:
 
 ---
 
-## Estructura del proyecto
-src/main/java/
-├── Main/               → Punto de entrada (Main.java)
-├── Modelos/            → Clases que representan las tablas de la BD
-├── Servicios/
-│   ├── BaseDatos/      → Conexión, CRUD e informes SQL
-│   ├── Ficheros/       → Exportación, importación e informes
-│   └── Validaciones/   → Validación de datos antes de insertar
-├── Excepciones/        → Excepciones personalizadas
-├── Interfaces/         → InterfazJSON
-├── Utils/              → Constantes (credenciales y configuración)
-└── Pantallas/          → Interfaz gráfica Swing (menús y paneles)
-
----
 
 ## Tecnologías utilizadas
 
@@ -157,4 +143,4 @@ src/main/java/
 
 - `ProyectoFinalBase_de_Datos.sql` — script de creación e inserción de la BD
 - `Plataforma-Difusion-Videos_InformePreliminar.pdf` — informe preliminar del proyecto
-- `Plataforma-Difusion-Videos_ManualUsuario.pdf` — manual de usuario
+- `Plataforma-Difusion-Videos_ManualUsuario.pdf` — manual de usuario y de profesor
