@@ -27,7 +27,7 @@ import java.util.List;
  * Cada línea del fichero se convierte en un objeo
  * y posteriormente se inserta en la base de datos.
  * 
- * @author TuNombre
+ * @author Carlos
  */
 public class Importar {
 
