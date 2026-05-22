@@ -11,35 +11,65 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Clase encargada de generar informes a partir de consultas SQL
+ * sobre la base de datos de películas, series, actores y personajes.
  *
- * @author isard
+ * Cada método:
+ * - Ejecuta una consulta SQL
+ * - Muestra resultados por consola
+ * - Genera un informe externo mediante GenerarInformes
+ *
+ * @author Carlos
  */
 public class ConsultasBD {
-
+    
+    /**
+     * Genera informe de películas con actores y personajes asociados.
+     * Ordena por duración de forma descendente.
+     *
+     * @param con:La conexión activa a la base de datos
+     */
     public static void informePeliculasCS1(Connection con) {
+        
+        // Inicializa conexión (aunque aquí es redundante si ya viene con 'con')
         ServicioBase_de_Datos.inciarBase_De_Datos();
+        
         String nombreArchivo = "Consulta1";
+        
+        // Consulta SQL con JOIN entre película, personaje y actor
         String sql = " select p.titulo,p.año_estreno,p.duracion, a.nombre as actor , pp.nombre as personaje from pelicula p\n"
                 + "join personaje_pelicula  pp on pp.codigo_pelicula = p.codigo\n"
                 + "join actor a on pp.codigo_actor_P = a.codigo\n"
                 + "order by p.duracion desc;";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
-
+            
+            // Ejecuta consulta y obtiene resultados
             ResultSet rs = pst.executeQuery();
+            
+            // Recorre cada fila del resultado
             while (rs.next()) {
                 System.out.println(rs.getString("titulo") + " - " + rs.getInt("año_estreno") + " - "
                         + rs.getInt("duracion") + " - " + rs.getString("actor") + " - " + rs.getString("personaje") + " - ");
             }
+            
+            // Genera informe externo (PDF, Excel o similar según implementación)
             GenerarInformes.GenerarInforme(con, sql, nombreArchivo);
+            
             pst.close();
+            
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConsultasBD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-
+     /**
+     * Genera informe de series con actores y personajes asociados.
+     * Ordena por número de temporadas (descendente).
+     *
+     * @param con:La conexión activa a la base de datos
+     */
     public static void informeSeriesCS2(Connection con) {
         ServicioBase_de_Datos.inciarBase_De_Datos();
         String nombreArchivo = "Consulta2";
